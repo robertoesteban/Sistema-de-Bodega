@@ -1,0 +1,65 @@
+ul.vbULa7226 {
+  position: absolute;
+  visibility: hidden;
+}
+.vbULa7226 {
+  position: absolute;
+  visibility: hidden;
+  display: block;
+  overflow: auto;
+  font-size: 1px;
+  padding: 2px;
+  margin: 0px;
+  border: 1px solid #8A867A;
+  background-color: #EFEDDE;
+}
+.vbULa7226 table {
+  border-collapse: separate;
+  border-spacing: 0px;
+}
+.vbULa7226 tr {
+  font-size: 1px;
+  cursor: pointer;
+  background-color: #EFEDDE;  
+}
+.vbULa7226 tr.over {
+  background-color: #C1D2EE;
+}
+.vbULa7226 td {
+  border: 1px solid #EFEDDE;
+  padding: 3px;
+  text-align: left;
+}
+.vbULa7226 tr.over td {
+  border-color: #316AC5;
+}
+.vbULa7226 td a {
+  font-family: Tahoma;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  color: #000000;
+  text-decoration: none;
+}
+.vbULa7226 tr.over a {
+  font-family: Tahoma;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  color: #000000;
+  text-decoration: none;
+}
+.vbULa7226 tr.popup {
+  background-color: #C1D2EE;
+}
+.vbULa7226 tr.popup td {
+  border-color: #316AC5;
+}
+.vbULa7226 tr.popup a {
+  font-family: Tahoma;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: normal;
+  color: #000000;
+  text-decoration: none;
+}

@@ -1,0 +1,516 @@
+body{
+	/*background-color:#CCCCFF;*/
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000033;
+	
+}
+
+#contenedor{
+	text-align:center;
+	width: 994px;
+	margin:auto;
+	
+} 
+
+#cabecera{/*corresponde donde esta el titulo*/
+/*width: 770px;*/
+width: 994px;
+height:175px;
+background-image:url(image/titulo.png);
+background-repeat:no-repeat;
+}
+h3.titulo{
+	font-size:14px;
+	font-weight:bold;
+	color:#990000;
+}
+
+h3.subTitulo{
+	font-size:12px;
+	font-weight:bold;
+	color:#333333;
+}
+p.normal_1{
+	font-size:12px;
+	
+	color:#000033;
+}
+
+/*=============== MENU GENERAL =======================================*/
+#menuGeneral{
+background-image:url(image/menuGeneral.png);
+background-repeat:no-repeat;
+/*width: 744px;*/
+width:968px;
+height:27px;
+margin-top:5px;
+padding:3px 15px 3px 15px;
+text-align:left;
+color:#333333;
+}
+
+
+A.enlaceMenuGeneral, A.enlaceMenuGeneral:VISITED,A.enlaceMenuGeneral:FOCUS, A.enlaceMenuGeneral:LINK{/*link del menu(inactivo)*/
+color: #00468E;
+font-size:12px;
+font-weight:bold;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+text-decoration:none;
+}
+
+A.enlaceMenuGeneral:HOVER,A.enlaceMenuGeneral:ACTIVE{/*enlace del menu (activo)*/
+color:#00468E;
+font-size:12px;
+font-weight:bold;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+text-decoration:underline;
+}
+/*====================================================================================*/
+#cuerpo{
+/*width: 770px;*/
+width: 994px;
+background-image: url(image/centroCuerpo.png);
+background-repeat: repeat-y;
+
+/*height:350px;*/
+
+
+}
+
+#cuerpoInicio{
+	background-image: url(image/arribaCuerpo.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+	
+	/*height:350px;*/
+
+}
+
+#cuerpoFin{
+	background-image: url(image/abajoCuerpo.png);
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    padding: 15px 10px 15px 10px;
+	
+	
+
+	/*height:343px;*/
+}
+/*NOTA: con respecto a cuerpo, cuerpoInicio y cuerpoFin, es importante que el parametro "Height" sean exscatos
+el otro punto, es el parrafo final de los creditos, ese parrafo queda dentro del margen, porque tiene relacion 
+con los 15 pixeles que se le dio en el pading top del div cuerpoFin, OjO con eso!!!!*/
+/*============== caja login password =============*/
+#cajaValidarUs{
+	width:180px;
+	margin-left:750px;
+	
+	margin-top:50px;
+	font-weight:bolder;
+	color:#006699;
+	padding:10px 10px 10px 10px;
+	border-bottom: #0099FF solid 1px;
+	border-right: #0099FF solid 1px;
+	border-left: #0099FF solid 1px;
+	border-top: #0099FF solid 1px;
+}
+/*============== caja error index =============*/
+#errorPass{
+	width:180px;
+	margin-left:750px;
+	margin-top:5px;
+	color:#003366;
+	padding:10px 10px 10px 10px;
+	border-bottom: #FF0000 solid 1px;
+	border-right: #FF0000 solid 1px;
+	border-left: #FF0000 solid 1px;
+	border-top: #FF0000 solid 1px;
+	border-style:dotted;
+	display:none;
+	
+}
+/*================= corresponde a las 3 columnas generales ====================*/
+#menuIzquierdo{
+    width:150px;
+    float:left;
+	border-bottom: #a5a7aa solid 1px;
+	/*border-right: #a5a7aa solid 1px;*/
+	border-left: #a5a7aa solid 1px;
+	border-top: #a5a7aa solid 1px;
+	padding:3px 0px 0px 0px;
+	margin-top:20px;
+	color:#333333;
+	
+}
+
+#menuDerecho{
+    width: 201px;
+    float: right;
+	border-bottom: #999999 solid 2px;
+	border-right: #999999 solid 2px;
+	border-top: #999999 solid 2px;
+	padding:3px 0px 0px 0px;
+	color:#333333;
+	
+}
+
+#principalCentro{
+    margin-left:147px;
+	color:#000000;
+    background-color:#EBF2FE;
+    padding: 4px 4px 4px 4px;
+    width: 600px;
+	/*height:100px;*/
+	border-bottom: #99CC33 solid 1px;
+	border-right: #99CC33 solid 1px;
+	/*border-left: #a5a7aa solid 1px;*/
+	border-top: #99CC33 solid 1px;
+	
+	
+	/*padding-bottom:290px; */  /*esto es lo que le da el largo a la caja de al medio*/
+}
+#principalCentroAdmin{
+    margin-left:150px;
+	color:#000000;
+    background-color:#EBF2FE;
+    padding: 4px 4px 4px 4px;
+    width: 800px;
+	/*height:100px;*/
+	border-bottom: #99CC33 solid 1px;
+	border-right: #99CC33 solid 1px;
+	/*border-left: #a5a7aa solid 1px;*/
+	border-top: #99CC33 solid 1px;
+	
+	
+	/*padding-bottom:290px; */  /*esto es lo que le da el largo a la caja de al medio*/
+}
+
+
+
+/*=========================================================================*/
+/*================= Menu Asignatura Alumnos ====================*/
+
+#menuAsig{
+	padding : 3px 0px 0px 13px;
+	text-align:left;
+	height:18px;
+	/*background-color:#EBF2FE;*/
+	/*color: #00468E;*/
+	/*font-size:11px;*/
+	/*font-weight:bold;*/
+	/*font-family:Geneva, Arial, Helvetica, sans-serif;*/
+	border-top: #a5a7aa solid 1px;
+
+}
+
+#menuAsig:hover{
+	/*background-color:#EBF2FE;*/
+	font-size:12px;
+}
+
+/*=========================================================================*/
+
+/*==================== link menu ================*/
+a.menu, a.menu:VISITED, a.menu:FOCUS, a.menu:LINK{/*link del menu(inactivo)*/
+color: #00468E;
+font-weight:bold;
+font-size:11px;
+font-family:Geneva, Arial, Helvetica, sans-serif;;
+text-decoration:none;
+}
+
+a.menu:HOVER, a.menu:ACTIVE{/*enlace del menu (activo)*/
+color:#00468E;
+font-size:11px;
+font-weight:bold;
+font-family:Geneva, Arial, Helvetica, sans-serif;;
+/*text-decoration:underline;*/
+}
+
+/*=================Asignaturas Alumnos ====================*/
+
+#AsigsAlumno{
+	padding : 3px 0px 0px 5px;
+	text-align:left;
+	height:20px;
+	/*color: #00468E;*/
+	font-size:11px;
+	/*font-weight:bold;*/
+	/*font-family:Geneva, Arial, Helvetica, sans-serif;*/
+	border-top: #999999 solid 1px;
+}
+
+#AsigsAlumno:hover{
+	background-color:#FFFF00;
+}
+
+/*=========================================================================*/
+
+
+/*================= tabla para listar datos ====================*/
+
+.titulosTabla{
+	font-size:11px;
+	border-bottom: #0099CC solid 1px;
+	border-right: #0099CC solid 1px;
+	border-left: #0099CC solid 1px;
+	border-top: #0099CC solid 1px;
+	background-color:#336699;
+	color:#FFFFFF;
+	font-weight:bold;
+	text-align:center;
+	padding:3px 0px 3px 3px;
+	
+}
+.filaImpar{
+	font-size:11px;
+	border-bottom: #0099CC solid 1px;
+	border-right: #0099CC solid 1px;
+	border-left: #0099CC solid 1px;
+	border-top: #0099CC solid 1px;
+	background-color:#99CCFF;
+	color:#003399;
+	text-align:left;
+	padding:3px 0px 3px 3px;
+	
+}
+
+.filaPar{
+	font-size:11px;
+	border-bottom: #99CCFF solid 1px;
+	border-right: #99CCFF solid 1px;
+	border-left: #99CCFF solid 1px;
+	border-top: #99CCFF solid 1px;
+	color:#003399;
+	text-align:left;
+	padding:3px 0px 3px 3px;
+}
+
+
+/*=========================================================================*/
+
+
+
+#pie{
+clear:both;
+}
+
+/*==================== titulos de los menus ===========*/
+p.tituloMenu{
+color:#006699;
+text-align:left;
+padding-left:20px;
+font-size:20px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-stretch:extra-expanded;
+text-decoration:underline;
+}
+#descripcionIntrod{
+
+	padding-top:20px;
+	 
+	font-style:oblique; 
+	text-align:left; 
+	padding-left:40px;
+	font-weight:bold;
+	font-size:14px;
+}
+
+#cuadroDescrip{
+	border-bottom: #0099FF solid 1px;
+	border-right: #0099FF solid 1px;
+	border-left: #0099FF solid 1px;
+	border-top: #0099FF solid 1px;
+	width: 400px;
+	margin-left:20px;
+	margin-bottom:20px;
+}
+
+#escrituraDescrip{
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	color:#006699;
+	line-height:25px;
+	padding:20px 20px 20px 30px;
+	text-align:justify;
+	text-indent:30px;
+	
+}
+
+#advertencia{
+	border-bottom: #FF0000 solid 1px;
+	border-right: #FF0000 solid 1px;
+	border-left: #FF0000 solid 1px;
+	border-top: #FF0000 solid 1px;
+	width: 400px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-right:10px;
+	padding-left:10px;
+	margin-left:100px;
+	margin-bottom:20px;
+	
+}
+
+/*============== SubMenu de el menu de asignaturas =============*/
+
+div.tablaSubMenu{
+	display:none;
+	padding-left:30px;
+}
+
+
+/*============================= AVISOS POST FORMULARIOS ===============================*/
+#avisoCorrecto{
+	width:440px;
+	border-bottom: #0066CC solid 1px;
+	border-right: #0066CC solid 1px;
+	border-left: #0066CC solid 1px;
+	border-top: #0066CC solid 1px;
+	margin:20px 20px 200px 65px;
+	padding:20px 20px 20px 20px;
+	font-size:14px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+#avisoErroneo{
+	width:440px;
+	border-bottom: #FF6666 solid 1px;
+	border-right: #FF6666 solid 1px;
+	border-left: #FF6666 solid 1px;
+	border-top: #FF6666 solid 1px;
+	margin:20px 20px 200px 65px;
+	padding:20px 20px 20px 20px;
+	font-size:14px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+#avisoCorrectoMG{
+	width:440px;
+	border-bottom: #0066CC solid 1px;
+	border-right: #0066CC solid 1px;
+	border-left: #0066CC solid 1px;
+	border-top: #0066CC solid 1px;
+	margin:20px 0px 20px 0px;
+	padding:20px 20px 20px 20px;
+	font-size:14px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	
+	
+}
+
+#avisoErroneoMG{
+	width:600px;
+	border-bottom: #FF6666 solid 1px;
+	border-right: #FF6666 solid 1px;
+	border-left: #FF6666 solid 1px;
+	border-top: #FF6666 solid 1px;
+	margin:20px 0px 20px 0px;
+	padding:20px 20px 20px 20px;
+	font-size:14px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	
+}
+
+/*================= tabla para los detalles====================*/
+
+.tituloDetalle{
+	font-size:13px;
+	text-align:right;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	
+	border-bottom: #0099CC solid 1px;
+	border-right: #0099CC solid 1px;
+	border-left: #0099CC solid 1px;
+	border-top: #0099CC solid 1px;
+	background-color:#336699;
+	color:#FFFFFF;
+	font-weight:bold;
+	
+	padding:3px 3px 3px 3px;
+	
+}
+.respDetalle{
+	font-size:13px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	border-bottom: #0099CC solid 1px;
+	border-right: #0099CC solid 1px;
+	border-left: #0099CC solid 1px;
+	border-top: #0099CC solid 1px;
+	/*background-color:#99CCFF;*/
+	color:#003399;
+	text-align:left;
+	padding:3px 0px 3px 3px;
+	
+}
+
+.respDetalleAD{
+	font-size:10px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	border-bottom: #0099CC solid 1px;
+	border-right: #0099CC solid 1px;
+	border-left: #0099CC solid 1px;
+	border-top: #0099CC solid 1px;
+	/*background-color:#99CCFF;*/
+	color:#003399;
+	text-align:left;
+	padding:3px 0px 3px 3px;
+	
+}
+/*================= aviso para la subida de archivo ==================*/
+#NotaArchivosABubir{
+	width:310px;
+	border-bottom: #0066CC solid 1px;
+	border-right: #0066CC solid 1px;
+	border-left: #0066CC solid 1px;
+	border-top: #0066CC solid 1px;
+	margin:20px 20px 20px 160px;
+	padding:10px 10px 10px 10px;
+	text-align:left;
+	font-size:10px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+.filaNotaArchSubir{
+	
+	border-bottom: #3399CC solid 1px;
+	border-right: #3399CC solid 1px;
+	border-left: #3399CC solid 1px;
+	border-top: #3399CC solid 1px;
+}
+
+/*==================== link actualizar ================*/
+a.LActualiza, a.LActualiza:VISITED, a.LActualiza:FOCUS, a.LActualiza:LINK{/*link del menu(inactivo)*/
+
+color:#000033;
+font-weight:bold;
+font-size:11px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+text-decoration:none;
+font-style:oblique;
+}
+
+a.LActualiza:HOVER, a.LActualiza:ACTIVE{/*enlace del menu (activo)*/
+
+color:#000033;
+font-size:11px;
+font-weight:bold;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-style:oblique;
+text-decoration:underline;
+}
+/*====================titulo del os meses===============*/
+td.TituloMes{
+	border-bottom: #3399CC solid 1px;
+	border-right: #3399CC solid 1px;
+	border-left: #3399CC solid 1px;
+	border-top: #3399CC solid 1px;
+	border-style:dotted;
+	padding:5px 0px 5px 0px;
+	color:#336699;
+	/*background-color:#CCFFFF;*/
+	font-size:12px;
+	font-weight:bold;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	
+}
+

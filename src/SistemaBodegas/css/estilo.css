@@ -1,0 +1,210 @@
+#creditos{
+	padding : 0px 60px 0px 60px;
+	color:#003366;
+	font-size:10px;
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+}
+
+h3.subTitulo{
+color:#000033;
+text-decoration:underline;
+font-size:13px;
+font-weight:bolder;
+}
+
+/*============================= NOTICIAS ===============================*/
+#cuerpoNoticia{
+	width:440px;
+	border-bottom: #9999FF solid 1px;
+	border-right: #9999FF solid 1px;
+	border-left: #9999FF solid 1px;
+	border-top: #9999FF solid 1px;
+	margin-left:20px;
+	margin-bottom:20px;
+}
+
+#tituloNoticia{
+color:#FF9900;
+border-bottom: #9999FF solid 1px;
+font-size:12px;
+font-weight:bolder;
+padding: 5px 5px 5px 5px;
+}
+
+#descripNoticia{
+	padding: 5px 10px 5px 10px;
+	text-align:left;
+	font-size:12px;
+	color:#003366;
+}
+
+
+
+/*============================= MATERIAL DE ESTUDIO ===============================*/
+#cuerpoMEstudio{
+	width:400px;
+	border-bottom: #9999FF solid 1px;
+	margin-left:30px;
+	padding-bottom:10px;
+	margin-top:10px;
+
+}
+
+#nombreMEstudio{
+color:#000000;
+text-align:left;
+font-size:12px;
+
+font-weight:bolder;
+padding: 5px 5px 5px 5px;
+}
+
+#desMEstudio{
+	text-align:left;
+	font-size:12px;
+	color:#003366;
+	margin-left:20px;
+}
+
+A.descargar, A.descargar:VISITED,A.descargar:FOCUS, A.descargar:LINK{/*link del menu(inactivo)*/
+color:#00468E;
+font-size:12px;
+font-style:oblique;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+text-decoration:none;
+}
+
+A.descargar:HOVER,A.descargar:ACTIVE{/*enlace del menu (activo)*/
+color:#FF6600;
+font-size:12px;
+font-weight:bold;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+text-decoration:underline;
+}
+
+/*========== para destacar la asignatura que se selecciono=============*/
+#asigSelect{
+color:#FF6600;
+font-weight:bolder;
+}
+
+/*========== estilos para las eliminacion =============*/
+
+#pregunta_eliminar{
+	color:#000000;
+	font-size:14px;
+	font-weight:bolder;
+}
+
+
+A.opcionEliminarSI, A.opcionEliminarSI:VISITED,A.opcionEliminarSI:FOCUS, A.opcionEliminarSI:LINK{
+color: #00468E;
+font-size:20px;
+
+font-weight:bold;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+text-decoration:none;
+}
+
+A.opcionEliminarSI:HOVER,A.opcionEliminarSI:ACTIVE{
+color:#FF0000;
+font-size:20px;
+
+font-weight:bold;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+
+}
+
+A.opcionEliminarNO, A.opcionEliminarNO:VISITED,A.opcionEliminarNO:FOCUS, A.opcionEliminarNO:LINK{
+color: #00468E;
+font-size:20px;
+
+font-weight:bold;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+text-decoration:none;
+}
+
+A.opcionEliminarNO:HOVER,A.opcionEliminarNO:ACTIVE{
+color:#66CC00;
+font-size:20px;
+font-weight:bold;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+
+}
+
+/*==================== estilo de los avisos buenos o malos===========*/
+
+p.avisoBueno{
+font-weight:bolder;
+color:#003366;
+}
+
+p.avisoMalo{
+color:#FF0000;
+font-weight:bolder;
+}
+
+/*================== link de los submenus ===========================*/
+
+A.subMenu, A.subMenu:VISITED,A.subMenu:FOCUS, A.subMenu:LINK{/*link del menu(inactivo)*/
+color:#00468E;
+font-size:12px;
+font-style:oblique;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+text-decoration:none;
+}
+
+A.subMenu:HOVER,A.subMenu:ACTIVE{/*enlace del menu (activo)*/
+color:#000066;
+font-size:12px;
+font-weight:bold;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+text-decoration:underline;
+}
+
+
+/*=============== textos cuadro centro ===================*/
+
+h3.tituloCuadroCentral{
+background-color:#3399CC;
+padding-bottom:7px;
+padding-top:7px;
+color:#FFFFFF;
+font-size:15px;
+font-weight:bold;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+margin-bottom:40px;
+}
+
+.estiloPre{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+overflow:auto;
+/*width: 50px;*/
+
+}
+
+/*================== link de la lista de alumnos ===========================*/
+
+A.listaAl, A.listaAl:VISITED,A.listaAl:FOCUS, A.listaAl:LINK{/*link del menu(inactivo)*/
+color:#00468E;
+font-size:12px;
+
+font-family:Geneva, Arial, Helvetica, sans-serif;
+text-decoration:none;
+}
+
+A.listaAl:HOVER,A.listaAl:ACTIVE{/*enlace del menu (activo)*/
+color:#000066;
+font-size:12px;
+font-weight:bold;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+
+}
+
+/*============ estilo del aviso cuando no se utiliza mozilla ==================*/
+.notaNavegador{
+text-align:center;
+font-size:16px;
+font-weight:bolder;
+
+}
