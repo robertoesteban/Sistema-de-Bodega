@@ -58,6 +58,21 @@ ERROR: Hi tekkub! You've successfully authenticated, but GitHub does not provide
 Connection to github.com closed.
 
 
+Agregar README al Proyecto
+===========================
+
+$ mkdir Sistema-de-Bodega
+$ cd Sistema-de-Bodega
+$ git init
+$ touch README
+$ git add README
+$ git commit -m "first commit"
+$ git remote add origin git@github.com:Usuario/Sistema-de-Bodega.git
+$ git push origin master
+
+
+
+
 
 Links con documentación:
 =======================
