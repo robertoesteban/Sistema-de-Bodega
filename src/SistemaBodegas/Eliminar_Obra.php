@@ -1,7 +1,7 @@
 <html>
 <head>
 <link href="css/estiloMozilla.css" rel="stylesheet" type="text/css">
-<p class="tituloHead">Eliminar Obra</p>
+<p class="tituloHead">Cerrar Obra</p>
 </head>
 <body>
 <table width="700" align="center" class="filaPar">
@@ -25,7 +25,7 @@
 </tr>
 <tr><td> <p></p></td></tr>
 <tr>
-<td colspan="6" align="center"><input type="submit" name="Ingresar2" value="Eliminar" /></td>
+<td colspan="6" align="center"><input type="submit" name="Ingresar2" value="Cerrar Obra" /></td>
 </tr>
 </table>
 </body>

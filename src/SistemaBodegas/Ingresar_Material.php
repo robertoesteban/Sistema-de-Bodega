@@ -105,8 +105,11 @@
       </script></td>
 </tr>
 <tr>
-	<td>Fecha Ingreso</td>
-	<td><input name="Fingreso" type="text" id="Fingreso"/></td>
+	<td>Obra</td>
+	<td><select name="select2">
+      <option>Ninguna</option>
+      <option>Obra 1</option>
+    </select></td>
 	<td>Observacion</td>
 	<td colspan="3" rowspan="2"><form name="form1" method="post" action="">
 	  <label>
@@ -116,13 +119,8 @@
 	</td>
 </tr>
 <tr>
-<td>Obra</td>
-<td><label>
-	  <select name="select">
-	    <option>Ninguna</option>
-	    <option>Obra 1</option>
-      </select>
-	</label>
+<td>&nbsp;</td>
+<td><label></label>
 </td>
 </tr>
 <tr>
@@ -133,12 +131,13 @@
 <tr>
 <td colspan="6"><table width="680" height="104" border="1" align="center">
   <tr>
-    <td width="99" height="22" class="titulosTabla">Codigo</td>
-    <td width="358" class="titulosTabla">Nombre</td>
+    <td width="97" height="22" class="titulosTabla">Codigo</td>
+    <td width="314" class="titulosTabla">Nombre</td>
     <td width="35" class="titulosTabla">Unidad</td>
-    <td width="58" class="titulosTabla">Cantidad recibida </td>
-    <td width="62" class="titulosTabla">Cantidad adquirida </td>
-    <td width="28" class="titulosTabla">OK</td>
+    <td width="47" class="titulosTabla">Cantidad total </td>
+	 <td width="53" class="titulosTabla">Cantidad en Bodega </td>
+    <td width="59" class="titulosTabla">Cantidad recibida </td>
+    <td width="29" class="titulosTabla">OK</td>
   </tr>
   <tr>
     <td><input name="cod1" type="text" id="cod1" size="15"/></td>
@@ -151,6 +150,7 @@
         <input name="checkbox" type="checkbox" value="checkbox" checked>
       </label>
     </form>    </td>
+    <td align="center">&nbsp;</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -159,8 +159,10 @@
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
+    <td>&nbsp;</td>
   </tr>
   <tr>
+    <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>

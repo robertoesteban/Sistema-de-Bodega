@@ -21,21 +21,25 @@
 </tr>
 <td colspan="6"><table width="685" height="104" border="1" align="center">
   <tr>
-    <td width="90" height="22" class="titulosTabla">Numero O.C. </td>
-    <td width="252" class="titulosTabla">Fecha Emision </td>
-    </tr>
+    <td width="101" height="22" class="titulosTabla">Numero O.C. </td>
+    <td width="83" class="titulosTabla">Fecha Emision </td>
+    <td width="479" class="titulosTabla">Descripcion</td>
+  </tr>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    </tr>
+    <td>&nbsp;</td>
+  </tr>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    </tr>
+    <td>&nbsp;</td>
+  </tr>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    </tr>
+    <td>&nbsp;</td>
+  </tr>
   
 </table>
 <p> </p></td>

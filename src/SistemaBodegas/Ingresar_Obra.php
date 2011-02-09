@@ -15,29 +15,15 @@
 <td width="171"><select name="select">
   <option>Construccion</option>
 </select></td>
-<td width="66" align="left">Area</td>
-<td width="114"><select name="select2">
-  <option>Area 1</option>
-  <option>Area 2</option>
-  <option>ninguna</option>
-</select></td>
-<td width="71">Bodega</td>
-<td width="174"><select name="select3">
-  <option>Bodega 1</option>
-  <option>Bodega 2</option>
-</select></td>
+<td width="66" align="left">Observacion</td>
+<td width="114" colspan="3" rowspan="2"><textarea name="textarea" cols="52" rows="3"></textarea></td>
 <tr>
 	<td>Departamento Ejecutante</td>
 	<td><select name="DeptoE">
   <option>Departamento 1</option>
   <option>Departamento 2</option>
 </select></td>
-<td>Observacion</td>
-<td colspan="3"><form name="form1" method="post" action="">
-  <label>
-  <textarea name="textarea" cols="52"></textarea>
-  </label>
-</form></td>
+<td>&nbsp;</td>
 <tr>
 <td> <p></p></td>
 

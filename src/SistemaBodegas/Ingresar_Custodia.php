@@ -113,7 +113,7 @@
 <p> </p></td>
 </tr>
 <tr>
-<td colspan="6" align="center"><input type="submit" name="Ingresar2" value="Ingresar" />
+<td colspan="6" align="center"><input type="submit" name="Ingresar2" value="Guardar" />
   <input type="submit" name="Imprimir2" value="Imprimir" /></td>
 </tr>
 </table>

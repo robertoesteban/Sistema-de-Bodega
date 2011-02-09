@@ -27,40 +27,7 @@
 <tr>
 <td width="130" >Nombre</td>
 <td colspan="3"><input name="NombreRC" type="text" id="NombreRC" size="50" /></td>
-<td width="112" align="left">Fecha</td>
-<td width="136"><script type="text/javascript">//<![CDATA[
-   
-                  LEFT_CAL.addEventListener("onSelect", function(){
-                          var ta = document.getElementById("f_selection");
-                          ta.value = this.selection.countDays() + " days selected:\n\n" + this.selection.print("%Y/%m/%d").join("\n");
-                  });
-
-                //]]></script>
-        <input readonly="" name="fecha_reclamo" id="fecha_reclamo" size="8" maxlength="8" />
-				<!--button id="f_rangeEnd_trigger" >...</button-->
-				<a id="f_rangeEnd_trigger" href="#">Calendario</a>
-    <!--button id="f_clearRangeEnd" onclick="clearRangeEnd()">clear</button-->      
-	<script type="text/javascript">
-                  //function CalendarJC(){
-				  new Calendar({
-                          inputField: "fecha_reclamo",
-                          dateFormat: "%Y-%m-%d",
-                          trigger: "f_rangeEnd_trigger",
-                          bottomBar: false,
-                          onSelect: function() {
-                                  var date = Calendar.intToDate(this.selection.get());
-                                  LEFT_CAL.args.max = date;
-                                  LEFT_CAL.redraw();
-                                  this.hide();
-                          }
-                  });
-                  /*function clearRangeEnd() {
-                          document.getElementById("fecha_reclamo").value = "";
-                          LEFT_CAL.args.max = null;
-                          LEFT_CAL.redraw();
-                  };*/
-      </script></td>
-<tr>
+</tr>
 <tr>
 	<td height="30">Observacion</td>
 	<td colspan="5"><form name="form1" method="post" action="">

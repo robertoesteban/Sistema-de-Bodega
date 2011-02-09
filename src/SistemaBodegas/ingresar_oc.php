@@ -140,7 +140,7 @@
 	<td colspan="6" align="right">Total</td>
     <td ><input name="total" type="text" id="total"/></td>
 </tr>
-<tr><td colspan="7" align="center"><input type="submit" value="Ingresar"/> <input type="submit" value="Imprimir"/></td></tr>
+<tr><td colspan="7" align="center"><input type="button" value="Guardar"/> <input type="submit" value="Imprimir"/></td></tr>
 <tr></tr>
 </table>
 </body>

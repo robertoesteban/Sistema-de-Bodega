@@ -23,8 +23,7 @@
       </select>
 	</label>
 </td>
-<td>Fecha</td>
-<td><input name="FechaR" type="text" id="FechaR" size="15"/></td>
+
 </tr>
 <tr>
 	<td>Codigo Departamento</td>
@@ -56,13 +55,11 @@
 <tr>
 <td colspan="6"><table width="680" height="104" border="1" align="center">
   <tr>
-    <td width="92" height="22" class="titulosTabla">N&deg; O.C. </td>
-    <td width="80" class="titulosTabla">Codigo</td>
-    <td width="355" class="titulosTabla"><p>Nombre</p></td>
-    <td width="125" class="titulosTabla">Cantidad</td>
+    <td width="95" height="22" class="titulosTabla">Codigo</td>
+    <td width="469" class="titulosTabla"><p>Nombre</p></td>
+    <td width="94" class="titulosTabla">Cantidad</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
     <td>&nbsp;</td>
      <td>&nbsp;</td>
     <td align="center"><select name="select2">
@@ -74,12 +71,10 @@
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td>&nbsp;</td>
     <td><p>&nbsp;</p></td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td><p>&nbsp;</p></td>
     <td>&nbsp;</td>
@@ -88,7 +83,7 @@
 <p> </p></td>
 </tr>
 <tr>
-<td colspan="6" align="center"><input type="submit" name="Ingresar2" value="Ingresar" />
+<td colspan="6" align="center"><input type="submit" name="Ingresar2" value="Retirar" />
   <input type="submit" name="Imprimir2" value="Imprimir" /></td>
 </tr>
 </table>
