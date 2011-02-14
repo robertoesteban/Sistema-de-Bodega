@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     09-02-2011 10:50:14                          */
+/* Created on:     14-02-2011 10:45:23                          */
 /*==============================================================*/
 
 
@@ -107,7 +107,7 @@ create table BODEGAS
 /*==============================================================*/
 create table CIUDADES
 (
-   ID_CIUDAD            int not null,
+   ID_CIUDAD            int not null auto_increment,
    NOMBRE_CIUDAD        varchar(50),
    primary key (ID_CIUDAD)
 );
@@ -204,7 +204,7 @@ create table ES_RETIRADO
 /*==============================================================*/
 create table MATERIALES
 (
-   ID_MATERIAL          int not null,
+   ID_MATERIAL          int not null auto_increment,
    ID_STOCK             int not null,
    NOMBRE_MATERIAL      varchar(50),
    ESTADO_MATERIAL      int,
@@ -332,7 +332,7 @@ create table STOCK
 /*==============================================================*/
 create table TIPOS_OBRAS
 (
-   ID_TIPO_OBRA         int not null,
+   ID_TIPO_OBRA         int not null auto_increment,
    NOMBRE_TIPO_OBRA     varchar(50),
    primary key (ID_TIPO_OBRA)
 );
@@ -355,7 +355,7 @@ create table USUARIOS
 (
    ID_USUARIO           int not null auto_increment,
    ID_DEPARTAMENTO      int not null,
-   RUT_USUARIO          int,
+   RUT_USUARIO          varchar(10),
    NOMBRE_USUARIO       char(50),
    APELLIDOS_USUARIO    varchar(50),
    PASSWORD_USUARIO     char(10),
