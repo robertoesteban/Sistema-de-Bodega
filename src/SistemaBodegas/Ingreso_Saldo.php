@@ -1,9 +1,5 @@
-<html>
-<head>
-<link href="css/estiloMozilla.css" rel="stylesheet" type="text/css">
-<p class="tituloHead">Ingreso por Saldo</p>
-</head>
 <body>
+<p class="tituloHead">Ingreso por Saldo</p>
 <table width="700" align="center" class="filaPar">
 <tr>
 <td colspan="6">
@@ -91,4 +87,3 @@
 </tr>
 </table>
 </body>
-</html>

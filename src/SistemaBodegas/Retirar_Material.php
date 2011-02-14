@@ -1,9 +1,5 @@
-<html>
-<head>
-<link href="css/estiloMozilla.css" rel="stylesheet" type="text/css">
-<p class="tituloHead">Retiro Material Bodega</p>
-</head>
 <body>
+<p class="tituloHead">Retiro Material Bodega</p>
 <table width="700" align="center" class="filaPar">
 <tr>
 <td colspan="6">
@@ -53,39 +49,11 @@
   </tr>
 
 <tr>
-<td colspan="6"><table width="680" height="104" border="1" align="center">
-  <tr>
-    <td width="95" height="22" class="titulosTabla">Codigo</td>
-    <td width="469" class="titulosTabla"><p>Nombre</p></td>
-    <td width="94" class="titulosTabla">Cantidad</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-     <td>&nbsp;</td>
-    <td align="center"><select name="select2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-    </select></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><p>&nbsp;</p></td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><p>&nbsp;</p></td>
-    <td>&nbsp;</td>
-  </tr>
-</table>
-<p> </p></td>
+  <td colspan="6"><?php include("./grid/demos/example_row_add_delete.php");?></td>
 </tr>
 <tr>
-<td colspan="6" align="center"><input type="submit" name="Ingresar2" value="Retirar" />
+<td colspan="6" align="center"><a href="paso.php?c=0" class="ask"><input type="submit" name="Ingresar2" value="Retirar" /></a>
   <input type="submit" name="Imprimir2" value="Imprimir" /></td>
 </tr>
 </table>
 </body>
-</html>

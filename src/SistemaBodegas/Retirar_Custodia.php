@@ -1,23 +1,5 @@
-<html>
-<head>
-<SCRIPT LANGUAGE="JavaScript" SRC="../funcionesJC/ValidaRut.js"></SCRIPT><!-- JC -->
-<link type="text/css" rel="stylesheet" href="CalendarioJC/src/css/jscal2.css" />
-<link type="text/css" rel="stylesheet" href="CalendarioJC/src/css/border-radius.css" />
-
-    <!-- <link type="text/css" rel="stylesheet" href="src/css/reduce-spacing.css" /> -->
-    <link id="skin-win2k" title="Win 2K" type="text/css" rel="alternate stylesheet" href="CalendarioJC/src/css/win2k/win2k.css" />
-    <link id="skin-steel" title="Steel" type="text/css" rel="alternate stylesheet" href="CalendarioJC/src/css/steel/steel.css" />
-    <link id="skin-gold" title="Gold" type="text/css" rel="alternate stylesheet" href="CalendarioJC/src/css/gold/gold.css" />
-    <link id="skin-matrix" title="Matrix" type="text/css" rel="alternate stylesheet" href="CalendarioJC/src/css/matrix/matrix.css" />
-    <link id="skinhelper-compact" type="text/css" rel="alternate stylesheet" href="CalendarioJC/src/css/reduce-spacing.css" />
-    <script src="CalendarioJC/src/js/jscal2.js"></script>
-    <script src="CalendarioJC/src/js/lang/es.js"></script>
-    <script src="CalendarioJC/src/js/lang/en.js"></script>
-
-<link href="css/estiloMozilla.css" rel="stylesheet" type="text/css">
-<p class="tituloHead">Retiro Material Custodia</p>
-</head>
 <body>
+<p class="tituloHead">Retiro Material Custodia</p>
 <table width="700" align="center" class="filaPar">
 <tr>
     <td height="31" colspan="6" align="left">
@@ -68,9 +50,8 @@
 <p> </p></td>
 </tr>
 <tr>
-<td colspan="6" align="center"><input type="submit" name="Ingresar2" value="Ingresar" />
+<td colspan="6" align="center"><a href="paso.php?c=0" class="ask"><input type="submit" name="RetirarCustodia" value="Retirar" /></a>
   <input type="submit" name="Imprimir2" value="Imprimir" /></td>
 </tr>
 </table>
 </body>
-</html>

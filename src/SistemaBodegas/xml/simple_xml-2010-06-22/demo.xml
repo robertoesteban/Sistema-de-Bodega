@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<demo>
+  <tag1 say='hello'>123</tag1>
+  <tag2 param1='wert1' param2='wert2'>
+    <text>test1</text>
+    <text>test2</text>
+    <text>test3</text>
+    <img>test.jpg</img>
+  </tag2>
+  <tag3>
+    <obj>
+      <id>1</id>
+      <name>objekt 1</name>
+    </obj>
+    <obj>
+      <id>2</id>
+      <name>objekt 2</name>
+    </obj>
+    <obj>
+      <id>3</id>
+      <name>objekt 3</name>
+    </obj>
+  </tag3>
+  <tag4>
+    <item> universe</item>
+    <item> world</item>
+    <item> kaiserslautern</item>
+  </tag4>
+</demo>

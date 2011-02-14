@@ -1,4 +1,3 @@
-<html>
 <head>
 <link href="css/estiloMozilla.css" rel="stylesheet" type="text/css">
 <p class="tituloHead">Buscar</p>
@@ -46,4 +45,3 @@
 </tr>
 </table>
 </body>
-</html>

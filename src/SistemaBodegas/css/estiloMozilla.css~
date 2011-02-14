@@ -40,6 +40,8 @@ h3.titulo{
 	color:#990000;
 }
 
+.Estilo3 {font-size: 24px; color:#8AE234;}
+
 h3.subTitulo{
 	font-size:12px;
 	font-weight:bold;
@@ -476,7 +478,7 @@ div.tablaSubMenu{
 	font-size:20px;
 	text-align:center;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
-	color:#4E9A06;
+	color:#8AE234;
 	/*font-weight:bold;*/
 	
 	padding:3px 3px 3px 3px;

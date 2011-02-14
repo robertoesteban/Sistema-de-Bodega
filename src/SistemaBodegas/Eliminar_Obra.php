@@ -1,9 +1,5 @@
-<html>
-<head>
-<link href="css/estiloMozilla.css" rel="stylesheet" type="text/css">
-<p class="tituloHead">Cerrar Obra</p>
-</head>
 <body>
+<p class="tituloHead">Cerrar Obra</p>
 <table width="700" align="center" class="filaPar">
 <tr>
     <td height="31" colspan="6" align="left">
@@ -25,9 +21,8 @@
 </tr>
 <tr><td> <p></p></td></tr>
 <tr>
-<td colspan="6" align="center"><input type="submit" name="Ingresar2" value="Cerrar Obra" /></td>
+<td colspan="6" align="center"><a href="paso.php?c=0" class="ask"><input type="submit" name="Ingresar2" value="Cerrar Obra" /></a></td>
 </tr>
 </table>
 </body>
-</html>
 

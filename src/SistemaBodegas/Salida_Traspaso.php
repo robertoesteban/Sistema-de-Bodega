@@ -1,9 +1,6 @@
 <html>
-<head>
-<link href="css/estiloMozilla.css" rel="stylesheet" type="text/css">
-<p class="tituloHead">Salida por Traspaso de Material</p>
-</head>
 <body>
+<p class="tituloHead">Salida por Traspaso de Material</p>
 <table width="700" align="center" class="filaPar">
 <tr>
     <td height="31" colspan="6" align="left">

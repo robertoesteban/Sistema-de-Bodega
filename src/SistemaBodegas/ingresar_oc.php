@@ -1,9 +1,6 @@
 <html>
-<head>
-<link href="css/estiloMozilla.css" rel="stylesheet" type="text/css">
-<p class="tituloHead">Ingresar Orden de Compra</p>
-</head>
 <body>
+<p class="tituloHead">Ingresar Orden de Compra</p>
 <table align="center" class="filaPar" width="700">
 <tr>
     <td height="31" colspan="7" align="left">
