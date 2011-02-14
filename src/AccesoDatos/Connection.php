@@ -6,9 +6,9 @@ class Connection
 	function __construct()
 	{
 		$this->_bdhost = "localhost";
-		$this->_bduser = "usuariophp";
-		$this->_bdpasswd = "123456";
-		$this->_bdbase = "tallerweb";
+		$this->_bduser ="root";
+		$this->_bdpasswd = "galadriel";
+		$this->_bdbase = "BodegaMunicipal";
 	}
 
 	//Conectarse con el Servidor

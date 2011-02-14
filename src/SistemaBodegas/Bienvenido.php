@@ -1,4 +1,6 @@
 <html>
+<?php session_start();
+?>
 <head>
 	<link href="css/estiloMozilla.css" rel="stylesheet" type="text/css">
 </head>
@@ -13,7 +15,7 @@
 <p>&nbsp;</p>
 <table width="808" border="0" align="center">
   <tr class="respDetalleAD">
-    <td width="802" class="subTitulo"><div align="left" class="Estilo3">Bienvenid@</div></td>
+    <td width="802" class="subTitulo"><div align="left" class="Estilo3">Bienvenid@ <?php echo $_SESSION["nombre_usuario"]." ".$_SESSION["apellidos_usuario"]?></div></td>
   </tr>
   <tr class="respDetalleAD">
     <td><span class="Estilo4">Seleccione una opci&oacute;n del Men&uacute; para comenzar... </span></td>

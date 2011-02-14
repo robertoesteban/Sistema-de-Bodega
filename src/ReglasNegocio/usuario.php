@@ -1,86 +1,75 @@
 <?php
-
-include("../AccesoDatos/conf.php");
-include("../AccesoDatos/conexion.php");
+include("../AccesoDatos/Controller.php");
 
 class usuario{
-	public $id_usuario;
 	public $id_departamento;
 	public $rut_usuario;
 	public $nombre_usuario;
 	public $apellidos_usuario;
 	public $password_usuario;
+	private $_tabla = "USUARIOS";
+	private $registro="RUT_USUARIO";
 
 	function __construct(){}
 
-	function usuario($id,$depto,$rut,$nombre,$apellidos,$password){
-		$this->id_usuario=$id;
+	function usuario($depto,$rut,$nombre,$apellidos,$password){
 		$this->id_departamento=$depto;
 		$this->rut_usuario=$rut;
 		$this->nombre_usuario=$nombre;
 		$this->apellidos_usuario=$apellidos;
 		$this->password_usuario=$password;
 	}
-	function Get($rut_usuario){
-		$con = new conexion();
-		$con->conectar($ConexionConf['host'], $ConexionConf['user'], $ConexionConf['password'], $ConexionConf['bd11']);
-		$conec = $con->ReturnConex();
-		$query = mysql_query("select * from 'usuario' where 'rut_usuario'='".intval($id_usuario)."' LIMIT 1");
-		$arr=mysql_fetch_array($query);
-		$this->id_usuario = $arr['id_usuario'];
-		$this->rut_usuario = $arr['rut_usuario'];
-		$this->nombre_usuario = $arr['nombre_usuario'];
-		$this->apellidos_usuario = $arr['apellidos_usuario'];
-		$this->password_usuario = $arr['password_usuario'];
-		$this->id_departamento = $arr['id_departamento'];
-		return $this;
+	
+	function Getrut_usuario()	{return $this->rut_usuario;}
+	function Getid_departamento()	{return $this->id_departamento;}
+	function Getnombre_usuario()	{return $this->nombre_usuario;}
+	function Getapellidos_usuario()	{return $this->apellidos_usuario;}
+	function Getpassword_usuario()	{return $this->password_usuario;}
+	
+	function Setrut_usuario($rut_usuario) {$this->rut_usuario= $rut_usuario;}
+	function Setid_departamento($id_departamento) {$this->id_departamento= $id_departamento;}
+	function Setnombre_usuario($nombre_usuario) {$this->nombre_usuario= $nombre_usuario;}
+	function Setapellidos_usuario($apellidos_usuario) {$this->apellidos_usuario= $apellidos_usuario;}
+	function Setpassword_usuario($password_usuario) {$this->password_usuario= $password_usuario;}
+	
+	
+	public function Select($rut_usuario){
+		$Controller=new Controller();
+	if(isset($rut_usuario) && $rut_usuario != "")
+		{
+			$Controller= new Controller();
+			$sql="'$rut_usuario'";
+			$arr=$Controller->Select($this->_tabla,"RUT_USUARIO", $sql);
+			return $arr; 
+		}
 	}
 	
-	function GetAll(){
-		$con = new conexion();
-		$i=0;
-		$con->conectar($ConexionConf['host'], $ConexionConf['user'], $ConexionConf['password'], $ConexionConf['bd11']);
-		$conec = $con->ReturnConex();
-		$thisObjectName = get_class($this);
-		$query = mysql_query("select * from 'usuario'");
-		$arr=mysql_fetch_array($query);
-		$usuarios = array();
-		while ($arr[0]!=null)
+	public function Add($rut_usuario,$id_departamento,$nombre_usuario,$apellidos_usuario,$password_usuario)
+	{
+		if(isset($rut_usuario) && $rut_usuario != "")
 		{
-			$usuario = new $thisObjectName();
-			$usuario->id_usuario = $arr['id_usuario'];
-			$usuario->rut_usuario = $arr['rut_usuario'];
-			$usuario->nombre_usuario = $arr['nombre_usuario'];
-			$usuario->apellidos_usuario = $arr['apellidos_usuario'];
-			$usuario->password_usuario = $arr['password_usuario'];
-			$usuario->id_departamento = $arr['id_departamento'];
-			$usuarios[$i]=$usuario;
-			$arr=mysql_fetch_array($query);
-			$i++;
+			$Controller= new Controller();
+			$sql=" 0 ,$id_departamento, '$rut_usuario' , '$nombre_usuario' , '$apellidos_usuario' , '$password_usuario' ";
+			$Controller->Add($this->_tabla, $sql);	
 		}
-		return $this;
 	}
-	function save(){
-		$query = mysql_query("select 'id_usuario' from 'usuario' where 'id_usuario'='".$this->id_usuario."' LIMIT 1");
-		$arr=mysql_fetch_array($query);
-		$query2="";
-		if ($arr > 0)
+	public function Del($rut_usuario)
+	{
+		if(isset($rut_usuario) && $rut_usuario != "")
 		{
-			$query2 = "update 'usuario' set 
-			'nombre_usuario'='".$this->nombre_usuario."', 
-			'apellidos_usuario'='".$this->apellidos_usuario."', 
-			'password_usuario'='".$this->password_usuario."', 
-			'id_departamento'='".$this->id_departamento."' where 'rut_usuario'='".$this->rut_usuario."'";
+			$Controller= new Controller();
+			$sql=" $rut_usuario ";
+			$Controller->Del($_tabla,"RUT_USUARIO", $sql);
+			
 		}
-		else
-		{
-			$query2 = "insert into 'usuario' ('rut_usuario', 'nombre_usuario', 'apellidos_usuario', 'password_usuario', 'id_departamento' ) values (
-			'".$this->nombre_usuario."', 
-			'".$this->apellidos_usuario."', 
-			'".$this->password_usuario."', 
-			'".$this->id_departamento."' )";
-		}
-		mysql_fetch_array($query2);
+		
+	}
+	
+	public function Update($rut_usuario,$nombre_usuario,$apellidos_usuarios,$password_usuario){
+		$Controller = new Controller();
+		$sql=array("NOMBRE_USUARIO"=>"'$nombre_usuario'","APELLIDOS_USUARIO"=>"'$apellidos_usuarios'","PASSWORD_USUARIO"=>"'$password_usuario'");
+		$Controller->Update($this->_tabla,$this->registro,$sql);
+		
 	}
 
 }

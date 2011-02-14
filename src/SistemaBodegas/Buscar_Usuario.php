@@ -1,4 +1,5 @@
 <body>
+<form action="BuscarUsuarioBD.php" method="post">
 <p class="tituloHead">Ingresar Usuario</p>
 <table width="700" align="center" class="filaPar">
 
@@ -9,7 +10,7 @@
 </tr>
 <tr>
     <td width="312" align="right">R.U.T.</td>
-    <td width="376"><input name="rutusuario1" type="text" id="rutusuario1" /></td>
+    <td width="376"><input name="rutusuario1" type="text" /></td>
 </tr>
 
 <tr>
@@ -19,8 +20,9 @@
 </tr>
 
 <tr>
-<td colspan="2" align="center"><form action="paso.php?c=a" method="post"><input type="submit" name="EditarUsuario" value="Editar" />
-  <a href="paso.php?c=0" class="ask"><input type="submit" name="EliminarUsuario" value="Eliminar" /></a></form></td>
+<td colspan="2" align="center"><input type="submit" name="EditarUsuario" value="Editar" />
+  <a href="paso.php?c=0" class="ask"><input type="submit" name="EliminarUsuario" value="Eliminar" /></a></td>
 </tr>
 </table>
+</form>
 </body>
