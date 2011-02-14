@@ -45,8 +45,8 @@ class Controller
 				$query = $query . ", ";
 		}
 		$query = $query . " WHERE " . $registro."=". $parametro[$claves[0]];
-		return $query;
 		$_Connection->Disconnect();
+		return $query;
 	}	
 	
 }
