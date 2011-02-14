@@ -4,7 +4,7 @@ include("../AccesoDatos/Connection.php");
 
 class Controller
 {
-	private $Connection= new Connection();
+	private $_Connection= new Connection();
 
 	function __construct()
 	{
@@ -14,17 +14,21 @@ class Controller
 	//Insertar en Valores en tabla mencionada
 	public function Add($tabla , $parametro)
 	{
-			$Connection->Connect();
-			
-			$Connection->DisConnect();
+			$_Connection->Connect();
+			$query = "INSERT INTO ". $tabla . " VALUES ". $parametro ;
+			$accion = mysql_query($query); 
+			$_Connection->DisConnect();
+			return $accion;
 	}
 
 	//Eliminar Registro de tabla mencionada
-	public function Del($tabla , $parametro)
+	public function Del($tabla , $registro, $parametro)
 	{
-			$Connection->Connect();
-			
-			$Connection->DisConnect();
+			$_Connection->Connect();
+			$query = "DELETE FROM " . $tabla . " WHERE " . $registro "=" $parametro ;
+			$accion = mysql_query($query); 
+			$_Connection->DisConnect();
+			return $accion;
 	}
 }
 ?>
