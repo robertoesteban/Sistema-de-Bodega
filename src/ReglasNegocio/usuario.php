@@ -58,8 +58,8 @@ class usuario{
 		if(isset($rut_usuario) && $rut_usuario != "")
 		{
 			$Controller= new Controller();
-			$sql=" $rut_usuario ";
-			$Controller->Del($_tabla,"RUT_USUARIO", $sql);
+			$sql="'$rut_usuario'";
+			$Controller->Del($this->_tabla,$this->registro, $sql);
 			
 		}
 		
@@ -67,7 +67,7 @@ class usuario{
 	
 	public function Update($rut_usuario,$nombre_usuario,$apellidos_usuarios,$password_usuario){
 		$Controller = new Controller();
-		$sql=array("NOMBRE_USUARIO"=>"'$nombre_usuario'","APELLIDOS_USUARIO"=>"'$apellidos_usuarios'","PASSWORD_USUARIO"=>"'$password_usuario'");
+		$sql=array("RUT_USUARIO"=>"'$rut_usuario'","NOMBRE_USUARIO"=>"'$nombre_usuario'","APELLIDOS_USUARIO"=>"'$apellidos_usuarios'","PASSWORD_USUARIO"=>"'$password_usuario'");
 		$Controller->Update($this->_tabla,$this->registro,$sql);
 		
 	}

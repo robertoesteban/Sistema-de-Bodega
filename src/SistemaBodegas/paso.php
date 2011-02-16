@@ -1,9 +1,16 @@
 <?php
 session_start();
 $c = $_GET[c];
-$$errorusuario = $_GET[errorusuario];?>
+$$errorusuario = $_GET[errorusuario];
+
+define("PATHDRASTICTOOLS", "");
+include (PATHDRASTICTOOLS . "DrasticTools/Examplemysqlconfig.php");
+include (PATHDRASTICTOOLS . "DrasticTools/drasticSrcMySQL.class.php");
+$src = new drasticSrcMySQL("localhost", "root", "galadriel", "BodegaMunicipal", "TIPOS_OBRAS");?>
 <html>
 <head>
+
+
 <title>Sistema bodega Municipal</title>
 <link href="css/estiloMozilla.css" rel="stylesheet" type="text/css">
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
@@ -73,7 +80,9 @@ $$errorusuario = $_GET[errorusuario];?>
 		if($c=="c"){
 			include 'Salida_Traspaso.php';}
 		if($c=="d"){
-			include 'Salida_Merma.php';}?>
+			include 'Salida_Merma.php';}
+		if($c=="e"){
+			include 'DrasticTools/ExampleGrid11.php';}?>
 			
 			<?php include 'pie.php';
 

@@ -21,7 +21,7 @@
 
 <tr>
 <td colspan="2" align="center"><input type="submit" name="EditarUsuario" value="Editar" />
-  <a href="paso.php?c=0" class="ask"><input type="submit" name="EliminarUsuario" value="Eliminar" /></a></td>
+</td>
 </tr>
 </table>
 </form>

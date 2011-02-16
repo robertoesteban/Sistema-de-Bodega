@@ -9,10 +9,10 @@
 </tr>
 <tr>
 <td width="90" align="left">Numero O.C.</td>
-<td width="171"><input name="NumOC" type="text" id="NumOC" /></td>
+<td width="171"><input name="NumOC" type="text" /></td>
 <td width="37"><input type="submit" name="BuscarOC" value="oc" /></td>
 <td width="141" align="left">Fecha</td>
-<td width="149"><input size="15" name="FechaOC" type="text" id="FechaOC" /></td>
+<td width="149"><input size="15" name="FechaOC" type="text" value="<?php ?>" /></td>
 <td width="96" align="left">Fecha de Tope</td>
 <td width="124"><script type="text/javascript">//<![CDATA[
    
@@ -22,14 +22,14 @@
                   });
 
                 //]]></script>
-        <input readonly="" name="fecha_reclamo" id="fecha_reclamo" size="8" maxlength="8" />
+        <input readonly="" name="fecha_tope" size="8" maxlength="8" />
 				<!--button id="f_rangeEnd_trigger" >...</button-->
 				<a id="f_rangeEnd_trigger" href="#">Calendario</a>
     <!--button id="f_clearRangeEnd" onclick="clearRangeEnd()">clear</button-->      
 	<script type="text/javascript">
                   //function CalendarJC(){
 				  new Calendar({
-                          inputField: "fecha_reclamo",
+                          inputField: "fecha_tope",
                           dateFormat: "%Y-%m-%d",
                           trigger: "f_rangeEnd_trigger",
                           bottomBar: false,
@@ -41,7 +41,7 @@
                           }
                   });
                   /*function clearRangeEnd() {
-                          document.getElementById("fecha_reclamo").value = "";
+                          document.getElementById("fecha_tope").value = "";
                           LEFT_CAL.args.max = null;
                           LEFT_CAL.redraw();
                   };*/
@@ -49,17 +49,17 @@
 </tr>
 <tr>
     <td align="left">Codigo Depto</td>
-    <td colspan="2"><input name="FechaOC" type="text" id="FechaOC" /></td>
+    <td colspan="2"><input name="CodigoD" type="text" /></td>
     <td align="left">Nombre Departamento</td>
-    <td colspan="3"><input size="45" name="FechaTope" type="text" id="FechaTope" /></td>
+    <td colspan="3"><input size="45" name="NombreD" type="text" /></td>
 </tr>
 <tr>
 <td align="left">Solicitante</td>
-<td colspan="6"><input size="85" name="SolicitanteOC" type="text" id="SolicitanteOC" /></td>
+<td colspan="6"><input size="85" name="SolicitanteOC" type="text" /></td>
 </tr>
 <tr>
     <td align="left">Observaciones</td>
-    <td colspan="6"><input size="85" name="ObservacionesOC" type="text" id="ObservacionOC" /></td>
+    <td colspan="6"><input size="85" name="ObservacionesOC" type="text" /></td>
 </tr>
 <tr>
     <td colspan="7" align="left"><p>&nbsp;</p>

@@ -10,8 +10,10 @@ class proveedor {
 	private $_contacto_proveedor;
 	private $_fono_proveedor;
 	private $_tabla = "PROVEEDORES";
+	private $registro="RUT_PROVEEDOR";
+	private $Controller;
 	
-	function __construct()	{	}
+	function __construct()	{ $this->Controller=new Controller();}
 	
 	function Getrut_proveedor()	{return $this->_rut_proveedor;}
 	
@@ -42,22 +44,23 @@ class proveedor {
 	{
 		if(isset($rut_proveedor) && $rut_proveedor != "")
 		{
-			$Controller= new Controller();
 			$sql=" $rut_proveedor , $id_cuidad , '$nombre_proveedor' , '$direccion_proveedor' , '$contacto_proveedor' , '$fono_proveedor' ";
-			$Controller->Add($_tabla, $sql);
+			$this->Controller->Add($_tabla, $sql);
 			
 		}
 		
 	}
 	
-	public function DelOrdenCompra()
+	public function Del($rut)
 	{
-		$Controller = new Controller();
-		
+		$sql="'$rut'";
+		$this->Controller->Del($this->_tabla,$this->registro,$sql);	
 	}
-		
+	public function Update($rut,$ciudad,$nombre,$direccion,$contacto,$fono){
+		$sql=array("RUT_PROVEEDOR"=>"'$rut'","ID_CIUDAD"=>"'$ciudad'","NOMBRE_PROVEEDOR"=>"'$nombre'","DIRECCION_PROVEEDOR"=>"'$direccion'","CONTACTO_PROVEEDOR"=>"'$contacto'","FONO_PROVEEDOR"=>"'$fono'");	
+		$this->Controller->Update($this->_tabla,$this->registro,$sql);
 	
-
+	}
 }
 	
 ?>

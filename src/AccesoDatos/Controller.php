@@ -33,7 +33,7 @@ class Controller
 	public function Del($tabla , $registro, $parametro)
 	{
 			$this->_Connection->Connect();
-			$query = "DELETE FROM " . $tabla . " WHERE " . $registro. "=". $parametro ;
+			$query = "DELETE FROM " . $tabla . " WHERE " . $registro. "=". $parametro;
 			$accion = mysql_query($query); 
 			$this->_Connection->DisConnect();
 			return $accion;
@@ -53,8 +53,9 @@ class Controller
 				$query = $query . ", ";
 		}
 		$query = $query . " WHERE " . $registro."=". $parametro[$claves[0]];
+		$accion=mysql_query($query);
 		$this->_Connection->Disconnect();
-		return $query;
+		return $accion;
 	}	
 }
 ?>

@@ -18,8 +18,9 @@
 <li><img src="menu-files/smqo36t.png" alt="Ingresar Orden de Compra" /><a href="paso.php?c=1" title="Ingresar Orden de Compra">Ingresar&nbsp;Orden&nbsp;de&nbsp;Compra</a></li>
 <li><a href="paso.php?c=2" title="Ingresar Material">Ingresar&nbsp;Material</a></li>
 <li><a href="paso.php?c=3" title="Ingresar Custodia">Ingresar&nbsp;Custodia</a></li>
-<li><a href="paso.php?c=4" title="A�adir Obra">A&ntilde;adir&nbsp;Obra</a></li>
-<li><a href="paso.php?c=b" title="Ingresar Custodia">Ingresar&nbsp;Traspaso</a></li></ul></div></td><td style="padding-right:0px" title ="RETIRAR">
+<li><a href="paso.php?c=4" title="A&ntilde;adir Obra">A&ntilde;adir&nbsp;Obra</a></li>
+<li><a href="paso.php?c=e" title="Ingresar Tipo de Obra">Agregar&nbsp;Tipo&nbsp;de&nbsp;Obra</a></li>
+<li><a href="paso.php?c=b" title="Ingresar Traspaso">Ingresar&nbsp;Traspaso</a></li></ul></div></td><td style="padding-right:0px" title ="RETIRAR">
 <a onmouseover='xpe("zp36to");xpshow("zp36t",0,this);xpsmover(this);' onmouseout='xpsmout(this);' onmousedown='xpe("zp36tc");'><img id="xpi_zp36t" src="menu-files/btzp36t_0.png" name="vbzp36t" width="107" height="37" border="0" alt="RETIRAR" /></a><div>
 <ul id="vbUL_zp36t" class="vbULwp36t">
 <li><img src="menu-files/smmo36t.png" alt="Retirar Material" /><a href="paso.php?c=5" title="Retirar Material">Retirar&nbsp;Material</a></li>
