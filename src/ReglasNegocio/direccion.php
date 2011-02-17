@@ -5,6 +5,7 @@ class direccion {
 	private $_nombre_direccion;
 	private $_tabla = "DIRECCIONES";
 	private $_registro="ID_DIRECCION";
+	private $_registro2="NOMBRE_DIRECCION";
 
 	function __construct(){ }
 
@@ -27,6 +28,19 @@ class direccion {
 			return $arr; 
 		}
 	}
+	
+	public function Select2($nombre_direccion)
+	{
+		$Controller=new Controller();
+		if(isset($nombre_direccion) && $nombre_direccion != "")
+		{
+			$Controller= new Controller();
+			$sql="'$nombre_direccion'";
+			$arr=$Controller->Select($this->_tabla,$this->_registro2, $sql);
+			return $arr; 
+		}
+	}	
+	
 	
 	public function GetAll()
 	{
@@ -64,7 +78,7 @@ class direccion {
 	public function Update($id_direccion,$nombre_direccion){
 		$Controller = new Controller();
 		$sql=array("ID_DIRECCION"=>"$id_direccion","NOMBRE_DIRECCION"=>"'$nombre_direccion'");
-		$Controller->Update($this->_tabla,$this->registro,$sql);
+		return $Controller->Update($this->_tabla,$this->_registro,$sql);
 		
 	}
 

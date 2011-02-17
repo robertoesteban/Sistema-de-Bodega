@@ -15,6 +15,7 @@ class Controller
 	public function Select($tabla,$registro,$parametro){
 		$this->_Connection->Connect();
 		$query = "Select * from ".$tabla." where ".$registro."=".$parametro;
+		//echo $query;
 		$accion = mysql_query($query);
 		$this->_Connection->DisConnect();
 		return $accion;
@@ -46,7 +47,7 @@ class Controller
 	{
 			$this->_Connection->Connect();
 			$query = "INSERT INTO ". $tabla . " VALUES (". $parametro.")" ;
-			echo $query;
+			//echo $query;
 			$accion = mysql_query($query); 
 			$this->_Connection->DisConnect();
 			return $accion;
@@ -76,6 +77,7 @@ class Controller
 				$query = $query . ", ";
 		}
 		$query = $query . " WHERE " . $registro."=". $parametro[$claves[0]];
+		//echo $query;
 		$accion=mysql_query($query);
 		$this->_Connection->Disconnect();
 		return $accion;
