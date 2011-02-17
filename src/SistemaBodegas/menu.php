@@ -14,6 +14,7 @@
 <li><a href="paso.php?c=3" title="Ingresar Custodia">Ingresar&nbsp;Custodia</a></li>
 <li><a href="paso.php?c=4" title="A&ntilde;adir Obra">A&ntilde;adir&nbsp;Obra</a></li>
 <li><a href="paso.php?c=e" title="Direcciones">Direcciones</a></li>
+<li><a href="paso.php?c=z" title="Ciudades">Ciudades</a></li>
 <li><a href="paso.php?c=b" title="Ingresar Traspaso">Ingresar&nbsp;Traspaso</a></li></ul></div></td><td style="padding-right:0px" title ="RETIRAR">
 <a onmouseover='xpe("zp36to");xpshow("zp36t",0,this);xpsmover(this);' onmouseout='xpsmout(this);' onmousedown='xpe("zp36tc");'><img id="xpi_zp36t" src="menu-files/btzp36t_0.png" name="vbzp36t" width="107" height="37" border="0" alt="RETIRAR" /></a><div>
 <ul id="vbUL_zp36t" class="vbULwp36t">
