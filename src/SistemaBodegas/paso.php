@@ -82,7 +82,7 @@ $src = new drasticSrcMySQL("localhost", "root", "galadriel", "BodegaMunicipal", 
 		if($c=="d"){
 			include 'Salida_Merma.php';}
 		if($c=="e"){
-			include 'DrasticTools/ExampleGrid11.php';}?>
+			include 'Direccion.php';}?>
 			
 			<?php include 'pie.php';
 

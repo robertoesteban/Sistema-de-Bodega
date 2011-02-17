@@ -6,7 +6,7 @@ class direccion {
 	private $_tabla = "DIRECCIONES";
 	private $_registro="ID_DIRECCION";
 
-	function __construct(){}
+	function __construct(){ }
 
 
 	function Getid_direccion()	{return $this->_id_direccion;}
@@ -32,18 +32,23 @@ class direccion {
 	{
 		$Controller= new Controller();
 		return $Controller->GetAll($this->_tabla);
-		
 	}	
 	
 	public function Add($nombre_direccion)
 	{
+		$resultado;		
 		if(isset($nombre_direccion) && $nombre_direccion != "")
 		{
 			$Controller= new Controller();
-			$sql=" '$nombre_direccion' ";
-			$Controller->Add($this->_tabla, $sql);	
+			$sql="0, '".$nombre_direccion. "'";
+			$resultado =$Controller->Add($this->_tabla, $sql);
 		}
+		return $resultado;
 	}
+	
+	
+	
+	
 	public function Del($id_direccion)
 	{
 		if(isset($id_direccion) && $id_direccion != "")
