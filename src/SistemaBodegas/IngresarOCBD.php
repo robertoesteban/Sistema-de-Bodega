@@ -1,39 +1,32 @@
-<?php
-include '../ReglasNegocio/proveedor.php';
-include '../ReglasNegocio/ordencompra.php';
+<?php 
+//RECORDATORIO: FALTA LA PARTE DE LOS MATERIALES Y DEL DEPARTAMENTO
+include ("../ReglasNegocio/ordencompra.php");
+session_start();
 
-$numero=$_POST['NumOC'];
-$fechaoc=$_POST['FechaOC'];
-$fechatope=$_POST['fecha_tope'];
-$codigoD=$_POST['CodigoD'];
-$nombreD=$_POST['NombreD'];
-$solicitante=$_POST['SolicitanteOC'];
-$observacion=$_POST['ObservacionOC'];
+$numero=$_SESSION["numero"];
+$fechaoc=$_SESSION["fechaoc"];
+$fechatope=$_SESSION["fechatope"];
+$f = explode("-",$fechatope); 
+$dia=$r[0];
+$mes=$r[1];
+$a=$r[2];
+$ftope=$a.'-'.$mes.'-'.$dia;
+$codigoD=$_SESSION["codigoD"];
+$nombreD=$_SESSION["nombreD"];
+$solicitante=$_SESSION["solicitante"];
+$observacion=$_SESSION["observacion"];
 
-$rut1=$_POST['rutp1'];
-$rut2=$_POST['rutp2'];
-$rut=$rut1.'-'.$rut2;
-$nombreP=$_POST['NombreP'];
-$direccionP=$_POST['direccionP'];
-$cuidadP=$_POST['ciudadP'];
-$telefonoP=$_POST['telefonoP'];
-$ContactoP=$_POST['contactoP'];
-
-$prov = new proveedor();
-$oc = new ordencompra();
-
-$row=$prov->Select($rut);
-if($row==null){
-	$prov->Add($rut,0,$nombreP,$direccionP,$ContactoP,$telefonoP);
+$oc=new ordencompra();
+$row= $oc->Select($numero);
+$r = mysql_fetch_array($row);
+if($r==null){
+	$fecha= time();
+	$fechaactual=date("Y-m-d h:m:s",$fecha);
+	$estado="pendiente";
+	$oc->Add($numero,0,$fechaoc,$ftope,$fechaactual,$solicitante,$observacion,$estado,0,0);
+	
 }
-if(($oc->Select($numero))==null){
-$fecha= time();
-$fechaactual=date("Y-m-d",$fecha);
-$estado="pendiente";
-$oc->Add($numero,0,$fechaoc,$fechatope,$fecha,$solicitante,$observacion,$estado,0,0);
-}
-
-
+header ("Location: paso.php?c=1");
 
 
 ?>

@@ -2,7 +2,7 @@
 
 include("../AccesoDatos/Controller.php");
 
-class proveedor {
+class proveedor{
 	private $_rut_proveedor;
 	private $_id_cuidad;
 	private $_nombre_proveedor;
@@ -39,13 +39,18 @@ class proveedor {
 	
 	function Setfono_proveedor($fono_proveedor) {$this->_fono_proveedor= $fono_proveedor;}
 	
+	public function Select($rut){
+		$sql="'$rut'";
+		$row=$this->Controller->Select($this->_tabla,$this->registro,$sql);
+		return $row;
+	}
 
 	public function Add($rut_proveedor,$id_cuidad,$nombre_proveedor,$direccion_proveedor,$contacto_proveedor,$fono_proveedor)
 	{
 		if(isset($rut_proveedor) && $rut_proveedor != "")
 		{
 			$sql=" $rut_proveedor , $id_cuidad , '$nombre_proveedor' , '$direccion_proveedor' , '$contacto_proveedor' , '$fono_proveedor' ";
-			$this->Controller->Add($_tabla, $sql);
+			$this->Controller->Add($this->_tabla, $sql);
 			
 		}
 		
@@ -57,7 +62,7 @@ class proveedor {
 		$this->Controller->Del($this->_tabla,$this->registro,$sql);	
 	}
 	public function Update($rut,$ciudad,$nombre,$direccion,$contacto,$fono){
-		$sql=array("RUT_PROVEEDOR"=>"'$rut'","ID_CIUDAD"=>"'$ciudad'","NOMBRE_PROVEEDOR"=>"'$nombre'","DIRECCION_PROVEEDOR"=>"'$direccion'","CONTACTO_PROVEEDOR"=>"'$contacto'","FONO_PROVEEDOR"=>"'$fono'");	
+		$sql=array("RUT_PROVEEDOR"=>"'$rut'","ID_CIUDAD"=>"$ciudad","NOMBRE_PROVEEDOR"=>"'$nombre'","DIRECCION_PROVEEDOR"=>"'$direccion'","CONTACTO_PROVEEDOR"=>"'$contacto'","FONO_PROVEEDOR"=>"'$fono'");	
 		$this->Controller->Update($this->_tabla,$this->registro,$sql);
 	
 	}
