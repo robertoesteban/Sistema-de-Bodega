@@ -1,5 +1,4 @@
 <?php
-include("../AccesoDatos/Controller.php");
 
 class contiene {
 	private $_id_material;
@@ -12,10 +11,11 @@ class contiene {
 	private $_valor_contiene;
 	private $_tabla="CONTIENE";
 	private $registro="NUMERO_OC";
+	private $Controller;
 	
 	
 	function __construct(){
-		$Controller= new Controller();
+		$this->Controller= new Controller();
 	}
 	
 	public function Getid_material(){ return $this->_id_material;}

@@ -26,7 +26,7 @@
 <tr>
 	<td>Bodega</td>
 	<td><label>
-	  <select name="select">
+	  <select name="Bodegas">
 	    <option>Bodega 0</option>
 	    <option>Bodega 1</option>
       </select>
@@ -35,7 +35,7 @@
 	<td colspan="2">Observacion</td>
 	<td width="345" colspan="2" rowspan="2" align="left"><form name="form1" method="post" action="">
 	  <label>
-	    <textarea name="ObservacionDoc" cols="56" rows="3" id="ObservacionDoc"></textarea>
+	    <textarea name="ObservacionC" cols="56" rows="3" id="ObservacionC"></textarea>
 	    </label>
 	  </form>
 	</td>
@@ -43,12 +43,12 @@
 <tr>
 <td>Tipo</td>
 <td><label></label>
-  <select name="select2">
+  <select name="Tipos">
     <option selected>Normal</option>
     <option>Especial</option>
   </select></td>
-<td colspan="2">Recervado
-  <input type="checkbox" name="checkbox" value="checkbox"></td>
+<td colspan="2">Reservado
+  <input type="checkbox" name="reservado" value="checkbox"></td>
 </tr>
 <tr>
 	<td colspan="6" align="left"><p>&nbsp;</p>
@@ -56,7 +56,7 @@
 	  <hr></td>
 </tr>
 <tr>
-		<td>N° Inventario</td>
+		<td>N&deg; Inventario</td>
 		<td><input name="NInventario" type="text" id="NInventario" size="15"/></td>
 		<td>Nombre</td>
 		<td colspan="3"><input name="NombreI" type="text" id="NombreI" size="54"/></td>
@@ -109,7 +109,7 @@
 <p> </p></td>
 </tr>
 <tr>
-<td colspan="6" align="center"><input type="submit" name="Ingresar2" value="Guardar" />
+<td colspan="6" align="center"><input type="submit" name="IngresarCustodia" value="Guardar" />
   <input type="submit" name="Imprimir2" value="Imprimir" /></td>
 </tr>
 </table>

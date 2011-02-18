@@ -1,5 +1,6 @@
 <html>
 <body>
+<form action="IngresarProveedorBD.php" method="post">
 <p class="tituloHead">Ingresar Orden de Compra</p>
 <table align="center" class="filaPar" width="700">
 <tr>
@@ -12,7 +13,7 @@
 <td width="171"><input name="NumOC" type="text" /></td>
 <td width="37"><input type="submit" name="BuscarOC" value="oc" /></td>
 <td width="141" align="left">Fecha</td>
-<td width="149"><input size="15" name="FechaOC" type="text" value="<?php ?>" /></td>
+<td width="149"><input size="15" name="FechaOC" type="text" /></td>
 <td width="96" align="left">Fecha de Tope</td>
 <td width="124"><script type="text/javascript">//<![CDATA[
    
@@ -22,15 +23,15 @@
                   });
 
                 //]]></script>
-        <input readonly="" name="fecha_tope" size="8" maxlength="8" />
+        <input readonly="" name="fecha_tope" id="fecha_reclamo" size="8" maxlength="8" />
 				<!--button id="f_rangeEnd_trigger" >...</button-->
 				<a id="f_rangeEnd_trigger" href="#">Calendario</a>
     <!--button id="f_clearRangeEnd" onclick="clearRangeEnd()">clear</button-->      
 	<script type="text/javascript">
                   //function CalendarJC(){
 				  new Calendar({
-                          inputField: "fecha_tope",
-                          dateFormat: "%Y-%m-%d",
+                          inputField: "fecha_reclamo",
+                          dateFormat: "%d-%m-%Y",
                           trigger: "f_rangeEnd_trigger",
                           bottomBar: false,
                           onSelect: function() {
@@ -41,7 +42,7 @@
                           }
                   });
                   /*function clearRangeEnd() {
-                          document.getElementById("fecha_tope").value = "";
+                          document.getElementById("fecha_reclamo").value = "";
                           LEFT_CAL.args.max = null;
                           LEFT_CAL.redraw();
                   };*/
@@ -49,13 +50,13 @@
 </tr>
 <tr>
     <td align="left">Codigo Depto</td>
-    <td colspan="2"><input name="CodigoD" type="text" /></td>
+    <td colspan="2"><input name="CodigoD" type="text"/></td>
     <td align="left">Nombre Departamento</td>
-    <td colspan="3"><input size="45" name="NombreD" type="text" /></td>
+    <td colspan="3"><input size="45" name="NombreD" type="text"/></td>
 </tr>
 <tr>
 <td align="left">Solicitante</td>
-<td colspan="6"><input size="85" name="SolicitanteOC" type="text" /></td>
+<td colspan="6"><input size="85" name="SolicitanteOC" type="text"/></td>
 </tr>
 <tr>
     <td align="left">Observaciones</td>
@@ -137,8 +138,9 @@
 	<td colspan="6" align="right">Total</td>
     <td ><input name="total" type="text" id="total"/></td>
 </tr>
-<tr><td colspan="7" align="center"><input type="button" value="Guardar"/> <input type="submit" value="Imprimir"/></td></tr>
+<tr><td colspan="7" align="center"><input type="submit" value="Guardar"/></td></tr>
 <tr></tr>
 </table>
+</form>
 </body>
 </html>
