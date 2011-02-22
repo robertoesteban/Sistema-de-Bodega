@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     14-02-2011 10:45:23                          */
+/* Created on:     22-02-2011 15:11:45                          */
 /*==============================================================*/
 
 
@@ -27,6 +27,8 @@ drop table if exists DOCUMENTOS;
 drop table if exists EJECUTA;
 
 drop table if exists ES_RETIRADO;
+
+drop table if exists LOGS;
 
 drop table if exists MATERIALES;
 
@@ -62,7 +64,7 @@ create table AREAS
    ID_AREA              int not null auto_increment,
    ID_BODEGA            int not null,
    NOMBRE_AREA          varchar(50),
-   primary key (ID_AREA)
+   primary key (ID_AREA, ID_BODEGA)
 );
 
 /*==============================================================*/
@@ -71,10 +73,10 @@ create table AREAS
 create table ASIGNA
 (
    ID_OBRA              int not null,
-   ID_MATERIAL          int not null,
    ID_AREA              int not null,
+   ID_BODEGA            int not null,
    FECHA_ASIGNA         date not null,
-   primary key (ID_OBRA, ID_MATERIAL, ID_AREA, FECHA_ASIGNA)
+   primary key (ID_OBRA, ID_AREA, ID_BODEGA, FECHA_ASIGNA)
 );
 
 /*==============================================================*/
@@ -85,11 +87,12 @@ create table ASOCIADO
    ID_CUSTODIA          int not null,
    ID_MATERIAL          int not null,
    ID_AREA              int not null,
+   ID_BODEGA            int not null,
    ID_UNIDAD            int not null,
    PERIODO_ASOCIADO     int,
    ESTADO_ASOCIADO      int,
    ESTADO_RETIRO_ASOCIADO int,
-   primary key (ID_CUSTODIA, ID_MATERIAL, ID_AREA, ID_UNIDAD)
+   primary key (ID_CUSTODIA, ID_MATERIAL, ID_AREA, ID_BODEGA, ID_UNIDAD)
 );
 
 /*==============================================================*/
@@ -121,11 +124,12 @@ create table CONTIENE
    NUMERO_OC            char(20) not null,
    ID_DOCUMENTO         char(50) not null,
    RUT_PROVEEDOR        char(12) not null,
+   ID_OBRA              int not null,
    CANTIDADTOTAL_CONTIENE int,
    CANTIDADBODEGA_CONTIENE int,
    CANTIDADRECIBIDA_CONTIENE int,
    VALOR_CONTIENE       int,
-   primary key (ID_MATERIAL, NUMERO_OC, ID_DOCUMENTO, RUT_PROVEEDOR)
+   primary key (ID_MATERIAL, NUMERO_OC, ID_DOCUMENTO, RUT_PROVEEDOR, ID_OBRA)
 );
 
 /*==============================================================*/
@@ -200,12 +204,23 @@ create table ES_RETIRADO
 );
 
 /*==============================================================*/
+/* Table: LOGS                                                  */
+/*==============================================================*/
+create table LOGS
+(
+   ID_LOG               int not null,
+   ID_USUARIO           int not null,
+   ACCION_LOG           text,
+   FECHA_LOG            datetime,
+   primary key (ID_LOG)
+);
+
+/*==============================================================*/
 /* Table: MATERIALES                                            */
 /*==============================================================*/
 create table MATERIALES
 (
    ID_MATERIAL          int not null auto_increment,
-   ID_STOCK             int not null,
    NOMBRE_MATERIAL      varchar(50),
    ESTADO_MATERIAL      int,
    UNIDADMEDIDA_MATERIAL varchar(50),
@@ -308,11 +323,12 @@ create table SE_EJECUTA
 create table SE_GUARDAN
 (
    ID_AREA              int not null,
+   ID_BODEGA            int not null,
    ID_SALDO             int not null,
    ID_MATERIAL          int not null,
    FECHA_SEGUARDAN      date not null,
    CANTIDAD_SEGUARDAN   int not null,
-   primary key (ID_AREA, ID_SALDO, ID_MATERIAL, FECHA_SEGUARDAN)
+   primary key (ID_AREA, ID_BODEGA, ID_SALDO, ID_MATERIAL, FECHA_SEGUARDAN)
 );
 
 /*==============================================================*/
@@ -320,11 +336,12 @@ create table SE_GUARDAN
 /*==============================================================*/
 create table STOCK
 (
-   ID_STOCK             int not null auto_increment,
+   ID_STOCK_MATERIAL    int not null auto_increment,
    PRECIO_STOCK         int,
+   FECHAPRECIO_STOCK    date,
    CANTIDAD_STOCK       int,
    MINIMO_STOCK         int,
-   primary key (ID_STOCK)
+   primary key (ID_STOCK_MATERIAL)
 );
 
 /*==============================================================*/
@@ -368,11 +385,8 @@ alter table AREAS add constraint FK_EXISTEN foreign key (ID_BODEGA)
 alter table ASIGNA add constraint FK_ASIGNA foreign key (ID_OBRA)
       references OBRAS (ID_OBRA) on delete restrict on update restrict;
 
-alter table ASIGNA add constraint FK_ASIGNA2 foreign key (ID_MATERIAL)
-      references MATERIALES (ID_MATERIAL) on delete restrict on update restrict;
-
-alter table ASIGNA add constraint FK_ASIGNA3 foreign key (ID_AREA)
-      references AREAS (ID_AREA) on delete restrict on update restrict;
+alter table ASIGNA add constraint FK_ASIGNA2 foreign key (ID_AREA, ID_BODEGA)
+      references AREAS (ID_AREA, ID_BODEGA) on delete restrict on update restrict;
 
 alter table ASOCIADO add constraint FK_ASOCIADO foreign key (ID_CUSTODIA)
       references CUSTODIAS (ID_CUSTODIA) on delete restrict on update restrict;
@@ -380,8 +394,8 @@ alter table ASOCIADO add constraint FK_ASOCIADO foreign key (ID_CUSTODIA)
 alter table ASOCIADO add constraint FK_ASOCIADO2 foreign key (ID_MATERIAL)
       references MATERIALES (ID_MATERIAL) on delete restrict on update restrict;
 
-alter table ASOCIADO add constraint FK_ASOCIADO3 foreign key (ID_AREA)
-      references AREAS (ID_AREA) on delete restrict on update restrict;
+alter table ASOCIADO add constraint FK_ASOCIADO3 foreign key (ID_AREA, ID_BODEGA)
+      references AREAS (ID_AREA, ID_BODEGA) on delete restrict on update restrict;
 
 alter table ASOCIADO add constraint FK_ASOCIADO4 foreign key (ID_UNIDAD)
       references UNIDADES (ID_UNIDAD) on delete restrict on update restrict;
@@ -397,6 +411,9 @@ alter table CONTIENE add constraint FK_CONTIENE3 foreign key (ID_DOCUMENTO)
 
 alter table CONTIENE add constraint FK_CONTIENE4 foreign key (RUT_PROVEEDOR)
       references PROVEEDORES (RUT_PROVEEDOR) on delete restrict on update restrict;
+
+alter table CONTIENE add constraint FK_CONTIENE5 foreign key (ID_OBRA)
+      references OBRAS (ID_OBRA) on delete restrict on update restrict;
 
 alter table DEPARTAMENTOS add constraint FK_PERTENECEN foreign key (ID_DIRECCION)
       references DIRECCIONES (ID_DIRECCION) on delete restrict on update restrict;
@@ -416,8 +433,8 @@ alter table ES_RETIRADO add constraint FK_ES_RETIRADO foreign key (ID_MATERIAL)
 alter table ES_RETIRADO add constraint FK_ES_RETIRADO2 foreign key (ID_RETIRO_CUSTODIA)
       references RETIROS_CUSTODIA (ID_RETIRO_CUSTODIA) on delete restrict on update restrict;
 
-alter table MATERIALES add constraint FK_SE_ALMACENA foreign key (ID_STOCK)
-      references STOCK (ID_STOCK) on delete restrict on update restrict;
+alter table LOGS add constraint FK_SE_REGISTRAN foreign key (ID_USUARIO)
+      references USUARIOS (ID_USUARIO) on delete restrict on update restrict;
 
 alter table ORDENCOMPRA add constraint FK_SE_ASOCIAN foreign key (ID_UNIDAD)
       references UNIDADES (ID_UNIDAD) on delete restrict on update restrict;
@@ -434,8 +451,8 @@ alter table SE_EJECUTA add constraint FK_SE_EJECUTA2 foreign key (ID_OBRA)
 alter table SE_EJECUTA add constraint FK_SE_EJECUTA3 foreign key (ID_DEPARTAMENTO)
       references DEPARTAMENTOS (ID_DEPARTAMENTO) on delete restrict on update restrict;
 
-alter table SE_GUARDAN add constraint FK_SE_GUARDAN foreign key (ID_AREA)
-      references AREAS (ID_AREA) on delete restrict on update restrict;
+alter table SE_GUARDAN add constraint FK_SE_GUARDAN foreign key (ID_AREA, ID_BODEGA)
+      references AREAS (ID_AREA, ID_BODEGA) on delete restrict on update restrict;
 
 alter table SE_GUARDAN add constraint FK_SE_GUARDAN2 foreign key (ID_SALDO)
       references SALDOS (ID_SALDO) on delete restrict on update restrict;
