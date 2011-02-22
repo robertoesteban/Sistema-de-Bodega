@@ -9,11 +9,11 @@ if(empty($ciudad))
 	header ("Location: paso.php?c=z");
 elseif($hd_variable == "ingresar" )
 {
-	$value =	$city->Select2($ciudad);
+	$value =$city->Select2($ciudad);
 	if ($value <> 0)
-		$value = $city->Add($ciudad);
+	$value = $city->Add($ciudad);
 	header ("Location: paso.php?c=z");
-	//echo "insercion";
+	//echo "insercion";}
 }
 elseif($hd_variable == "editar")
 {

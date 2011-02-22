@@ -53,10 +53,12 @@ class contiene {
 		}
 	}
 	
-	public function Select($numero_oc){
+	public function Select($numero_oc,$id_documento,$rut_proveedor){
 		if(isset($numero_oc) && $numero_oc != "")
 		{
-			$arr=$this->Controller->Select($this->_tabla,$this->registro,"'$numero_oc'");
+			$ar1=array("NUMERO_OC","ID_DOCUMENTO","RUT_PROVEEDOR");
+			$ar2=array("'$numero_oc'","'$id_documento'","'$rut_proveedor'");
+			$arr=$this->Controller->Select2($this->_tabla,$ar1,$ar2);
 			return $arr;
 		}
 	}

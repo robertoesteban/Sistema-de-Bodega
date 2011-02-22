@@ -10,10 +10,10 @@
 </tr>
 <tr>
 <td width="90" align="left">Numero O.C.</td>
-<td width="171"><input name="NumOC" type="text" /></td>
-<td width="37"><input type="submit" name="BuscarOC" value="oc" /></td>
+<td width="171"><input name="NumOC" type="text" value="<?php echo $_SESSION["numoc"]; ?>" /></td>
+<td width="37"><input type="submit" name="submit" value="oc" /></td>
 <td width="141" align="left">Fecha</td>
-<td width="149"><input size="15" name="FechaOC" type="text" /></td>
+<td width="149"><input size="15" name="FechaOC" type="text" value="<?php echo $_SESSION["fechaoc"]; ?>"/></td>
 <td width="96" align="left">Fecha de Tope</td>
 <td width="124"><script type="text/javascript">//<![CDATA[
    
@@ -52,11 +52,11 @@
     <td align="left">Codigo Depto</td>
     <td colspan="2"><input name="CodigoD" type="text"/></td>
     <td align="left">Nombre Departamento</td>
-    <td colspan="3"><input size="45" name="NombreD" type="text"/></td>
+    <td colspan="3"><input size="45" name="NombreD" type="text" value="<?php echo $_SESSION["depto"]; ?>"/></td>
 </tr>
 <tr>
 <td align="left">Solicitante</td>
-<td colspan="6"><input size="85" name="SolicitanteOC" type="text"/></td>
+<td colspan="6"><input size="85" name="SolicitanteOC" type="text" value="<?php echo $_SESSION["solicitante"];?>"/></td>
 </tr>
 <tr>
     <td align="left">Observaciones</td>
@@ -69,24 +69,24 @@
 </tr>
 <tr>
     <td>R.U.T.</td>
-    <td><input size="17" name="rutp1" type="text" id="rutp1" />
-   <input size="1" name="rutp2" type="text" id="rutp2" /></td>
+    <td><input size="17" name="rutp1" type="text" id="rutp1" value="<?php echo $_SESSION["rutp1"]; ?>" />
+   <input size="1" name="rutp2" type="text" id="rutp2" value="<?php echo $_SESSION["rutp2"]; ?>" /></td>
     <td><input type="submit" name="BuscarPv" value="pv" /></td>
     <td>Nombre Proveedor</td>
-    <td colspan="3"><input name="NombreP" type="text" id="NombreP" size="45"/></td>
+    <td colspan="3"><input name="NombreP" type="text" id="NombreP" size="45" value="<?php echo $_SESSION["namep"]; ?>"/></td>
 
 </tr>
 <tr>
-    <td>Direccion</td>
-    <td colspan="2"><input name="direccionP" type="text" id="direccionP"/></td>
     <td>Ciudad</td>
-    <td colspan="3"><input name="ciudadP" type="text" id="ciudadP" size="45"/></td>
+    <td colspan="2"><input name="ciudadP" type="text" value="<?php echo $_SESSION["direccionp"]; ?>"/></td>
+    <td>Direccion</td>
+    <td colspan="3"><input name="direccionP" type="text" size="45" value="<?php echo $_SESSION["ciudadp"]; ?>"/></td>
 </tr>
 <tr>
 	<td>Telefono</td>
-    <td colspan="2"><input name="telefonoP" type="text" id="telefonoP"/></td>
+    <td colspan="2"><input name="telefonoP" type="text" id="telefonoP" value="<?php echo $_SESSION["telefonop"]; ?>"/></td>
     <td>Contacto</td>
-    <td colspan="3"><input name="contactoP" type="text" id="contactoP" size="45"/></td>
+    <td colspan="3"><input name="contactoP" type="text" id="contactoP" size="45" value="<?php echo $_SESSION["contactop"]; ?>"/></td>
 </tr>
 <tr>
 	<td colspan="7" align="left"><p>&nbsp;</p>
@@ -94,7 +94,7 @@
 	  <hr></td>
 </tr>
 <tr>
-<td colspan="7"><table width="647" height="102" border="1" align="center">
+<td colspan="7"><table width="647" height="102" border="1" align="center" class="filaPar">
   <tr>
     <td width="90" class="titulosTabla">Codigo</td>
     <td width="272" class="titulosTabla">Nombre</td>
@@ -103,42 +103,30 @@
     <td width="85" class="titulosTabla">Valor Unitario</td>
     <td width="81" class="titulosTabla">Valor Total</td>
   </tr>
+  <?php $mat=$_SESSION["list"];
+  	for($i=0;$i<$_SESSION["size"];$i++){
+  ?>
   <tr>
-    <td><input name="cod1" type="text" id="cod1" size="15"/></td>
-    <td>&nbsp;</td>
-    <td><input name="uni1" type="text" id="uni1" size="5"/></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td><input name="<?php echo "c".$i;?>" type="text" id="cod1" size="15"/></td>
+    <td><?php echo $mat[$i][0];?></td>
+    <td><input name="<?php echo "u".$i;?>" type="text" id="uni1" size="5"/></td>
+    <td><?php echo $mat[$i][1];?></td>
+    <td><?php echo $mat[$i][2]; ?></td>
+    <td><?php echo $mat[$i][3];?></td>
   </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-</table>
+  <?php }?>
+ </table>
 <p> </p></td>
 </tr>
 <tr>
 	<td colspan="6" align="right">Neto</td>
-    <td ><input name="neto" type="text" id="neto"/></td>
+    <td ><input name="neto" type="text" id="neto" value="<?php echo $_SESSION["neto"];?>"/></td>
 </tr>
 <tr>
 	<td colspan="6" align="right">Total</td>
-    <td ><input name="total" type="text" id="total"/></td>
+    <td ><input name="total" type="text" id="total"  value="<?php echo $_SESSION["Total"];?>"/></td>
 </tr>
-<tr><td colspan="7" align="center"><input type="submit" value="Guardar"/></td></tr>
+<tr><td colspan="7" align="center"><input type="submit" name="submit" value="Guardar"/></td></tr>
 <tr></tr>
 </table>
 </form>

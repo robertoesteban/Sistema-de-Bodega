@@ -1,7 +1,6 @@
 <?php
-include("../AccesoDatos/Controller.php");
-
-class ordencompra {
+//include("../AccesoDatos/Controller.php");
+class ordencompra{
 	private $_numero_oc;
 	private $_id_unidad;
 	private $_fecha_oc;
@@ -18,7 +17,7 @@ class ordencompra {
 	
 	
 	function __construct(){
-		$Controller= new Controller();
+		$this->Controller= new Controller();
 	}
 	
 	public function Getnumero_oc(){ return $this->_numero_oc;}
@@ -45,11 +44,9 @@ class ordencompra {
 	public function Settotal_oc($total_oc){$this->_total_oc=$total_oc;}
 	
 	public function Select($numero_oc){
-	if(isset($numero_oc) && $numero_oc != "")
-		{
-			$arr=$this->Controller->Select($this->_tabla,$this->registro,"'$numero_oc'");
+			$sql="'$numero_oc'";
+			$arr=$this->Controller->Select($this->_tabla,$this->registro,$sql);
 			return $arr;
-		}
 	}
 	
 	public function Add($numero_oc,$id_unidad,$fecha_oc,$fechatope_oc,$fechaingreso_oc,$solicitante_oc,$observacion_oc,$estado_oc,$neto_oc,$total_oc){
