@@ -64,6 +64,12 @@ function VerificaUpdate()
 	
 }
 
+
+function pulsar(e) {
+    tecla=(document.all) ? e.keyCode : e.which;
+    if (tecla==13) return false;
+} 
+
 </script>
 
 <script type="text/javascript" src="ajaxcombobox/select_dependientes_3_niveles.js"></script>
@@ -80,7 +86,7 @@ function VerificaUpdate()
 
 <tr>
 <td>Nombre</td>
-<td colspan="5"><input name="unidad" type="text" size="50" value="<?php echo $nombre_unidad; ?>" /></td>
+<td colspan="5"><input name="unidad" type="text" size="50" value="<?php echo $nombre_unidad; ?>" onkeypress="return pulsar(event)"/></td>
 </tr>
 
 
@@ -167,8 +173,8 @@ if($cant > 0)
 		{
 			echo ("<td>$valor </td>");     
 		}
-		echo "<td><a href='paso.php?c=w&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
-		echo "<td><a href='paso.php?c=w&eliminar=".$claves[$i]."'><img border=0 src='imagenes/delete.jpg' width='20' height='20'></a></td>";
+		echo "<td width='10%'><a href='paso.php?c=w&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
+		//echo "<td><a href='paso.php?c=w&eliminar=".$claves[$i]."'><img border=0 src='imagenes/delete.jpg' width='20' height='20'></a></td>";
 		echo "</tr>";
 	}
 	echo "</table>";			
