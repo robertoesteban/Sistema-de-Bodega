@@ -125,7 +125,7 @@ if($cant > 0)
 		{
 			echo ("<td>$valor </td>");     
 		}
-		echo "<td><a href='paso.php?c=e&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
+		echo "<td width='10%' ><a href='paso.php?c=e&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
 		//echo "<td><a href='paso.php?c=e&eliminar=".$claves[$i]."'><img border=0 src='imagenes/delete.jpg' width='20' height='20'></a></td>";
 		echo "</tr>";
 	}
