@@ -46,10 +46,16 @@ function VerificaUpdate()
 	
 }
 
+
+function pulsar(e) {
+    tecla=(document.all) ? e.keyCode : e.which;
+    if (tecla==13) return false;
+} 
+
 </script>
 
 
-<body>
+<body onload="document.form.bodega.focus();">
 <p class="tituloHead">Bodegas</p>
 <form method="post" action="AgregarBodegaBD.php" name="form">
 <table width="400" align="center" class="filaPar">
@@ -61,7 +67,7 @@ function VerificaUpdate()
 
 <tr>
 <td>Nombre</td>
-<td colspan="5"><input name="bodega" type="text" size="50" value="<?php echo $nombre_bodega; ?>" /></td>
+<td colspan="5"><input name="bodega" type="text" size="50" value="<?php echo $nombre_bodega; ?>" onkeypress="return pulsar(event)"/></td>
 </tr>
 <tr>
 <td colspan="6" align="center"><input type="button" name="button1" value="<?php if(!empty($editar)) echo 'Actualizar'; else echo 'Ingresar'?>" onclick="<?php echo $boton; ?>"/>
@@ -94,8 +100,8 @@ if($cant > 0)
 		{
 			echo ("<td>$valor </td>");     
 		}
-		echo "<td><a href='paso.php?c=x&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
-		echo "<td><a href='paso.php?c=x&eliminar=".$claves[$i]."'><img border=0 src='imagenes/delete.jpg' width='20' height='20'></a></td>";
+		echo "<td width='10%'><a href='paso.php?c=x&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
+		//echo "<td><a href='paso.php?c=x&eliminar=".$claves[$i]."'><img border=0 src='imagenes/delete.jpg' width='20' height='20'></a></td>";
 		echo "</tr>";
 	}
 	echo "</table>";			
