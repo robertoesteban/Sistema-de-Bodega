@@ -45,10 +45,14 @@ function VerificaUpdate()
 	
 }
 
+function pulsarciudad(e) {
+    tecla=(document.all) ? e.keyCode : e.which;
+    if (tecla==13) return false;
+} 
 </script>
 
 
-<body>
+<body onload="document.form.ciudad.focus();">
 <p class="tituloHead">Ciudad</p>
 <form method="post" action="AgregarCiudadBD.php" name="form">
 <table width="400" align="center" class="filaPar">
@@ -60,10 +64,10 @@ function VerificaUpdate()
 
 <tr>
 <td>Nombre</td>
-<td colspan="5"><input name="ciudad" type="text" size="50" value="<?php echo $nombre_ciudad; ?>" /></td>
+<td colspan="5"><input name="ciudad" type="text" size="50" value="<?php echo $nombre_ciudad; ?>" onkeypress="return pulsarciudad(event)"/></td>
 </tr>
 <tr>
-<td colspan="6" align="center"><input type="button" name="button1" value="<?php if(!empty($editar)) echo 'Actualizar'; else echo 'Ingresar'?>" onclick="<?php echo $boton; ?>"/>
+<td colspan="6" align="center"><input type="button" name="button1" value="<?php if(!empty($editar)) echo 'Actualizar'; else echo 'Ingresar'?>" onclick="<?php echo $boton; ?>" />
 <?php if(!empty($editar)) echo "<input type='button' name='button2' value='Limpiar' onclick='verifica2();' />"; ?>
  </td>
 </tr>
