@@ -70,7 +70,6 @@ public function GetAllD($tabla)
 		$string;		
 		$this->_Connection->Connect();
 		$query = "SELECT * FROM ". $tabla;
-	//echo $query;
 		$result = mysql_query($query);
 		$nfilas = mysql_num_rows($result);
 		if($nfilas > 0)

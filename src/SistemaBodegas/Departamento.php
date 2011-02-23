@@ -13,7 +13,6 @@ if(!empty($editar))
 	$row = mysql_fetch_array($id_departamento);
 	$id_direccion=$row['ID_DIRECCION'];
 	$nombre_departamento = $row['NOMBRE_DEPARTAMENTO'];
-	//echo $id_departamento;
 	$boton = "VerificaUpdate()";
 	
 }

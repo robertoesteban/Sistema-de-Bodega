@@ -16,7 +16,6 @@ class departamento{
 		$this->_Controller=new Controller();	
 	}
 
-
 	function Getid_departamento()	{return $this->_id_departamento;}
 	function Getid_direccion()	{return $this->_id_direccion;}
 	function Getnombre_departamento()	{return $this->_nombre_departamento;}

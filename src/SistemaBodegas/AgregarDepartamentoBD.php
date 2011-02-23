@@ -23,4 +23,5 @@ elseif (!empty($id_variable) && !empty($departamento) && !empty($id_direccion))
 	header ("Location: paso.php?c=y");
 }
 
+
 ?>
