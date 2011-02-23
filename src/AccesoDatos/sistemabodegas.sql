@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     22-02-2011 15:11:45                          */
+/* Created on:     23-02-2011 17:09:44                          */
 /*==============================================================*/
 
 
@@ -63,7 +63,7 @@ create table AREAS
 (
    ID_AREA              int not null auto_increment,
    ID_BODEGA            int not null,
-   NOMBRE_AREA          varchar(50),
+   NOMBRE_AREA          varchar(100),
    primary key (ID_AREA, ID_BODEGA)
 );
 
@@ -101,7 +101,7 @@ create table ASOCIADO
 create table BODEGAS
 (
    ID_BODEGA            int not null auto_increment,
-   NOMBRE_BODEGA        varchar(50),
+   NOMBRE_BODEGA        varchar(100),
    primary key (ID_BODEGA)
 );
 
@@ -111,7 +111,7 @@ create table BODEGAS
 create table CIUDADES
 (
    ID_CIUDAD            int not null auto_increment,
-   NOMBRE_CIUDAD        varchar(50),
+   NOMBRE_CIUDAD        varchar(100),
    primary key (ID_CIUDAD)
 );
 
@@ -121,9 +121,9 @@ create table CIUDADES
 create table CONTIENE
 (
    ID_MATERIAL          int not null,
-   NUMERO_OC            char(20) not null,
-   ID_DOCUMENTO         char(50) not null,
-   RUT_PROVEEDOR        char(12) not null,
+   NUMERO_OC            varchar(100) not null,
+   ID_DOCUMENTO         int not null,
+   RUT_PROVEEDOR        varchar(12) not null,
    ID_OBRA              int not null,
    CANTIDADTOTAL_CONTIENE int,
    CANTIDADBODEGA_CONTIENE int,
@@ -138,9 +138,9 @@ create table CONTIENE
 create table CUSTODIAS
 (
    ID_CUSTODIA          int not null auto_increment,
-   INGRESADOPOR_CUSTODIA varchar(50),
+   INGRESADOPOR_CUSTODIA varchar(100),
    FECHAINGRESO_CUSTODIA date,
-   TIPO_CUSTODIA        varchar(50),
+   TIPO_CUSTODIA        varchar(100),
    COMENTARIOS_CUSTODIA text,
    RESERVA_CUSTODIA     int,
    primary key (ID_CUSTODIA)
@@ -153,7 +153,7 @@ create table DEPARTAMENTOS
 (
    ID_DEPARTAMENTO      int not null auto_increment,
    ID_DIRECCION         int not null,
-   NOMBRE_DEPARTAMENTO  varchar(50),
+   NOMBRE_DEPARTAMENTO  varchar(100),
    primary key (ID_DEPARTAMENTO)
 );
 
@@ -163,7 +163,7 @@ create table DEPARTAMENTOS
 create table DIRECCIONES
 (
    ID_DIRECCION         int not null auto_increment,
-   NOMBRE_DIRECCION     varchar(50),
+   NOMBRE_DIRECCION     varchar(100),
    primary key (ID_DIRECCION)
 );
 
@@ -172,9 +172,9 @@ create table DIRECCIONES
 /*==============================================================*/
 create table DOCUMENTOS
 (
-   ID_DOCUMENTO         char(50) not null,
-   NUMERO_DOCUMENTO     int,
-   TIPO_DOCUMENTO       varchar(50),
+   ID_DOCUMENTO         int not null auto_increment,
+   NUMERO_DOCUMENTO     varchar(100),
+   TIPO_DOCUMENTO       varchar(100),
    FECHA_DOCUMENTO      date,
    OBSERVACION_DOCUMENTO text,
    primary key (ID_DOCUMENTO)
@@ -221,9 +221,9 @@ create table LOGS
 create table MATERIALES
 (
    ID_MATERIAL          int not null auto_increment,
-   NOMBRE_MATERIAL      varchar(50),
+   NOMBRE_MATERIAL      varchar(100),
    ESTADO_MATERIAL      int,
-   UNIDADMEDIDA_MATERIAL varchar(50),
+   UNIDADMEDIDA_MATERIAL varchar(100),
    primary key (ID_MATERIAL)
 );
 
@@ -233,8 +233,8 @@ create table MATERIALES
 create table OBRAS
 (
    ID_OBRA              int not null auto_increment,
-   NOMBRE_OBRA          varchar(50) not null,
-   ENCARGADO_OBRA       varchar(50) not null,
+   NOMBRE_OBRA          varchar(100) not null,
+   ENCARGADO_OBRA       varchar(100) not null,
    ESTADO_OBRA          int,
    primary key (ID_OBRA)
 );
@@ -244,14 +244,14 @@ create table OBRAS
 /*==============================================================*/
 create table ORDENCOMPRA
 (
-   NUMERO_OC            char(20) not null,
+   NUMERO_OC            varchar(100) not null,
    ID_UNIDAD            int not null,
    FECHA_OC             date,
    FECHATOPE_OC         date,
    FECHAINGRESO_OC      datetime,
-   SOLICITANTE_OC       char(50),
+   SOLICITANTE_OC       varchar(100),
    OBSERVACION_OC       text,
-   ESTADO_OC            varchar(50),
+   ESTADO_OC            varchar(100),
    NETO_OC              int,
    TOTAL_OC             int,
    primary key (NUMERO_OC)
@@ -262,12 +262,12 @@ create table ORDENCOMPRA
 /*==============================================================*/
 create table PROVEEDORES
 (
-   RUT_PROVEEDOR        char(12) not null,
+   RUT_PROVEEDOR        varchar(12) not null,
    ID_CIUDAD            int not null,
-   NOMBRE_PROVEEDOR     varchar(50),
-   DIRECCION_PROVEEDOR  varchar(50),
-   CONTACTO_PROVEEDOR   varchar(50),
-   FONO_PROVEEDOR       varchar(50),
+   NOMBRE_PROVEEDOR     varchar(100),
+   DIRECCION_PROVEEDOR  varchar(100),
+   CONTACTO_PROVEEDOR   varchar(100),
+   FONO_PROVEEDOR       varchar(100),
    primary key (RUT_PROVEEDOR)
 );
 
@@ -277,7 +277,7 @@ create table PROVEEDORES
 create table RETIROS
 (
    ID_RETIRO            int not null auto_increment,
-   PERSONA_RETIRO       varchar(50),
+   PERSONA_RETIRO       varchar(100),
    MOTIVO_RETIRO        text,
    ESTADO_RETIRO        int,
    primary key (ID_RETIRO)
@@ -289,7 +289,7 @@ create table RETIROS
 create table RETIROS_CUSTODIA
 (
    ID_RETIRO_CUSTODIA   int not null auto_increment,
-   NOMBRE_RETIRO_CUSTODIA varchar(50),
+   NOMBRE_RETIRO_CUSTODIA varchar(100),
    OBSERVACION_RETIRO_CUSTODIA text,
    FECHA_RETIRO_CUSTODIA datetime,
    primary key (ID_RETIRO_CUSTODIA)
@@ -350,7 +350,8 @@ create table STOCK
 create table TIPOS_OBRAS
 (
    ID_TIPO_OBRA         int not null auto_increment,
-   NOMBRE_TIPO_OBRA     varchar(50),
+   CODIGO_TIPO_OBRA     varchar(100),
+   NOMBRE_TIPO_OBRA     varchar(100),
    primary key (ID_TIPO_OBRA)
 );
 
@@ -361,7 +362,7 @@ create table UNIDADES
 (
    ID_UNIDAD            int not null auto_increment,
    ID_DEPARTAMENTO      int not null,
-   NOMBRE_UNIDAD        varchar(50),
+   NOMBRE_UNIDAD        varchar(100),
    primary key (ID_UNIDAD)
 );
 
