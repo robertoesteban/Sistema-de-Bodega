@@ -11,7 +11,7 @@ class Controller
 		$this->_Connection = new Connection();
 	}
 
-	//Insertar en Valores en tabla mencionada
+	
 	public function Select($tabla,$registro,$parametro){
 		$this->_Connection->Connect();
 		$query = "Select * from ".$tabla." where ".$registro."=".$parametro;
@@ -32,6 +32,16 @@ public function Select2($tabla,$registro,$parametro){
 		$this->_Connection->DisConnect();
 		return $accion;
 	}
+
+public function SelectPersonalizado($tabla,$registro,$parametro){
+		$this->_Connection->Connect();
+		$query = "Select * from ".$tabla." where ".$registro."=".$parametro;
+		$accion = mysql_query($query);
+		$this->_Connection->DisConnect();
+		return $accion;
+	}
+	
+
 
 	public function GetAll($tabla)
 	{

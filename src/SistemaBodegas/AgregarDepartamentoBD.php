@@ -1,36 +1,26 @@
 <?php
+include("../AccesoDatos/Controller.php");
 include ("../ReglasNegocio/departamento.php");
 $departamento=$_POST["departamento"];
 $id_direccion=$_POST["direccion"];
-
-
-//echo $departamento;
 $hd_variable=$_POST["hd_variable"];
 $id_variable=$_POST["id_variable"];
-//echo $hd_variable."<br>";
-//echo "id_depto= ". $id_variable."<br>";
-//echo "id_direccion= ". $id_direccion."<br>";
-//echo "nombre_depto= ". $departamento."<br>";
 $address= new departamento();
-if(empty($departamento)) 
+if(empty($departamento) || $id_direccion == 0)
+{ 
 	header ("Location: paso.php?c=y");
-	//echo $departamento."<br>";
-elseif($hd_variable == "ingresar" )
+}
+elseif(!empty($departamento) && empty($id_variable) && !empty($id_direccion))
 {
 	$value =	$address->Select2($departamento);
-	//echo $direccion;
-	if ($value <> 0)
+	if (empty($value))
 		$value = $address->Add($id_direccion,$departamento);
 	header ("Location: paso.php?c=y");
-	//echo "insercion";
 }
-
-elseif($hd_variable == "editar")
+elseif (!empty($id_variable) && !empty($departamento) && !empty($id_direccion))
 {
-	
-	$value =  $address->Update($id_variable,$id_direccion, $departamento);
+	$value =  $address->Update($id_variable, $id_direccion, $departamento);
 	header ("Location: paso.php?c=y");
-	//echo "edicion";
 }
 
 ?>

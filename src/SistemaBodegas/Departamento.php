@@ -60,10 +60,15 @@ function VerificaUpdate()
 	
 }
 
+
+function pulsar(e) {
+    tecla=(document.all) ? e.keyCode : e.which;
+    if (tecla==13) return false;
+} 
 </script>
 
 
-<body>
+<body onload="document.form.departamento.focus();">
 <p class="tituloHead">Departamentos Municipales</p>
 <form method="post" action="AgregarDepartamentoBD.php" name="form">
 <table width="400" align="center" class="filaPar">
@@ -160,8 +165,8 @@ if($cant > 0)
 		{
 			echo ("<td>$valor </td>");     
 		}
-		echo "<td><a href='paso.php?c=y&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
-		echo "<td><a href='paso.php?c=y&eliminar=".$claves[$i]."'><img border=0 src='imagenes/delete.jpg' width='20' height='20'></a></td>";
+		echo "<td width='10%'><a href='paso.php?c=y&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
+		//echo "<td><a href='paso.php?c=y&eliminar=".$claves[$i]."'><img border=0 src='imagenes/delete.jpg' width='20' height='20'></a></td>";
 		echo "</tr>";
 	}
 	echo "</table>";			

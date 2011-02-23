@@ -43,7 +43,8 @@ class departamento{
 		{
 			$sql="'$nombre_departamento'";
 			$arr=$this->_Controller->Select($this->_tabla,$this->_registro2, $sql);
-			return $arr; 
+			$resultado = mysql_result($arr, 0);
+			return $resultado; 
 		}
 	}	
 	
