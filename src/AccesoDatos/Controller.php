@@ -5,22 +5,34 @@ include("Connection.php");
 class Controller
 {
 	private $_Connection;
-
+	private $_value;
+	
 	function __construct()
 	{
 		$this->_Connection = new Connection();
 	}
 
-	//Insertar en Valores en tabla mencionada
+
 	public function Select($tabla,$registro,$parametro){
 		$this->_Connection->Connect();
 		$query = "Select * from ".$tabla." where ".$registro."=".$parametro;
-		//echo $query;
 		$accion = mysql_query($query);
 		$this->_Connection->DisConnect();
-		return $accion;
+		if (!$accion) { return($query); }
+		$this->_value=	mysql_result($accion,0);
+		return $this->_value;
 	}
 	
+	public function SelectPersonalizado($tabla,$registro,$parametro,$posicion)
+	{
+		$this->_Connection->Connect();
+		$query = "Select * from ".$tabla." where ".$registro."=".$parametro;
+		$accion = mysql_query($query);
+		$this->_Connection->DisConnect();
+		if (!$accion) { return($query); }
+		$this->_value=	mysql_result($accion,0,$posicion);
+		return $this->_value;
+	}
 	
 	public function GetAll($tabla)
 	{
