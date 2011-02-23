@@ -15,7 +15,6 @@
 <li><a href="paso.php?c=4" title="A&ntilde;adir Obra">A&ntilde;adir&nbsp;Obra</a></li>
 <li><a href="paso.php?c=e" title="Direcciones">Direcciones</a></li>
 <li><a href="paso.php?c=y" title="Departamentos">Departamentos</a></li>
-<li><a href="paso.php?c=w" title="Unidades">Unidades</a></li>
 <li><a href="paso.php?c=z" title="Ciudades">Ciudades</a></li>
 <li><a href="paso.php?c=x" title="Bodegas">Bodegas</a></li>
 <li><a href="paso.php?c=b" title="Ingresar Traspaso">Ingresar&nbsp;Traspaso</a></li></ul></div></td><td style="padding-right:0px" title ="RETIRAR">

@@ -5,35 +5,34 @@ include("Connection.php");
 class Controller
 {
 	private $_Connection;
-	private $_value;
-	
+
 	function __construct()
 	{
 		$this->_Connection = new Connection();
 	}
 
-
+	//Insertar en Valores en tabla mencionada
 	public function Select($tabla,$registro,$parametro){
 		$this->_Connection->Connect();
 		$query = "Select * from ".$tabla." where ".$registro."=".$parametro;
 		$accion = mysql_query($query);
 		$this->_Connection->DisConnect();
-		if (!$accion) { return($query); }
-		$this->_value=	mysql_result($accion,0);
-		return $this->_value;
+		return $accion;
 	}
 	
-	public function SelectPersonalizado($tabla,$registro,$parametro,$posicion)
-	{
+public function Select2($tabla,$registro,$parametro){
 		$this->_Connection->Connect();
-		$query = "Select * from ".$tabla." where ".$registro."=".$parametro;
+		$query = "SELECT * FROM ".$tabla." WHERE ";
+		$size = sizeof($registro);
+		for($i=0;$i<$size-1;$i++){
+		$query=$query.$registro[$i]."=".$parametro[$i]." AND ";
+		}
+		$query=$query.$registro[$size-1]."=".$parametro[$size-1];
 		$accion = mysql_query($query);
 		$this->_Connection->DisConnect();
-		if (!$accion) { return($query); }
-		$this->_value=	mysql_result($accion,0,$posicion);
-		return $this->_value;
+		return $accion;
 	}
-	
+
 	public function GetAll($tabla)
 	{
 		$arreglo;
@@ -55,11 +54,32 @@ class Controller
 		return $arreglo;
 	}
 	
+public function GetAllD($tabla)
+	{
+		$arreglo;
+		$string;		
+		$this->_Connection->Connect();
+		$query = "SELECT * FROM ". $tabla;
+	//echo $query;
+		$result = mysql_query($query);
+		$nfilas = mysql_num_rows($result);
+		if($nfilas > 0)
+		{
+			for($i=0;$i<$nfilas;$i++)
+			{
+				$id= mysql_result($result,$i,0);
+				$valor = mysql_result($result,$i,2);
+				$arreglo[$id] = array('val1' => $valor );				
+			}
+		}
+		$this->_Connection->DisConnect();
+		return $arreglo;
+	}
+	
 	public function Add($tabla , $parametro)
 	{
 			$this->_Connection->Connect();
 			$query = "INSERT INTO ". $tabla . " VALUES (". $parametro.")" ;
-			//echo $query;
 			$accion = mysql_query($query); 
 			$this->_Connection->DisConnect();
 			return $accion;
@@ -89,7 +109,6 @@ class Controller
 				$query = $query . ", ";
 		}
 		$query = $query . " WHERE " . $registro."=". $parametro[$claves[0]];
-		//echo $query;
 		$accion=mysql_query($query);
 		$this->_Connection->Disconnect();
 		return $accion;

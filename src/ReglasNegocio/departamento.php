@@ -1,6 +1,6 @@
 <?php
 //include("../AccesoDatos/Controller.php");
-include("../AccesoDatos/ControllerDepartamento.php");
+//include("../AccesoDatos/Controller.php");
 
 class departamento{
 	private $_id_departamento;
@@ -13,7 +13,7 @@ class departamento{
 
 	function __construct()
 	{ 
-		$this->_Controller=new ControllerDepartamento();	
+		$this->_Controller=new Controller();	
 	}
 
 
@@ -50,7 +50,7 @@ class departamento{
 	
 	public function GetAll()
 	{
-		return $this->_Controller->GetAll($this->_tabla);
+		return $this->_Controller->GetAllD($this->_tabla);
 	}	
 	
 	

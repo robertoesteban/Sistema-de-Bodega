@@ -6,9 +6,9 @@ $editar = $_GET["editar"];
 $boton = "verifica()";
 if(!empty($editar))
 {
-	$nombre_direccion = $direccion->SelectPersonalizado($editar,1);
-	//$row = mysql_fetch_array($nombre_direccion);
-	//$nombre_direccion=$row['NOMBRE_DIRECCION'];
+	$nombre_direccion = $direccion->Select($editar);
+	$row = mysql_fetch_array($nombre_direccion);
+	$nombre_direccion=$row['NOMBRE_DIRECCION'];
 	$boton = "VerificaUpdate()";
 	
 }
@@ -23,11 +23,8 @@ function verifica()
 		alert("Debe ingresar un Nombre");
       return 0;
 	}
-	else
-	{
-		document.form.hd_variable.value="ingresar";
-		document.form.submit();
-	}
+   document.form.hd_variable.value="ingresar";
+	document.form.submit();
 }
 
 function verifica2()
@@ -43,18 +40,15 @@ function VerificaUpdate()
 		alert("Debe ingresar un Nombre");
       return 0;
 	}
-	else
-	{
-		document.form.hd_variable.value="editar";
-		document.form.submit();
-	}
+	document.form.hd_variable.value="editar";
+	document.form.submit();
 	
 }
 
 </script>
 
 
-<body onload="document.form.direccion.focus();">
+<body>
 <p class="tituloHead">Direccion</p>
 <form method="post" action="AgregarDireccionBD.php" name="form">
 <table width="400" align="center" class="filaPar">
@@ -75,7 +69,7 @@ function VerificaUpdate()
 </tr>
 </table>
 
-<input type="hidden" name="hd_variable" value="<?php echo $nombre_direccion; ?>"/>
+<input type="hidden" name="hd_variable" value="<?php echo $editar; ?>"/>
 <input type="hidden" name="id_variable" value="<?php echo $editar; ?>"/>
 </form>
 <br>
@@ -125,8 +119,8 @@ if($cant > 0)
 		{
 			echo ("<td>$valor </td>");     
 		}
-		echo "<td width='10%' ><a href='paso.php?c=e&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
-		//echo "<td><a href='paso.php?c=e&eliminar=".$claves[$i]."'><img border=0 src='imagenes/delete.jpg' width='20' height='20'></a></td>";
+		echo "<td><a href='paso.php?c=e&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
+		echo "<td><a href='paso.php?c=e&eliminar=".$claves[$i]."'><img border=0 src='imagenes/delete.jpg' width='20' height='20'></a></td>";
 		echo "</tr>";
 	}
 	echo "</table>";			

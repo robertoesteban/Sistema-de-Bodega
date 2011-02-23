@@ -22,23 +22,11 @@ class direccion {
 		$Controller=new Controller();
 		if(isset($id_direccion) && $id_direccion != "")
 		{
-			//$Controller= new Controller();
 			$sql="$id_direccion";
 			$arr=$Controller->Select($this->_tabla,$this->_registro, $sql);
 			return $arr; 
 		}
 	}
-	
-	public function SelectPersonalizado($id_direccion,$posicion)
-	{
-		$Controller=new Controller();
-		if(isset($id_direccion) && $id_direccion != "")
-		{
-			$arr=$Controller->SelectPersonalizado($this->_tabla,$this->_registro, $id_direccion,$posicion);
-			return $arr; 
-		}
-	}
-	
 	
 	public function Select2($nombre_direccion)
 	{

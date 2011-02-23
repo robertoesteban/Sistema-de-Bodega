@@ -1,4 +1,8 @@
-<?php session_start();?>
+<?php session_start();
+include '../ReglasNegocio/departamento.php';
+include '../AccesoDatos/Controller.php';
+$departamento=new departamento();
+?>
 <body>
 <form name="form2" method="post" action="EditarUsuarioBD.php">
 <p class="tituloHead">Editar Usuario</p>
@@ -21,8 +25,25 @@
     <td><input name="nombreusuario" type="text" value="<?php echo  $_SESSION["nombre_u"];?>"/></td>
     <td>Departamento</td>
     <td colspan="3"><select name="deptousuario">
-      <option>departamento 1</option>
-      <option>departamento 2</option>
+      <option>Ninguno</option>
+      <?php
+		$AllDepartamento = $departamento->GetAll();
+		$claves= array_keys($AllDepartamento);
+		$cant = count($AllDepartamento);
+		if($cant > 0)
+		{
+			for ($i=0;$i<$cant;$i++)
+			{
+				echo "<option value=$claves[$i]";
+				if($claves[$i]==$_SESSION["depto"]) echo " selected ";
+				echo ">";
+				foreach ($AllDepartamento["$claves[$i]"] as $valor)
+				{
+					echo "$valor</option>";     
+				}
+			}
+		}			
+		?>
     </select></td>
 </tr>
 <tr>
