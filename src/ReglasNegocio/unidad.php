@@ -1,6 +1,6 @@
 <?php
 //include("../AccesoDatos/Controller.php");
-include("../AccesoDatos/ControllerDepartamento.php");
+//include("../AccesoDatos/ControllerDepartamento.php");
 
 class unidad{
 	private $_id_unidad;
@@ -13,7 +13,7 @@ class unidad{
 
 	function __construct()
 	{ 
-		$this->_Controller=new ControllerDepartamento();	
+		//$this->_Controller=new ControllerDepartamento();	
 	}
 
 
@@ -31,8 +31,9 @@ class unidad{
 		
 		if(isset($id_unidad) && $id_unidad != "")
 		{
+			$Controller=new Controller();
 			$sql="$id_unidad";
-			$arr=$this->_Controller->Select($this->_tabla,$this->_registro, $sql);
+			$arr=$Controller->Select($this->_tabla,$this->_registro, $sql);
 			return $arr; 
 		}
 	}
@@ -41,8 +42,9 @@ class unidad{
 	{
 		if(isset($nombre_unidad) && $nombre_unidad != "")
 		{
+			$Controller=new Controller();			
 			$sql="'$nombre_unidad'";
-			$arr=$this->_Controller->Select($this->_tabla,$this->_registro2, $sql);
+			$arr=$Controller->Select($this->_tabla,$this->_registro2, $sql);
 			return $arr; 
 		}
 	}	
@@ -50,7 +52,8 @@ class unidad{
 	
 	public function GetAll()
 	{
-		return $this->_Controller->GetAll($this->_tabla);
+		$Controller=new Controller();
+		return $Controller->GetAllD($this->_tabla);
 	}	
 	
 	
@@ -61,9 +64,10 @@ class unidad{
 		//echo $id_direccion;		
 		if(isset($nombre_unidad) && $nombre_unidad != "")
 		{
+			$Controller=new Controller();
 			$sql="0,". $id_departamento. ", '".$nombre_unidad. "'";
 			//echo $sql;
-			$resultado =$this->_Controller->Add($this->_tabla, $sql);
+			$resultado =$Controller->Add($this->_tabla, $sql);
 		}
 		return $resultado;
 	}
@@ -75,8 +79,9 @@ class unidad{
 	{
 		if(isset($id_unidad) && $id_unidad != "")
 		{
+			$Controller=new Controller();
 			$sql=" $id_unidad ";
-			return $this->_Controller->Del($this->_tabla,$this->_registro, $sql);
+			return $Controller->Del($this->_tabla,$this->_registro, $sql);
 			
 		}
 		
@@ -84,12 +89,13 @@ class unidad{
 	
 	public function Update($id_unidad,$id_departamento,$nombre_unidad)
 	{
+		$Controller=new Controller();
 		
 		//echo "id_depto= ". $id_departamento."<br>";
 		//echo "id_direccion= ". $id_direccion."<br>";
 		//echo "nombre_depto= ". $nombre_departamento."<br>";
 		$sql=array("ID_UNIDAD"=>"$id_unidad","ID_DEPARTAMENTO" => "$id_departamento","NOMBRE_UNIDAD"=>"'$nombre_unidad'");
-		return $this->_Controller->Update($this->_tabla,$this->_registro,$sql);
+		return $Controller->Update($this->_tabla,$this->_registro,$sql);
 		//return 0;
 	}
 

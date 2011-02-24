@@ -49,10 +49,8 @@
       </script></td>
 </tr>
 <tr>
-    <td align="left">Codigo Depto</td>
-    <td colspan="2"><input name="CodigoD" type="text"/></td>
     <td align="left">Nombre Departamento</td>
-    <td colspan="3"><input size="45" name="NombreD" type="text" value="<?php echo $_SESSION["depto"]; ?>"/></td>
+    <td colspan="6"><input size="85" name="NombreD" type="text" value="<?php echo $_SESSION["depto"]; ?>"/></td>
 </tr>
 <tr>
 <td align="left">Solicitante</td>

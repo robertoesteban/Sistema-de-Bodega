@@ -138,18 +138,18 @@
   </tr>
 <?php 
 $au=$_SESSION["autentificado"];
-			$name=$_SESSION["nombre_usuario"];
-			$ap=$_SESSION["apellidos_usuario"];
-			$num=$_SESSION["numoc"];
-			$tipo=$_SESSION["tipo"];
-			session_unset();
-			$_SESSION["autentificado"]=$au;
-			$_SESSION["nombre_usuario"]=$name;
-			$_SESSION["apellidos_usuario"]=$ap;
-			$_SESSION["tipo"]=$tipo; 
-			$_SESSION["size"]=count($arr);
-			$_SESSION["lista1"]=$arr;
-			$_SESSION["oc"]=$num;?>
+$name=$_SESSION["nombre_usuario"];
+$ap=$_SESSION["apellidos_usuario"];
+$num=$_SESSION["numoc"];
+$tipo=$_SESSION["tipo"];
+session_unset();
+$_SESSION["autentificado"]=$au;
+$_SESSION["nombre_usuario"]=$name;
+$_SESSION["apellidos_usuario"]=$ap;
+$_SESSION["tipo"]=$tipo; 
+$_SESSION["size"]=count($arr);
+$_SESSION["lista1"]=$arr;
+$_SESSION["oc"]=$num;?>
 </table>
 </form>
 </body>

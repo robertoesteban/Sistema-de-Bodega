@@ -26,7 +26,7 @@ if($r==null){
 	$oc->Add($numero,0,$fechaoc,$ftope,$fechaactual,$solicitante,$observacion,$estado,0,0);
 	
 }
-header ("Location: paso.php?c=1");
+//header ("Location: paso.php?c=1");
 
 
 ?>
