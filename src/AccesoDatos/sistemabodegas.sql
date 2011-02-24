@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     23-02-2011 17:09:44                          */
+/* Created on:     24-02-2011 13:01:34                          */
 /*==============================================================*/
 
 
@@ -43,8 +43,6 @@ drop table if exists RETIROS;
 drop table if exists RETIROS_CUSTODIA;
 
 drop table if exists SALDOS;
-
-drop table if exists SE_EJECUTA;
 
 drop table if exists SE_GUARDAN;
 
@@ -89,10 +87,11 @@ create table ASOCIADO
    ID_AREA              int not null,
    ID_BODEGA            int not null,
    ID_UNIDAD            int not null,
-   PERIODO_ASOCIADO     int,
+   FOLIO_ASOCIADO       int,
+   PERIODO_ASOCIADO     int not null,
    ESTADO_ASOCIADO      int,
    ESTADO_RETIRO_ASOCIADO int,
-   primary key (ID_CUSTODIA, ID_MATERIAL, ID_AREA, ID_BODEGA, ID_UNIDAD)
+   primary key (ID_CUSTODIA, ID_MATERIAL, ID_AREA, ID_BODEGA, ID_UNIDAD, PERIODO_ASOCIADO)
 );
 
 /*==============================================================*/
@@ -125,11 +124,12 @@ create table CONTIENE
    ID_DOCUMENTO         int not null,
    RUT_PROVEEDOR        varchar(12) not null,
    ID_OBRA              int not null,
+   FOLIO_CONTIENE       int not null,
    CANTIDADTOTAL_CONTIENE int,
    CANTIDADBODEGA_CONTIENE int,
    CANTIDADRECIBIDA_CONTIENE int,
    VALOR_CONTIENE       int,
-   primary key (ID_MATERIAL, NUMERO_OC, ID_DOCUMENTO, RUT_PROVEEDOR, ID_OBRA)
+   primary key (ID_MATERIAL, NUMERO_OC, ID_DOCUMENTO, RUT_PROVEEDOR, ID_OBRA, FOLIO_CONTIENE)
 );
 
 /*==============================================================*/
@@ -188,9 +188,10 @@ create table EJECUTA
    ID_RETIRO            int not null,
    ID_MATERIAL          int not null,
    ID_UNIDAD            int not null,
+   FOLIO_EJECUTA        int not null,
    FECHA_EJECUTA        datetime,
    CANTIDAD_EJECUTA     int,
-   primary key (ID_RETIRO, ID_MATERIAL, ID_UNIDAD)
+   primary key (ID_RETIRO, ID_MATERIAL, ID_UNIDAD, FOLIO_EJECUTA)
 );
 
 /*==============================================================*/
@@ -233,9 +234,13 @@ create table MATERIALES
 create table OBRAS
 (
    ID_OBRA              int not null auto_increment,
+   ID_TIPO_OBRA         int not null,
+   ID_DEPARTAMENTO      int not null,
    NOMBRE_OBRA          varchar(100) not null,
    ENCARGADO_OBRA       varchar(100) not null,
    ESTADO_OBRA          int,
+   FECHA_INICIO_OBRA    date,
+   FECHA_TERMINO_OBRA   date,
    primary key (ID_OBRA)
 );
 
@@ -303,18 +308,6 @@ create table SALDOS
    ID_SALDO             int not null auto_increment,
    OBSERVACION_SALDO    text,
    primary key (ID_SALDO)
-);
-
-/*==============================================================*/
-/* Table: SE_EJECUTA                                            */
-/*==============================================================*/
-create table SE_EJECUTA
-(
-   ID_TIPO_OBRA         int not null,
-   ID_OBRA              int not null,
-   ID_DEPARTAMENTO      int not null,
-   FECHA_SE_EJECUTA     datetime not null,
-   primary key (ID_TIPO_OBRA, ID_OBRA, ID_DEPARTAMENTO, FECHA_SE_EJECUTA)
 );
 
 /*==============================================================*/
@@ -437,20 +430,17 @@ alter table ES_RETIRADO add constraint FK_ES_RETIRADO2 foreign key (ID_RETIRO_CU
 alter table LOGS add constraint FK_SE_REGISTRAN foreign key (ID_USUARIO)
       references USUARIOS (ID_USUARIO) on delete restrict on update restrict;
 
+alter table OBRAS add constraint FK_ES_DEL foreign key (ID_TIPO_OBRA)
+      references TIPOS_OBRAS (ID_TIPO_OBRA) on delete restrict on update restrict;
+
+alter table OBRAS add constraint FK_MANEJAN foreign key (ID_DEPARTAMENTO)
+      references DEPARTAMENTOS (ID_DEPARTAMENTO) on delete restrict on update restrict;
+
 alter table ORDENCOMPRA add constraint FK_SE_ASOCIAN foreign key (ID_UNIDAD)
       references UNIDADES (ID_UNIDAD) on delete restrict on update restrict;
 
 alter table PROVEEDORES add constraint FK_RESIDE foreign key (ID_CIUDAD)
       references CIUDADES (ID_CIUDAD) on delete restrict on update restrict;
-
-alter table SE_EJECUTA add constraint FK_SE_EJECUTA foreign key (ID_TIPO_OBRA)
-      references TIPOS_OBRAS (ID_TIPO_OBRA) on delete restrict on update restrict;
-
-alter table SE_EJECUTA add constraint FK_SE_EJECUTA2 foreign key (ID_OBRA)
-      references OBRAS (ID_OBRA) on delete restrict on update restrict;
-
-alter table SE_EJECUTA add constraint FK_SE_EJECUTA3 foreign key (ID_DEPARTAMENTO)
-      references DEPARTAMENTOS (ID_DEPARTAMENTO) on delete restrict on update restrict;
 
 alter table SE_GUARDAN add constraint FK_SE_GUARDAN foreign key (ID_AREA, ID_BODEGA)
       references AREAS (ID_AREA, ID_BODEGA) on delete restrict on update restrict;
