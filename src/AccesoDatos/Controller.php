@@ -85,6 +85,28 @@ public function GetAllD($tabla)
 		return $arreglo;
 	}
 	
+public function GetAllTO($tabla)
+	{
+		$arreglo;
+		$string;		
+		$this->_Connection->Connect();
+		$query = "SELECT * FROM ". $tabla;
+		$result = mysql_query($query);
+		$nfilas = mysql_num_rows($result);
+		if($nfilas > 0)
+		{
+			for($i=0;$i<$nfilas;$i++)
+			{
+				$id= mysql_result($result,$i,0);
+				$valor01 = mysql_result($result,$i,1);
+				$valor02 = mysql_result($result,$i,2);
+				$arreglo[$id] = array('val1' => $valor01 ,'val2' => $valor02 );				
+			}
+		}
+		$this->_Connection->DisConnect();
+		return $arreglo;
+	}	
+	
 	public function Add($tabla , $parametro)
 	{
 			$this->_Connection->Connect();

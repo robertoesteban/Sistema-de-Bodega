@@ -13,6 +13,7 @@
 <li><a href="paso.php?c=2" title="Ingresar Material">Ingresar&nbsp;Material</a></li>
 <li><a href="paso.php?c=3" title="Ingresar Custodia">Ingresar&nbsp;Custodia</a></li>
 <li><a href="paso.php?c=4" title="A&ntilde;adir Obra">A&ntilde;adir&nbsp;Obra</a></li>
+<li><a href="paso.php?c=v" title="Tipos de Obras">Tipos de Obras</a></li>
 <li><a href="paso.php?c=e" title="Direcciones">Direcciones</a></li>
 <li><a href="paso.php?c=y" title="Departamentos">Departamentos</a></li>
 <li><a href="paso.php?c=w" title="Unidades">Unidades</a></li>

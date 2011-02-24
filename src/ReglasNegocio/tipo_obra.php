@@ -5,47 +5,74 @@ include("../AccesoDatos/Controller.php");
 class tipo_obra {
 	private $_id_tipo_obra;
 	private $_nombre_tipo_obra;
-	private $_tabla;
-	private $registro;
-	
+	private $_codigo_tipo_obra;
+	private $_tabla = "TIPOS_OBRAS";
+	private $_registro="ID_TIPO_OBRA";
+	private $_registro2="NOMBRE_TIPO_OBRA";
+	private $_Controller;
+
 	function __construct()
 	{
-		$this->_tabla = "TIPO_OBRAS";
-		$this->_registro = 'id_tipo_obra';
+		$this->_Controller=new Controller();
 	}
 	
-	function Getid_tipo_obra()	{return $this->_id_tipo_obra;}
 	
+	function Getid_tipo_obra()	{return $this->_id_tipo_obra;}
 	function Getnombre_tipo_obra()	{return $this->_nombre_tipo_obra;}
+	function Gecodigo_tipo_obra()	{return $this->_codigo_tipo_obra;}
 	
 	function Setid_tipo_obra($id_tipo_obra) {$this->_id_tipo_obra= $id_tipo_obra;}
-	
 	function Setnombre_tipo_obra($nombre_tipo_obra) {$this->_nombre_tipo_obra= $nombre_tipo_obra;}
+	function Setcodigo_tipo_obra($codigo_tipo_obra) {$this->_codigo_tipo_obra= $codigo_tipo_obra;}
 	
-	public function Add($nombre_tipo_obra)
+	public function Select($id_tipo_obra)
+	{
+		
+		if(isset($id_tipo_obra) && $id_tipo_obra != "")
+		{
+			$sql="$id_tipo_obra";
+			$arr=$this->_Controller->Select($this->_tabla,$this->_registro, $sql);
+			return $arr; 
+		}
+	}
+	
+	public function Select2($nombre_tipo_obra)
 	{
 		if(isset($nombre_tipo_obra) && $nombre_tipo_obra != "")
 		{
-			$Controller= new Controller();
-			$sql=" '$nombre_tipo_obra' ";
-			$Controller->Add($_tabla, $sql);
+			$sql="'$nombre_tipo_obra'";
+			$arr=$this->_Controller->Select($this->_tabla,$this->_registro2, $sql);
+			$resultado = mysql_result($arr, 0);
+			return $resultado; 
 		}
-		
+	}	
+	
+	
+	public function Add($codigo_tipo_obra,$nombre_tipo_obra)
+	{
+		$resultado;
+		if(isset($nombre_tipo_obra) && $nombre_tipo_obra != "" && isset($codigo_tipo_obra) && $codigo_tipo_obra != "")
+		{
+			$sql="0, '$codigo_tipo_obra' , '$nombre_tipo_obra' ";
+			$resultado =$this->_Controller->Add($this->_tabla, $sql);
+		}
+		return $resultado;
 	}
 	
-	public function Delete( $id_tipo_obra )
+	
+	public function GetAll()
 	{
-		$Controller = new Controller();
-		$Controller->Del($_tabla, $_registro, $id_tipo_obra );
-	}
-		
-/*	public function Update($rut_proveedor,$id_ciudad,$nombre_proveedor,$direccion_proveedor,$contacto_proveedor,$fono_proveedor )
+		return $this->_Controller->GetAllTO($this->_tabla);
+	}	
+	
+	public function Update($id_tipo_obra,$codigo_tipo_obra,$nombre_tipo_obra)
 	{
-		$Controller = new Controller();
-		$parametro=array("rut"=>$rut_proveedor , "id_ciudad"=>$id_ciudad , "nombre_proveedor"=>$nombre_proveedor , "direccion_proveedor"=>$direccion_proveedor , "contacto_proveedor"=>$contacto_proveedor , "fono_proveedor"=>$fono_proveedor);
-		$Controller->Update($_tabla, $_registro, $parametro);
+		$sql=array("ID_TIPO_OBRA"=>"$id_tipo_obra","CODIGO_TIPO_OBRA" => "'$codigo_tipo_obra'","NOMBRE_TIPO_OBRA"=>"'$nombre_tipo_obra'");
+		return $this->_Controller->Update($this->_tabla,$this->_registro,$sql);
+		//return 0;
 	}
-*/
+	
+	
 }
 	
 ?>

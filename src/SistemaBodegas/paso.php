@@ -6,7 +6,7 @@ $$errorusuario = $_GET[errorusuario];
 define("PATHDRASTICTOOLS", "");
 include (PATHDRASTICTOOLS . "DrasticTools/Examplemysqlconfig.php");
 include (PATHDRASTICTOOLS . "DrasticTools/drasticSrcMySQL.class.php");
-$src = new drasticSrcMySQL("localhost", "root", "galadriel", "BodegaMunicipal", "TIPOS_OBRAS");?>
+$src = new drasticSrcMySQL("localhost", "root", "mesana", "BodegaMunicipal", "USUARIOS");?>
 <html>
 <head>
 
@@ -87,6 +87,8 @@ $src = new drasticSrcMySQL("localhost", "root", "galadriel", "BodegaMunicipal", 
 			include 'Departamento.php';}
 		if($c=="w"){
 			include 'Unidad.php';}
+		if($c=="v"){
+			include 'Tipo_Obra.php';}
 		if($c=="z"){
 			include 'Ciudad.php';}
 		if($c=="x"){
