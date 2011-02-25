@@ -11,6 +11,13 @@ class Controller
 		$this->_Connection = new Connection();
 	}
 
+	//metodo que ejecuta una consulta sql enviada por parametro
+	public function ejecute($sql){
+		$this->_Connection->Connect();
+		$acction=mysql_query($sql);
+		$this->_Connection->DisConnect();
+		return $acction;
+	}
 	
 	public function Select($tabla,$registro,$parametro){
 		$this->_Connection->Connect();
