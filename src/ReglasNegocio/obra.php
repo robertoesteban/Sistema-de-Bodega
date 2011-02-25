@@ -1,73 +1,121 @@
 <?php
-
 include("../AccesoDatos/Controller.php");
+//include("../AccesoDatos/ControllerDepartamento.php");
 
-class obra {
-	private $_rut_proveedor;
-	private $_id_ciudad;
-	private $_nombre_proveedor;
-	private $_direccion_proveedor;
-	private $_contacto_proveedor;
-	private $_fono_proveedor;
-	private $_tabla;
-	private $registro;
-	
+class obra{
+	private $_id_obra;
+	private $_nombre_obra;
+	private $_encargado_obra;
+	private $_estado_obra;
+	private $_fecha_inicio_obra;
+	private $_fecha_termino_obra;
+	private $_id_departamento;
+	private $_id_tipo_obra;
+	private $_tabla = "OBRAS";
+	private $_registro="ID_OBRA";
+	private $_registro2="NOMBRE_OBRA";
+	private $_Controller;
+
 	function __construct()
+	{ 
+		$this->_Controller=new Controller();	
+	}
+
+	function Getid_obra()	{return $this->_id_obra;}
+	function Getnombre_obra()	{return $this->_nombre_obra;}
+	function Getencargado_obra()	{return $this->_encargado_obra;}
+	function Getestado_obra()	{return $this->_estado_obra;}
+	function Getfecha_inicio_obra()	{return $this->_fecha_inicio_obra;}
+	function Getfecha_termino_obra()	{return $this->_fecha_termino_obra;}
+	function Getid_departamento()	{return $this->_id_departamento;}
+	function Getid_tipo_obra()	{return $this->_id_tipo_obra;}
+	
+	function Setid_obra($id_obra) {$this->_id_obra= $id_obra;}
+	function Setnombre_obra($nombre_obra) {$this->_nombre_obra= $nombre_obra;}
+	function Setencargado_obra($encargado_obra) {$this->_encargado_obra= $encargado_obra;}
+	function Setestado_obra($estado_obra) {$this->_estado_obra= $estado_obra;}
+	function Setfecha_inicio_obra($fecha_inicio_obra) {$this->_fecha_inicio_obra= $fecha_inicio_obra;}
+	function Setfecha_termino_obra($fecha_termino_obra) {$this->_fecha_termino_obra= $fecha_termino_obra;}
+	function Setid_departamento($id_departamento) {$this->_id_departamento= $id_departamento;}
+	function Setid_tipo_obra($id_tipo_obra) {$this->_id_tipo_obra= $id_tipo_obra;}
+	
+		
+	public function Select($id_obra)
 	{
-		$this->_tabla = "PROVEEDORES";
-		$this->_id_ciudad=1;
-		$this->_registro = 'rut_proveedor';
+		
+		if(isset($id_obra) && $id_obra != "")
+		{
+			$Controller=new Controller();
+			$sql="$id_obra";
+			$arr=$Controller->Select($this->_tabla,$this->_registro, $sql);
+			return $arr; 
+		}
 	}
 	
-	function Getrut_proveedor()	{return $this->_rut_proveedor;}
-	
-	function Getid_ciudad()	{return $this->_id_ciudad;}
-	
-	function Getnombre_proveedor()	{return $this->_nombre_proveedor;}
-	
-	function Getdireccion_proveedor()	{return $this->_direccion_proveedor;}
-	
-	function Getcontacto_proveedor()	{return $this->_contacto_proveedor;}
-	
-	function Getfono_proveedor()	{return $this->_fono_proveedor;}
-		
-	function Setrut_proveedor($rut_proveedor) {$this->_rut_proveedor= $rut_proveedor;}
-	
-	function Setid_cuidad($id_ciudad) {$this->_id_cuidad= $id_ciudad;}
-	
-	function Setnombre_proveedor($nombre_proveedor) {$this->_nombre_proveedor= $nombre_proveedor;}
-	
-	function Setdireccion_proveedor($direccion_proveedor) {$this->_direccion_proveedor= $direccion_proveedor;}
-	
-	function Setcontacto_proveedor($contacto_proveedor) {$this->_contacto_proveedor= $contacto_proveedor;}
-	
-	function Setfono_proveedor($fono_proveedor) {$this->_fono_proveedor= $fono_proveedor;}
-	
-
-	public function Add($rut_proveedor,$id_ciudad,$nombre_proveedor,$direccion_proveedor,$contacto_proveedor,$fono_proveedor)
+	public function Select2($nombre_obra)
 	{
-		if(isset($rut_proveedor) && $rut_proveedor != "")
+		$resultado = 1;;
+		if(isset($nombre_obra) && $nombre_obra != "")
 		{
-			$Controller= new Controller();
-			$sql=" $rut_proveedor , $id_ciudad , '$nombre_proveedor' , '$direccion_proveedor' , '$contacto_proveedor' , '$fono_proveedor' ";
-			$Controller->Add($_tabla, $sql);
+			$Controller=new Controller();			
+			$sql="'$nombre_obra'";
+			$arr=$Controller->Select($this->_tabla,$this->_registro2, $sql);
+			$resultado = mysql_result($arr, 0);
+			return $resultado; 
+		}
+	}	
+	
+	
+	public function GetAll()
+	{
+		$Controller=new Controller();
+		return $Controller->GetAll($this->_tabla);
+	}	
+	
+	
+	
+	public function Add($id_tipo_obra,$id_departamento,$nombre_obra,$encargado_obra,$fecha_inicio_obra)
+	{
+		$resultado;
+		//echo $id_direccion;		
+		if(isset($nombre_obra) && $nombre_obra != "")
+		{
+			$Controller=new Controller();
+			$fecha_termino_obra="0000-00-00";
+			$sql="0,". $id_tipo_obra .",". $id_departamento. ", '".$nombre_obra. "' , '".$encargado_obra. "' , 0 , '".$fecha_inicio_obra. "' , '".$fecha_termino_obra. "'";
+			//echo $sql;
+			$resultado =$Controller->Add($this->_tabla, $sql);
+		}
+		return $resultado;
+	}
+	
+	
+	/*
+	
+	public function Del($id_unidad)
+	{
+		if(isset($id_unidad) && $id_unidad != "")
+		{
+			$Controller=new Controller();
+			$sql=" $id_unidad ";
+			return $Controller->Del($this->_tabla,$this->_registro, $sql);
+			
 		}
 		
 	}
 	
-	public function Delete( $rut_proveedor )
+	public function Update($id_unidad,$id_departamento,$nombre_unidad)
 	{
-		$Controller = new Controller();
-		$Controller->Del($_tabla, $_registro, $rut_proveedor );
-	}
+		$Controller=new Controller();
 		
-	public function Update($rut_proveedor,$id_ciudad,$nombre_proveedor,$direccion_proveedor,$contacto_proveedor,$fono_proveedor )
-	{
-		$Controller = new Controller();
-		$parametro=array("rut"=>$rut_proveedor , "id_ciudad"=>$id_ciudad , "nombre_proveedor"=>$nombre_proveedor , "direccion_proveedor"=>$direccion_proveedor , "contacto_proveedor"=>$contacto_proveedor , "fono_proveedor"=>$fono_proveedor);
-		$Controller->Update($_tabla, $_registro, $parametro);
+		//echo "id_depto= ". $id_departamento."<br>";
+		//echo "id_direccion= ". $id_direccion."<br>";
+		//echo "nombre_depto= ". $nombre_departamento."<br>";
+		$sql=array("ID_UNIDAD"=>"$id_unidad","ID_DEPARTAMENTO" => "$id_departamento","NOMBRE_UNIDAD"=>"'$nombre_unidad'");
+		return $Controller->Update($this->_tabla,$this->_registro,$sql);
+		//return 0;
 	}
 
+	*/
 }
-	
 ?>
