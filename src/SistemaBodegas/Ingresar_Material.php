@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php session_start(); 
+include ("../AccesoDatos/Controller.php");
+include ("../ReglasNegocio/contiene.php");
+$contiene = new contiene();
+$folio=(($contiene->GetMayor())+1);
+?>
 <body>
 <form action="BuscarOCBD.php" method="post">
 <p class="tituloHead">Ingresar Material Bodega</p>
@@ -12,7 +17,9 @@
 <td width="98" align="left">Numero O.C.</td>
 <td width="158"><input name="NumOC" type="text" id="NumOC" value="<?php echo $_SESSION["numoc"]; ?>" /></td>
 <td width="105"><input type="submit" name="submit" value="Buscar" /></td>
-<td colspan="3"><a href="Buscar.php" target="_blank">Buscar por Proveedor</a> </td>
+<td ><a href="Buscar.php" target="_blank">Buscar por Proveedor</a> </td>
+<td align="right">Folio:</td>
+<td><label name="folio">INM-<?php echo $folio;?></label></td>
 <tr>
     <td colspan="6" align="left"><p>&nbsp;</p>
       <p class="respDetalleAD">Proveedores</p>
@@ -149,7 +156,8 @@ $_SESSION["apellidos_usuario"]=$ap;
 $_SESSION["tipo"]=$tipo; 
 $_SESSION["size"]=count($arr);
 $_SESSION["lista1"]=$arr;
-$_SESSION["oc"]=$num;?>
+$_SESSION["oc"]=$num;
+$_SESSION["folio"]=$folio;?>
 </table>
 </form>
 </body>
