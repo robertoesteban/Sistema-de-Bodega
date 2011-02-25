@@ -39,6 +39,14 @@ class contiene {
 	public function Setcantidadrecibida_contiene($cantidadrecibida_contiene){$this->_cantidadrecibida_contiene=$cantidadrecibida_contiene;}
 	public function Setvalor_contiene($valor_contiene){$this->_valor_contiene=$valor_contiene;}
 	
+	
+	public function GetMayor(){
+		$sql="select max(FOLIO_CONTIENE) as mayor from ".$this->_tabla;
+		$result=$this->Controller->ejecute($sql);
+		$row=mysql_fetch_array($result);
+		return $row["mayor"];
+	}
+	
 	public function Select2($id_material){
 		if(isset($id_material) && $id_material != "")
 		{
