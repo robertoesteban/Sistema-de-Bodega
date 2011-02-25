@@ -1,6 +1,9 @@
 <?php 
 include '../ReglasNegocio/bodega.php';
 include '../ReglasNegocio/unidad.php';
+include ("../ReglasNegocio/asociado.php");
+$asociado = new asociado();
+$folio=(($asociado->GetMayor())+1);
 
 	$unidad=new unidad();
 	$bodega=new bodega();
@@ -15,7 +18,10 @@ include '../ReglasNegocio/unidad.php';
     <hr></td>
 </tr>
 <tr>
-
+<td>Folio:</td>
+<td colspan="5"><label>INC-<?php echo $folio;?></label></td>
+</tr>
+<tr>
 <td width="87" align="left">Nombre Funcionario</td>
 <td colspan="5"><input name="NombreF" type="text" id="NombreF" size="86" value="<?php echo $_SESSION["ingresadopor"]; ?>" /></td>
 <tr>
@@ -100,7 +106,7 @@ include '../ReglasNegocio/unidad.php';
   </tr>
 	<tr>
 		<td>Periodo</td>
-	  <td width="93"><input type="text" name="periodo" size="15"/></td>
+	  <td width="93"><input type="text" name="periodo" size="15" onkeypress="if ((event.keyCode!=8 && event.keyCode < 45) || event.keyCode > 57) event.returnValue = false;"/></td>
 		<td width="70">Estado</td>
 		<td colspan="3"><label>
 	  <select name="estado">
@@ -136,14 +142,15 @@ include '../ReglasNegocio/unidad.php';
 </tr>
 </table>
 <?php $au=$_SESSION["autentificado"];
-			$name=$_SESSION["nombre_usuario"];
-			$ap=$_SESSION["apellidos_usuario"];
-			$tipo=$_SESSION["tipo"];
-			session_unset();
-			$_SESSION["autentificado"]=$au;
-			$_SESSION["nombre_usuario"]=$name;
-			$_SESSION["apellidos_usuario"]=$ap;
-			$_SESSION["tipo"]=$tipo;
-			$_SESSION["custodia"]=$arr;?>
+$name=$_SESSION["nombre_usuario"];
+$ap=$_SESSION["apellidos_usuario"];
+$tipo=$_SESSION["tipo"];
+session_unset();
+$_SESSION["autentificado"]=$au;
+$_SESSION["nombre_usuario"]=$name;
+$_SESSION["apellidos_usuario"]=$ap;
+$_SESSION["tipo"]=$tipo;
+$_SESSION["custodia"]=$arr;
+$_SESSION["folio_custodia"]=$folio;?>
 </form>
 </body>

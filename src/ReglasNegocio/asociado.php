@@ -1,5 +1,4 @@
 <?php
-include("../AccesoDatos/Controller.php");
 
 class asociado{
 
@@ -7,14 +6,14 @@ class asociado{
 	public $id_material;
 	public $id_area;
 	public $id_unidad;
+	public $folio;
 	public $periodo_asociado;
 	public $estado_asociado;
 	public $estado_retiro_asociado;
 	private $_tabla = "ASOCIADO";
 	private $registro="ID_CUSTODIA";
-	private $Controller;
 
-	function __construct(){ $this->Controller= new Controller();}
+	function __construct(){}
 	
 	function Getid_custodia(){return $this->id_custodia;}
 	function Getid_material(){return $this->id_material;}
@@ -32,20 +31,43 @@ class asociado{
 	function Setestado_asociado($estado_asociado){ $this->estado_asociado=$estado_asociado; }
 	function Setestado_retiro_asociado($estado_retiro_asociado){ $this->estado_retiro_asociado=$estado_retiro_asociado; }
 	
-	//FALTA MODIFICAR
+public function GetMayor(){
+		$Controller=new Controller();
+		$sql="select max(FOLIO_ASOCIADO) as mayor from ".$this->_tabla;
+		$result=$Controller->ejecute($sql);
+		$row=mysql_fetch_array($result);
+		return $row["mayor"];
+	}
+	
+	public function Select2($id_custodia,$id_material,$id_area,$id_bodega,$id_unidad){
+		$Controller=new Controller();
+		$arr1=array("ID_CUSTODIA","ID_MATERIAL","ID_AREA","ID_BODEGA","ID_UNIDAD");
+		$arr2=array($id_custodia,$id_material,$id_area,$id_bodega,$id_unidad);
+		$result = $Controller->Select2($this->_tabla,$arr1,$arr2);
+		return $result;
+	}
+	
 	public function Select($id_custodia){
 	if(isset($id_custodia) && $id_custodia != "")
 		{
+			$Controller=new Controller();
 			$sql="'$id_custodia'";
-			$arr=$this->Controller->Select($this->_tabla,$this->registro, $sql);
+			$arr=$Controller->Select($this->_tabla,$this->registro, $sql);
 			return $arr; 
 		}
 	}
+	
+	public function GetAll(){
+		$Controller=new Controller();
+		$result=$Controller->GetAll($this->_tabla);
+		return $result;
+	}
 	//LISTO
-	public function Add($id_custodia,$id_material,$id_area,$id_unidad,$periodo_asociado,$estado_asociado,$estado_retiro_asociado)
+	public function Add($id_custodia,$id_material,$id_area,$id_bodega,$id_unidad,$folio,$periodo_asociado,$estado_asociado,$estado_retiro_asociado)
 	{
-			$sql=" $id_custodia ,$id_material, $id_area, $id_unidad , $periodo_asociado , $estado_asociado, $estado_retiro_asociado ";
-			$this->Controller->Add($this->_tabla, $sql);	
+		$Controller=new Controller();
+		$sql=" $id_custodia ,$id_material, $id_area,$id_bodega, $id_unidad,$folio , $periodo_asociado , '$estado_asociado', $estado_retiro_asociado ";
+		$Controller->Add($this->_tabla, $sql);	
 	}
 	
 	//FALTA MODIFICA HACER CONTROLADOR PARA ASOCIADO
@@ -53,16 +75,18 @@ class asociado{
 	{
 		if(isset($id_custodia) && $id_custodia != "")
 		{
+			$Controller=new Controller();
 			$sql="$id_custodia";
-			$this->Controller->Del($this->_tabla,$this->registro, $sql);
+			$Controller->Del($this->_tabla,$this->registro, $sql);
 			
 		}
 		
 	}
 	//FALTA MODIFICAR
 	public function Update($id_custodia,$ingresado_por,$fecha_ingreso,$tipo_custodia,$comentarios,$reserva){
+		$Controller=new Controller();
 		$sql=array("ID_CUSTODIA"=>"$id_custodia","INGRESADOPOR_CUSTODIA"=>"'$ingresado_por'","FECHAINGRESO_CUSTODIA"=>"'$fecha_ingreso'","COMENTARIOS_CUSTODIA"=>"'$comentarios'","RESERVA_CUSTODIA"=>"$reserva");
-		$this->Controller->Update($this->_tabla,$this->registro,$sql);
+		$Controller->Update($this->_tabla,$this->registro,$sql);
 		
 	}
 

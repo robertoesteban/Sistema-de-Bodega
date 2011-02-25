@@ -1,6 +1,5 @@
 <?php 
 session_start();
-
 if($_POST["submit"]=="agregar"){
 
 $ingresado_por=$_POST['NombreF'];
@@ -30,12 +29,12 @@ include ("../ReglasNegocio/unidad.php");
 include ("../ReglasNegocio/material.php");
 $ingresado_por=$_POST['NombreF'];
 $procedencia=$_POST['unidadp'];
-$nombrebodega=$_POST['Bodegas'];
+$id_bodega=$_POST['Bodegas'];
 $observacion=$_POST['ObservacionC'];
 $tipo=$_POST['Tipos'];
 $custodia = new custodia();
 $fecha= time();
-$fechaactual=date("Y-m-d h:m:s",$fecha);
+$fechaactual=date("Y-m-d",$fecha);
 $reservado=0;
 //checkbox
 if($_POST['reservado']=="on"){
@@ -49,29 +48,24 @@ $custodia->Add($ingresado_por,$fechaactual,$tipo,$observacion,$reservado);
 $selectcustodia=$custodia->Select2($ingresado_por,$fechaactual,$tipo,$observacion,$reservado);
 $rowcustodia=mysql_fetch_array($selectcustodia);
 $id_custodia=$rowcustodia["ID_CUSTODIA"];
-//obtener id de bodega
-$bodega=new bodega();
-$selectbodega=$bodega->Select2($nombrebodega);
-$rowbodega=mysql_fetch_array($selectbodega);
-$id_bodega=$rowbodega["ID_BODEGA"];
-//obtener id de la unidad
-$unidad=new unidad();
-$selectunidad=$unidad->Select2($procedencia);
-$rowunidad=mysql_fetch_array($selectunidad);
-$id_unidad=$rowunidad["ID_UNIDAD"];
+
 //obtener id de area dependiendo del estado del material
 $asociado=new asociado();
 $material=new material();
 for ($i=0;$i<count($arr);$i++){
+//asignar area
 	$area="resago";
-	if($area[$i][3]=="usado"||$area[$i][3]=="nuevo"){ $area=""; }
-	$id_area;
+	if($arr[$i][3]=="usado"||$arr[$i][3]=="nuevo"){ $area="usado"; }
+	
+	$id_area=2;
+//	agregar a material si es que no esta
 	$selectmaterial=$material->Select($arr[$i][0]);
 	$rowmaterial=mysql_fetch_array($selectmaterial);
 	if($rowmaterial==null){
 		$material->Add($arr[$i][0],$arr[$i][1],0,"un");
 	}
-	$asociado->Add($id_custodia,$arr[$i][0],$id_area,$id_unidad,$arr[$i][2],$arr[$i][3],0);
+//agregar a asociado
+	$asociado->Add($id_custodia,$arr[$i][0],$id_area,$id_bodega,$procedencia,$_SESSION["folio_custodia"],$arr[$i][2],$arr[$i][3],0);
 }
 header ("Location: paso.php?c=3");
 
