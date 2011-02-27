@@ -1,10 +1,15 @@
 <?php
+include("../AccesoDatos/Controller.php");
 include ("../ReglasNegocio/obra.php");
 $nombre_obra=$_POST["nombre_obra"];
 $tipo_obra=$_POST["tipo_obra"];
 $departamento=$_POST["departamento"];
 $encargado_obra=$_POST["encargado_obra"];
-$fecha_inicio_obra=$_POST["fecha_inicio_obra"];
+//$fecha_inicio_obra=$_POST["fecha_inicio_obra"];
+
+$fecha= time();
+		$fecha_inicio_obra=date("Y-m-d",$fecha);
+
 //$observacion_obra=$_POST["observacion_obra"];
 $hd_variable=$_POST["hd_variable"];
 $id_variable=$_POST["id_variable"];

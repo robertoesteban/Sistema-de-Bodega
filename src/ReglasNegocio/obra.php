@@ -1,5 +1,5 @@
 <?php
-include("../AccesoDatos/Controller.php");
+//include("../AccesoDatos/Controller.php");
 //include("../AccesoDatos/ControllerDepartamento.php");
 
 class obra{
@@ -69,7 +69,7 @@ class obra{
 	public function GetAll()
 	{
 		$Controller=new Controller();
-		return $Controller->GetAll($this->_tabla);
+		return $Controller->GetAllObras();
 	}	
 	
 	

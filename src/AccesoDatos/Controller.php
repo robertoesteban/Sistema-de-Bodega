@@ -71,6 +71,34 @@ public function SelectPersonalizado($tabla,$registro,$parametro){
 		return $arreglo;
 	}
 	
+	public function GetAllObras()
+	{
+		$arreglo;
+		$string;		
+		$this->_Connection->Connect();
+		$query = "SELECT OBRAS.ID_OBRA, OBRAS.NOMBRE_OBRA, OBRAS.ENCARGADO_OBRA, OBRAS.FECHA_INICIO_OBRA, DEPARTAMENTOS.NOMBRE_DEPARTAMENTO, TIPOS_OBRAS.CODIGO_TIPO_OBRA, TIPOS_OBRAS.NOMBRE_TIPO_OBRA FROM OBRAS INNER JOIN TIPOS_OBRAS ON OBRAS.ID_TIPO_OBRA = TIPOS_OBRAS.ID_TIPO_OBRA INNER JOIN DEPARTAMENTOS ON DEPARTAMENTOS.ID_DEPARTAMENTO = OBRAS.ID_DEPARTAMENTO";
+		$result = mysql_query($query);
+		$nfilas = mysql_num_rows($result);
+		if($nfilas > 0)
+		{
+			for($i=0;$i<$nfilas;$i++)
+			{
+				$id= mysql_result($result,$i,0);
+				$nombre = mysql_result($result,$i,1);
+				$encargado = mysql_result($result,$i,2);
+				$fecha_inicio = mysql_result($result,$i,3);
+				$nombre_departamento = mysql_result($result,$i,4);
+				$codigo_tipo_obra = mysql_result($result,$i,5);
+				$nombre_tipo_obra = mysql_result($result,$i,6);
+				$tipo_obra = "$codigo_tipo_obra ($nombre_tipo_obra)";
+				$arreglo[$id] = array('val1' => $nombre, 'val2' => $encargado, 'val3' => $fecha_inicio, 'val4' => $nombre_departamento, 'val5' => $tipo_obra );				
+			}
+		}
+		$this->_Connection->DisConnect();
+		return $arreglo;
+	}	
+	
+	
 public function GetAllD($tabla)
 	{
 		$arreglo;
@@ -79,7 +107,8 @@ public function GetAllD($tabla)
 		$query = "SELECT * FROM ". $tabla;
 		$result = mysql_query($query);
 		$nfilas = mysql_num_rows($result);
-		if($nfilas > 0)
+		$ncolumns = mysql_num_fields($result);
+				if($nfilas > 0)
 		{
 			for($i=0;$i<$nfilas;$i++)
 			{
@@ -88,6 +117,8 @@ public function GetAllD($tabla)
 				$arreglo[$id] = array('val1' => $valor );				
 			}
 		}
+		
+		
 		$this->_Connection->DisConnect();
 		return $arreglo;
 	}

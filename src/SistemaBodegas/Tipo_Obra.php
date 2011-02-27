@@ -35,7 +35,13 @@ function verifica()
 	document.form.submit();
 }
 
-
+function verifica2()
+  {
+   document.form.codigo_tipo_obra.value="";
+   document.form.nombre_tipo_obra.value="";
+   document.form.submit();
+  }
+  
 function VerificaUpdate()
 {
 	if (document.form.codigo_tipo_obra.value.length==0)

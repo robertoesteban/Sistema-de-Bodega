@@ -2,9 +2,11 @@
 
 include("../ReglasNegocio/departamento.php");
 include("../ReglasNegocio/tipo_obra.php");
+include("../ReglasNegocio/obra.php");
 $tipo_obra = new tipo_obra();
 
 $departamento = new departamento();
+$obra = new obra();
 $boton = "verifica()";
 
 $editar = $_GET["editar"];
@@ -29,6 +31,12 @@ function verifica()
 	document.form.submit();
 }
 
+function verifica2()
+{
+ 
+   document.form.submit();
+}
+
 function VerificaUpdate()
 {
 	if (document.form.nombre_obra.value.length==0)
@@ -50,7 +58,14 @@ function VerificaUpdate()
 function pulsarobra(e) {
     tecla=(document.all) ? e.keyCode : e.which;
     if (tecla==13) return document.form.tipo_obra.focus(); ;
+}
+
+function pulsartipoobra(e) {
+    tecla=(document.all) ? e.keyCode : e.which;
+    if (tecla==13) return document.form.departamento.focus(); ;
 } 
+
+
 </script>
 <body onload="document.form.nombre_obra.focus();">
 <p class="tituloHead">Obras</p>
@@ -73,7 +88,7 @@ function pulsarobra(e) {
 		$fecha_inicio_obra=date("d-m-Y",$fecha);
 	?>
 	
-		<input name="fecha_inicio_obra" type="text" DISABLED value="<?php echo $fecha_inicio_obra; ?>" />
+		<label>Fecha de Creacion: &nbsp;&nbsp; <?php echo $fecha_inicio_obra; ?></label>
 	</td>
 </tr>
 <tr  >
@@ -81,7 +96,7 @@ function pulsarobra(e) {
 		Tipo de Obra
 	</td>
 	<td width="230">
-		<select name="tipo_obra">
+		<select name="tipo_obra" onkeypress="return pulsartipoobra(event)">
 		<option value=0> Seleccionar </option>
 		<?php
 		$AllTipo_Obra = $tipo_obra->GetAll();
@@ -165,4 +180,28 @@ function pulsarobra(e) {
 <input type="hidden" name="hd_variable" value="<?php echo $editar; ?>"/>
 <input type="hidden" name="id_variable" value="<?php echo $editar; ?>"/>
 </form>
+<br>
+<?php
+$AllObra = $obra->GetAll();
+
+$claves= array_keys($AllObra);
+$cant = count($AllObra);
+if($cant > 0)
+{ 
+	echo "<table border=1   align='center' class='filaPar'>";
+	echo "<tr class='titulosTabla'><td>Nombre</td><td>Encargado</td><td>Fecha de Creacion</td><td>Departamento Ejecutor</td><td>Tipo de Obra</td><td>&nbsp;</td></tr>";
+	for ($i=0;$i<$cant;$i++)
+	{
+		echo "<tr align='center'>";
+		foreach ($AllObra["$claves[$i]"] as $valor)
+		{
+			echo ("<td>$valor </td>");     
+		}
+		echo "<td width='10%' ><a href='paso.php?c=4&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
+		//echo "<td><a href='paso.php?c=4&eliminar=".$claves[$i]."'><img border=0 src='imagenes/delete.jpg' width='20' height='20'></a></td>";
+		echo "</tr>";
+	}
+	echo "</table>";			
+}	
+		?>
 </body>
