@@ -45,10 +45,14 @@ function VerificaUpdate()
 	
 }
 
+function pulsardireccion(e) {
+    tecla=(document.all) ? e.keyCode : e.which;
+    if (tecla==13) return document.form.direccion.focus();
+} 
 </script>
 
 
-<body>
+<body onload="document.form.direccion.focus();">
 <p class="tituloHead">Direccion</p>
 <form method="post" action="AgregarDireccionBD.php" name="form">
 <table width="400" align="center" class="filaPar">
@@ -60,7 +64,7 @@ function VerificaUpdate()
 
 <tr>
 <td>Nombre</td>
-<td colspan="5"><input name="direccion" type="text" size="50" value="<?php echo $nombre_direccion; ?>" /></td>
+<td colspan="5"><input name="direccion" type="text" size="50" value="<?php echo $nombre_direccion; ?>" onkeypress="return pulsardireccion(event)" /></td>
 </tr>
 <tr>
 <td colspan="6" align="center"><input type="button" name="button1" value="<?php if(!empty($editar)) echo 'Actualizar'; else echo 'Ingresar'?>" onclick="<?php echo $boton; ?>"/>

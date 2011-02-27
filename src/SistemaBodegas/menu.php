@@ -23,7 +23,8 @@
 <td style="padding-right:0px" title ="MANTENCION">
 <a onmouseover='xpe("wp40to");xpshow("wp40t",0,this);xpsmover(this);' onmouseout='xpsmout(this);' onmousedown='xpe("wp40tc");'><img id="xpi_wp40t" src="menu-files/btwp40t_0.png" name="vbwp40t" width="160" height="37" border="0" alt="MANTENCION" /></a><div>
 <ul id="vbUL_wp40t" class="vbULwp36t">
-<li><a href="paso.php?c=4" title="A&ntilde;adir Obra">A&ntilde;adir&nbsp;Obra</a></li>
+<li><a href="paso.php?c=4" title="Obras">Obras</a></li>
+<li><a href="paso.php?c=v" title="Tipo de Obras">Tipo de Obras</a></li>
 <li><a href="paso.php?c=e" title="Direcciones">Direcciones</a></li>
 <li><a href="paso.php?c=y" title="Departamentos">Departamentos</a></li>
 <li><a href="paso.php?c=w" title="Unidades">Unidades</a></li>

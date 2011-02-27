@@ -31,13 +31,16 @@ class direccion {
 	public function Select2($nombre_direccion)
 	{
 		$Controller=new Controller();
+		$resultado="";
 		if(isset($nombre_direccion) && $nombre_direccion != "")
 		{
 			$Controller= new Controller();
 			$sql="'$nombre_direccion'";
 			$arr=$Controller->Select($this->_tabla,$this->_registro2, $sql);
-			return $arr; 
+			$resultado = mysql_result($arr, 0);
+			return $resultado; 
 		}
+		return $resultado;
 	}	
 	
 	

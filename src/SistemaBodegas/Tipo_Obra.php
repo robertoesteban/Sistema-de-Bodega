@@ -19,40 +19,35 @@ if(!empty($editar))
 
 function verifica()
 {
-	if (document.form.id_tipo_obra.value.length==0)
+	if (document.form.codigo_tipo_obra.value.length==0)
    {
 		alert("Debe ingresar un Codigo");
-		document.form.id_tipo_obra.focus();
+		document.form.codigo_tipo_obra.focus();
       return 0;
 	}
-	if (document.form.tipo_obra.value.length==0)
+	if (document.form.nombre_tipo_obra.value.length==0)
    {
 		alert("Debe ingresar un Nombre");
-		document.form.tipo_obra.focus();
+		document.form.nombre_tipo_obra.focus();
       return 0;
 	}
    document.form.hd_variable.value="ingresar";
 	document.form.submit();
 }
 
-function verifica2()
-{
-   document.form.tipo_obra.value = "";
-   document.form.submit();
-}
 
 function VerificaUpdate()
 {
-	if (document.form.id_tipo_obra.value.length==0)
+	if (document.form.codigo_tipo_obra.value.length==0)
    {
 		alert("Debe ingresar un Codigo");
-		document.form.id_tipo_obra.focus();
+		document.form.codigo_tipo_obra.focus();
       return 0;
 	}
-	if (document.form.tipo_obra.value.length==0)
+	if (document.form.nombre_tipo_obra.value.length==0)
    {
 		alert("Debe ingresar un Nombre");
-		document.form.tipo_obra.focus();
+		document.form.nombre_tipo_obra.focus();
       return 0;
 	}
 	document.form.hd_variable.value="editar";
@@ -62,7 +57,7 @@ function VerificaUpdate()
 
 function pulsartipo(e) {
     tecla=(document.all) ? e.keyCode : e.which;
-    if (tecla==13) return document.form.tipo_obra.focus();
+    if (tecla==13) return document.form.nombre_tipo_obra.focus();
 } 
 
 function pulsar(e) {
@@ -74,7 +69,7 @@ function pulsar(e) {
 </script>
 
 
-<body onload="document.form.id_tipo_obra.focus();">
+<body onload="document.form.codigo_tipo_obra.focus();">
 <p class="tituloHead">Tipos de Obras</p>
 <form method="post" action="AgregarTipoObraBD.php" name="form">
 <table width="400" align="center" class="filaPar">
@@ -86,12 +81,12 @@ function pulsar(e) {
 
 <tr>
 <td>Codigo</td>
-<td colspan="5"><input name="id_tipo_obra" type="text" size="20" value="<?php echo $codigo_tipo_obra; ?>" onkeypress="return pulsartipo(event)"  /></td>
+<td colspan="5"><input name="codigo_tipo_obra" type="text" size="20" value="<?php echo $codigo_tipo_obra; ?>" onkeypress="return pulsartipo(event)"  /></td>
 </tr>
 
 <tr>
 <td>Nombre</td>
-<td colspan="5"><input name="tipo_obra" type="text" size="50" value="<?php echo $nombre_tipo_obra; ?>" onkeypress="return pulsar(event)"/></td>
+<td colspan="5"><input name="nombre_tipo_obra" type="text" size="50" value="<?php echo $nombre_tipo_obra; ?>" onkeypress="return pulsar(event)"/></td>
 </tr>
 <tr>
 <td colspan="6" align="center"><input type="button" name="button1" value="<?php if(!empty($editar)) echo 'Actualizar'; else echo 'Ingresar'?>" onclick="<?php echo $boton; ?>"/>

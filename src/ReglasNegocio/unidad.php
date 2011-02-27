@@ -40,13 +40,16 @@ class unidad{
 	
 	public function Select2($nombre_unidad)
 	{
+		$resultado="";
 		if(isset($nombre_unidad) && $nombre_unidad != "")
 		{
 			$Controller=new Controller();			
 			$sql="'$nombre_unidad'";
 			$arr=$Controller->Select($this->_tabla,$this->_registro2, $sql);
-			return $arr; 
+			$resultado = mysql_result($arr, 0);
+			return $resultado; 
 		}
+		return $resultado;
 	}	
 	
 	

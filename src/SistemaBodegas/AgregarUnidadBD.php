@@ -1,10 +1,8 @@
 <?php
+include("../AccesoDatos/Controller.php");
 include ("../ReglasNegocio/unidad.php");
 $unidad=$_POST["unidad"];
 $id_departamento=$_POST["departamento"];
-
-
-//echo $departamento;
 $hd_variable=$_POST["hd_variable"];
 $id_variable=$_POST["id_variable"];
 //echo $hd_variable."<br>";
@@ -19,7 +17,7 @@ elseif($hd_variable == "ingresar" )
 {
 	$value =	$address->Select2($unidad);
 	//echo $direccion;
-	if ($value <> 0)
+	if (empty($value))
 		$value = $address->Add($id_departamento,$unidad);
 	header ("Location: paso.php?c=w");
 	//echo "insercion";

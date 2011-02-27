@@ -12,7 +12,7 @@ if(empty($direccion))
 elseif(!empty($direccion) && empty($id_variable))
 {
 	$value =	$address->Select2($direccion);
-	if ($value  == 0 )
+	if (empty($value))
 		$value = $address->Add($direccion);
 	header ("Location: paso.php?c=e");
 }
