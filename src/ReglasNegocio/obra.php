@@ -74,7 +74,7 @@ class obra{
 	
 	
 	
-	public function Add($id_tipo_obra,$id_departamento,$nombre_obra,$encargado_obra,$fecha_inicio_obra)
+	public function Add($id_tipo_obra,$id_departamento,$nombre_obra,$encargado_obra,$fecha_inicio_obra,$comentario_obra="--")
 	{
 		$resultado;
 		//echo $id_direccion;		
@@ -82,7 +82,7 @@ class obra{
 		{
 			$Controller=new Controller();
 			$fecha_termino_obra="0000-00-00";
-			$sql="0,". $id_tipo_obra .",". $id_departamento. ", '".$nombre_obra. "' , '".$encargado_obra. "' , 0 , '".$fecha_inicio_obra. "' , '".$fecha_termino_obra. "'";
+			$sql="0,". $id_tipo_obra .",". $id_departamento. ", '".$nombre_obra. "' , '".$encargado_obra. "' , 0 , '".$fecha_inicio_obra. "' , '".$fecha_termino_obra. "' , '".$comentario_obra. "'";
 			//echo $sql;
 			$resultado =$Controller->Add($this->_tabla, $sql);
 		}

@@ -4,6 +4,7 @@ include ("../ReglasNegocio/obra.php");
 $nombre_obra=$_POST["nombre_obra"];
 $tipo_obra=$_POST["tipo_obra"];
 $departamento=$_POST["departamento"];
+$comentario_obra=$_POST["comentario_obra"];
 $encargado_obra=$_POST["encargado_obra"];
 //$fecha_inicio_obra=$_POST["fecha_inicio_obra"];
 
@@ -24,7 +25,7 @@ elseif($hd_variable == "ingresar" )
 	$value =	$address->Select2($nombre_obra);
 	//echo $value;
 	if (empty($value)){
-		$value = $address->Add($tipo_obra,$departamento,$nombre_obra,$encargado_obra,$fecha_inicio_obra);
+		$value = $address->Add($tipo_obra,$departamento,$nombre_obra,$encargado_obra,$fecha_inicio_obra,$comentario_obra);
 	header ("Location: paso.php?c=4");
 	//echo "insercion";
 	}
