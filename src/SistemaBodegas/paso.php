@@ -6,7 +6,7 @@ $$errorusuario = $_GET[errorusuario];
 define("PATHDRASTICTOOLS", "");
 include (PATHDRASTICTOOLS . "DrasticTools/Examplemysqlconfig.php");
 include (PATHDRASTICTOOLS . "DrasticTools/drasticSrcMySQL.class.php");
-$src = new drasticSrcMySQL("localhost", "root", "mesana", "BodegaMunicipal", "USUARIOS");?>
+$src = new drasticSrcMySQL("localhost", "root", "galadriel", "BodegaMunicipal", "TIPOS_OBRAS");?>
 <html>
 <head>
 
@@ -54,7 +54,19 @@ $src = new drasticSrcMySQL("localhost", "root", "mesana", "BodegaMunicipal", "US
 		if($c=="0"){
 			include 'Bienvenido.php';
 		}
-		if($c=="1"){
+		if($c=="1"|| $c=="1.1"){
+			if($c=="1"){
+			session_start();
+			$au=$_SESSION["autentificado"];
+			$name=$_SESSION["nombre_usuario"];
+			$ap=$_SESSION["apellidos_usuario"];
+			$tipo=$_SESSION["tipo"];
+			session_unset();
+			$_SESSION["autentificado"]=$au;
+			$_SESSION["nombre_usuario"]=$name;
+			$_SESSION["apellidos_usuario"]=$ap;
+			$_SESSION["tipo"]=$tipo;
+			}
 			include'ingresar_oc.php';
 		}
 		if($c=="2"){
@@ -83,16 +95,16 @@ $src = new drasticSrcMySQL("localhost", "root", "mesana", "BodegaMunicipal", "US
 			include 'Salida_Merma.php';}
 		if($c=="e"){
 			include 'Direccion.php';}
+		if($c=="f"){
+			include 'subir.php';}
 		if($c=="y"){
 			include 'Departamento.php';}
-		if($c=="w"){
-			include 'Unidad.php';}
-		if($c=="v"){
-			include 'Tipo_Obra.php';}
 		if($c=="z"){
 			include 'Ciudad.php';}
 		if($c=="x"){
-			include 'Bodega.php';}?>
+			include 'Bodega.php';}
+		if($c=="w"){
+			include 'Unidad.php';}?>
 			
 			<?php include 'pie.php';
 

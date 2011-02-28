@@ -1,13 +1,11 @@
+<body align="center">
 <form action="subearchivo.php" method="post" enctype="multipart/form-data"> 
-    <b>Campo de tipo texto:</b> 
+    <p class="tituloHead">Subir Orden de Compra: </p> 
     <br> 
-    <input type="text" name="cadenatexto" size="20" maxlength="100"> 
-    <input type="hidden" name="MAX_FILE_SIZE" value="100000"> 
-    <br> 
-    <br> 
-    <b>Enviar un nuevo archivo: </b> 
-    <br> 
+    <br>
     <input name="userfile" type="file"> 
     <br> 
-    <input type="submit" value="Enviar"> 
+    <br>
+    <input type="submit" value="Enviar" name="submit"> <input type="submit" value="saltar" name="submit"> 
 </form>
+</body>
