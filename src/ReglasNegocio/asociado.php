@@ -57,6 +57,16 @@ public function GetMayor(){
 		}
 	}
 	
+public function SelectM($id_material){
+	if(isset($id_material) && $id_material != "")
+		{
+			$Controller=new Controller();
+			$sql="$id_material";
+			$arr=$Controller->Select($this->_tabla,"ID_MATERIAL", $sql);
+			return $arr; 
+		}
+	}
+	
 	public function GetAll(){
 		$Controller=new Controller();
 		$result=$Controller->GetAll($this->_tabla);
@@ -83,10 +93,10 @@ public function GetMayor(){
 		
 	}
 	//FALTA MODIFICAR
-	public function Update($id_custodia,$ingresado_por,$fecha_ingreso,$tipo_custodia,$comentarios,$reserva){
+	public function Update($id_material){
 		$Controller=new Controller();
-		$sql=array("ID_CUSTODIA"=>"$id_custodia","INGRESADOPOR_CUSTODIA"=>"'$ingresado_por'","FECHAINGRESO_CUSTODIA"=>"'$fecha_ingreso'","COMENTARIOS_CUSTODIA"=>"'$comentarios'","RESERVA_CUSTODIA"=>"$reserva");
-		$Controller->Update($this->_tabla,$this->registro,$sql);
+		$sql=array("ID_MATERIAL"=>$id_material,"ESTADO_RETIRO_ASOCIADO"=>"1");
+		$Controller->Update($this->_tabla,"ID_MATERIAL",$sql);
 		
 	}
 

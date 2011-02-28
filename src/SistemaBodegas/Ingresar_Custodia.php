@@ -105,10 +105,11 @@ $folio=(($asociado->GetMayor())+1);
 	  <td width="430" colspan="3"><input name="NombreI" type="text" id="NombreI" size="54"/></td>
   </tr>
 	<tr>
-		<td>Periodo</td>
+		<td>Periodo(dias)</td>
 	  <td width="93"><input type="text" name="periodo" size="15" onkeypress="if ((event.keyCode!=8 && event.keyCode < 45) || event.keyCode > 57) event.returnValue = false;"/></td>
+	  <td> (-1 para indefinido)</td>
 		<td width="70">Estado</td>
-		<td colspan="3"><label>
+		<td colspan="2"><label>
 	  <select name="estado">
 	    <option selected>Usado</option>
 	    <option>Mal Estado</option>

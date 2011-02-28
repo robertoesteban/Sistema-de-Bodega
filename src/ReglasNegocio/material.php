@@ -44,8 +44,9 @@ class material{
 	{
 		if(isset($id_material) && $id_material != "")
 		{
+			$Controller = new Controller();
 			$sql="$id_material, '$nombre_material' , '$estado_material' , '$unidad_medida'";
-			$this->Controller->Add($this->_tabla, $sql);	
+			$Controller->Add($this->_tabla, $sql);	
 		}
 	}
 	public function Del($id_material)
@@ -62,6 +63,12 @@ class material{
 	public function Update($id_material,$nombre_material,$estado_material,$unidad_medida){
 		$sql=array("ID_MATERIAL"=>"$id_material","NOMBRE_MATERIAL"=>"'$nombre_material'","ESTADO_MATERIAL"=>"'$estado_material'","UNIDADMEDIDA_MATERIAL"=>"'$unidad_medida'");
 		$this->Controller->Update($this->_tabla,$this->registro,$sql);	
+	}
+	
+	public function Update2($id_material){
+		$Controller = new Controller();
+		$sql=array("ID_MATERIAL"=>"$id_material","ESTADO_MATERIAL"=>"1");
+		$Controller->Update($this->_tabla,$this->registro,$sql);	
 	}
 }
 ?>
