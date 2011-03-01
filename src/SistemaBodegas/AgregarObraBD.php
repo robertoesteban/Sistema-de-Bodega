@@ -26,7 +26,7 @@ elseif($hd_variable == "ingresar" )
 	//echo $value;
 	if (empty($value)){
 		$value = $address->Add($tipo_obra,$departamento,$nombre_obra,$encargado_obra,$fecha_inicio_obra,$comentario_obra);
-	header ("Location: paso.php?c=4");
+	//header ("Location: paso.php?c=4");
 	//echo "insercion";
 	}
 }

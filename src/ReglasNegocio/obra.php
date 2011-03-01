@@ -74,9 +74,11 @@ class obra{
 	
 	
 	
-	public function Add($id_tipo_obra,$id_departamento,$nombre_obra,$encargado_obra,$fecha_inicio_obra,$comentario_obra="--")
+	public function Add($id_tipo_obra,$id_departamento,$nombre_obra,$encargado_obra,$fecha_inicio_obra,$comentario_obra)
 	{
 		$resultado;
+		if (empty($comentario_obra))
+			$comentario_obra="--";
 		//echo $id_direccion;		
 		if(isset($nombre_obra) && $nombre_obra != "")
 		{

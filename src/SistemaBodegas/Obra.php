@@ -1,5 +1,5 @@
 <?php
-
+//esto es un comm de ppalma
 include("../ReglasNegocio/departamento.php");
 include("../ReglasNegocio/tipo_obra.php");
 include("../ReglasNegocio/obra.php");
@@ -21,6 +21,7 @@ if(!empty($editar))
 	$nombre_obra=$row['NOMBRE_OBRA'];
 	$encargado_obra = $row['ENCARGADO_OBRA'];
 	$fecha_inicio_obra = $row['FECHA_INICIO_OBRA'];
+	$comentario_obra = $row['COMENTARIO_OBRA'];
 	
 	$boton = "VerificaUpdate()";
 	
@@ -34,7 +35,9 @@ elseif (!empty($cerrar))
 	$nombre_obra=$row['NOMBRE_OBRA'];
 	$encargado_obra = $row['ENCARGADO_OBRA'];
 	$fecha_inicio_obra = $row['FECHA_INICIO_OBRA'];
+	$comentario_obra = $row['COMENTARIO_OBRA'];
 	$visible= true;
+		$boton = "VerificaCerrar()";
 }
 
 
@@ -100,6 +103,14 @@ function VerificaUpdate()
 }
 
 
+function VerificaCerrar()
+{
+	   document.form.hd_variable.value="ingresar";
+	   document.form.submit();
+}	
+
+
+
 function pulsarobra(e) {
     tecla=(document.all) ? e.keyCode : e.which;
     if (tecla==13) return document.form.tipo_obra.focus();
@@ -149,10 +160,9 @@ echo "<body onload='document.form.nombre_obra.focus();' >"; } ?>
 	</td>
 	<td colspan="3">
 	<input name='nombre_obra' type='text' size='50' <?php if ($visible) echo DISABLED;?> value= '<?php echo $nombre_obra ?>' onkeypress='return pulsarobra(event)'  /> 
+	<label>Fecha de Creacion: &nbsp;&nbsp; <?php echo $fecha_inicio_obra; ?></label>
 	</td>
-	<td>
-		<label>Fecha de Creacion: &nbsp;&nbsp; <?php echo $fecha_inicio_obra; ?></label>
-	</td>
+
 </tr>
 <tr  >
 	<td width="70">
@@ -229,12 +239,12 @@ echo "<body onload='document.form.nombre_obra.focus();' >"; } ?>
 		Observacion
 	</td>
 	<td colspan='3'>
-		<textarea name='comentario_obra' cols='57' rows='3' onkeypress="return pulsarcomentario(event)" ></textarea>
+		<textarea name='comentario_obra' cols='57' rows='3'  value="<?php echo $comentario_obra; ?> " onkeypress="return pulsarcomentario(event)" ></textarea>
 	</td>
 </tr>
 <tr>
-<td colspan="6" align="center"><input type="button" name="button1" value="<?php if(!empty($editar)) echo 'Actualizar'; else echo 'Ingresar'?>" onclick="<?php echo $boton; ?>"/>
-<?php if(!empty($editar)) echo "<input type='button' name='button2' value='Limpiar' onclick='verifica2();' />"; ?>
+<td colspan="6" align="center"><input type="button" name="button1" value="<?php if(!empty($editar)) {echo 'Actualizar';} elseif (!empty($cerrar)) { echo 'Cerrar';  } else echo 'Ingresar'; ?>" onclick="<?php echo $boton; ?>"/>
+<?php if(!empty($editar) ||  !empty($cerrar) ) echo "<input type='button' name='button2' value='Limpiar' onclick='verifica2();' />"; ?>
  </td>
 </tr>
 
