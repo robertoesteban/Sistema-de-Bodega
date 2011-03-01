@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     24-02-2011 13:01:34                          */
+/* Created on:     01-03-2011 17:32:46                          */
 /*==============================================================*/
 
 
@@ -241,6 +241,7 @@ create table OBRAS
    ESTADO_OBRA          int,
    FECHA_INICIO_OBRA    date,
    FECHA_TERMINO_OBRA   date,
+   COMENTARIO_OBRA      text,
    primary key (ID_OBRA)
 );
 
