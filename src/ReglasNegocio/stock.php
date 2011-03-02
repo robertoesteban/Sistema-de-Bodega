@@ -1,13 +1,14 @@
 <?php
-include("../AccesoDatos/Controller.php");
+//include("../AccesoDatos/Controller.php");
 
 class stock{
 	public $id_stock;
 	public $precio_stock;
+	public $fecha;
 	public $cantidad_stock;
 	public $minimo_stock;
 	private $_tabla = "STOCK";
-	private $registro="ID_STOCK";
+	private $registro="ID_STOCK_MATERIAL";
 	private $Controller;
 
 	function __construct(){ $this->Controller=new Controller();}
@@ -34,16 +35,16 @@ class stock{
 	if(isset($id_stock) && $id_stock != "")
 		{
 			$sql="$id_stock";
-			$arr=$Controller->Select($this->_tabla,$this->registro, $sql);
+			$arr=$this->Controller->Select($this->_tabla,$this->registro, $sql);
 			return $arr; 
 		}
 	}
 	
-	public function Add($id_stock,$precio_stock,$cantidad_stock,$minimo_stock)
+	public function Add($id_stock,$precio_stock,$fecha,$cantidad_stock,$minimo_stock)
 	{
 		if(isset($id_stock) && $id_stock != "")
 		{
-			$sql=" 0 ,$id_stock, $precio_stock , $cantidad_stock , $minimo_stock";
+			$sql="$id_stock, $precio_stock ,'$fecha', $cantidad_stock , $minimo_stock";
 			$this->Controller->Add($this->_tabla, $sql);	
 		}
 	}
@@ -58,9 +59,16 @@ class stock{
 		
 	}
 	
-	public function Update($id_stock,$precio_stock,$cantidad_stock,$minimo_stock){
-		$sql=array("ID_STOCK"=>"$id_stock","PRECIO_STOCK"=>"$precio_stock","CANTIDAD_STOCK"=>"$cantidad_stock","MINIMO_STOCK"=>"$minimo_stock");
+	public function Update($id_stock,$precio_stock,$fecha,$cantidad_stock,$minimo_stock){
+		$sql=array("ID_STOCK"=>"$id_stock","PRECIO_STOCK"=>"$precio_stock","FECHAPRECIO_STOCK"=>"'$fecha'","CANTIDAD_STOCK"=>"$cantidad_stock","MINIMO_STOCK"=>"$minimo_stock");
 		$Controller->Update($this->_tabla,$this->registro,$sql);
+		
+	}
+	
+	public function UpdateC($id_stock,$cantidad_stock){
+		$sql="Update STOCK SET CANTIDAD_STOCK=CANTIDAD_STOCK+".$cantidad_stock." WHERE ID_STOCK_MATERIAL=".$id_stock;
+		//echo $sql;
+		$this->Controller->ejecute($sql);
 		
 	}
 

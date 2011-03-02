@@ -7,7 +7,7 @@ include ("LeerXML.php");
 if($_POST["submit"]=="oc"){
 	$leer=new LeerXML();
 	$leer->leer($_POST['NumOC']);
-	header ("Location: paso.php?c=1.1");
+	header ("Location: paso.php?c=1");
 }
 else{
 session_start();
