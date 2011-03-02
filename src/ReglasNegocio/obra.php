@@ -54,7 +54,7 @@ class obra{
 	
 	public function Select2($nombre_obra)
 	{
-		$resultado = 1;;
+		$resultado = 1;
 		if(isset($nombre_obra) && $nombre_obra != "")
 		{
 			$Controller=new Controller();			
@@ -92,32 +92,13 @@ class obra{
 	}
 	
 	
-	/*
-	
-	public function Del($id_unidad)
-	{
-		if(isset($id_unidad) && $id_unidad != "")
-		{
-			$Controller=new Controller();
-			$sql=" $id_unidad ";
-			return $Controller->Del($this->_tabla,$this->_registro, $sql);
-			
-		}
-		
-	}
-	
-	public function Update($id_unidad,$id_departamento,$nombre_unidad)
+	public function Close($id_obra,$comentario_obra,$fecha_termino_obra)
 	{
 		$Controller=new Controller();
-		
-		//echo "id_depto= ". $id_departamento."<br>";
-		//echo "id_direccion= ". $id_direccion."<br>";
-		//echo "nombre_depto= ". $nombre_departamento."<br>";
-		$sql=array("ID_UNIDAD"=>"$id_unidad","ID_DEPARTAMENTO" => "$id_departamento","NOMBRE_UNIDAD"=>"'$nombre_unidad'");
+		$sql=array("ID_OBRA"=>"$id_obra","ESTADO_OBRA"=>"1", "FECHA_TERMINO_OBRA"=>"'$fecha_termino_obra'", "COMENTARIO_OBRA" => "'$comentario_obra'");
 		return $Controller->Update($this->_tabla,$this->_registro,$sql);
 		//return 0;
 	}
 
-	*/
 }
 ?>

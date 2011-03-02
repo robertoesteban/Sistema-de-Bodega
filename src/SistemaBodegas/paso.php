@@ -74,7 +74,7 @@ $src = new drasticSrcMySQL("localhost", "root", "galadriel", "BodegaMunicipal", 
 		if($c=="3"){
 			include 'Ingresar_Custodia.php';}
 		if($c=="4"){
-			include 'Ingresar_Obra.php';}
+			include 'Obra.php';}
 		if($c=="5"){
 			include 'Retirar_Material.php';}
 		if($c=="6"){

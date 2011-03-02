@@ -41,6 +41,7 @@ elseif (!empty($cerrar))
 }
 
 
+
 ?>    
 <script LANGUAGE="JavaScript">
 
@@ -105,8 +106,14 @@ function VerificaUpdate()
 
 function VerificaCerrar()
 {
-	   document.form.hd_variable.value="ingresar";
-	   document.form.submit();
+	if (document.form.comentario_obra.value.length==0)
+   {
+		alert("Debe ingresar el motivo y comentarios de cierre de la obra");
+		document.form.comentario_obra.focus();
+      return 0;
+	}
+	document.form.hd_variable.value="cerrar";
+	document.form.submit();
 }	
 
 
@@ -251,7 +258,7 @@ echo "<body onload='document.form.nombre_obra.focus();' >"; } ?>
 </table>
 
 <input type="hidden" name="hd_variable" value="<?php echo $editar; ?>"/>
-<input type="hidden" name="id_variable" value="<?php echo $editar; ?>"/>
+<input type="hidden" name="id_variable" value="<?php if(!empty($editar)) echo $editar; elseif(!empty($cerrar)) echo $cerrar; ?>"/>
 </form>
 <br>
 <?php
@@ -262,7 +269,7 @@ $cant = count($AllObra);
 if($cant > 0)
 { 
 	echo "<table border=1   align='center' class='filaPar'>";
-	echo "<tr class='titulosTabla'><td>Nombre</td><td>Encargado</td><td>Fecha de Creacion</td><td>Departamento Ejecutor</td><td>Tipo de Obra</td><td>&nbsp;</td><td>Cerrar</td></tr>";
+	echo "<tr class='titulosTabla'><td>Nombre</td><td>Encargado</td><td>Fecha de Creacion</td><td>Departamento Ejecutor</td><td>Tipo de Obra</td><td>Cerrar</td></tr>";
 	for ($i=0;$i<$cant;$i++)
 	{
 		echo "<tr align='center'>";
@@ -270,7 +277,7 @@ if($cant > 0)
 		{
 			echo ("<td>$valor </td>");     
 		}
-		echo "<td width='10%' ><a href='paso.php?c=4&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
+		//echo "<td width='10%' ><a href='paso.php?c=4&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
 		echo "<td><a href='paso.php?c=4&cerrar=".$claves[$i]."'>Cerrar</a></td>";
 		echo "</tr>";
 	}
