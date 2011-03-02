@@ -104,7 +104,9 @@ $src = new drasticSrcMySQL("localhost", "root", "galadriel", "BodegaMunicipal", 
 		if($c=="x"){
 			include 'Bodega.php';}
 		if($c=="w"){
-			include 'Unidad.php';}?>
+			include 'Unidad.php';}
+		if($c=="v"){
+			include 'Tipo_Obra.php';}?>
 			
 			<?php include 'pie.php';
 
