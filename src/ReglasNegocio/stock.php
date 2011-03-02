@@ -1,5 +1,5 @@
 <?php
-//include("../AccesoDatos/Controller.php");
+//include("../AccesoDatos/Controller.php") controllador;
 
 class stock{
 	public $id_stock;

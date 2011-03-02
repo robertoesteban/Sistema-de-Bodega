@@ -81,13 +81,14 @@ $fechad=$_POST["fecha_reclamo"];
 $r = explode("-",$fechad); 
 $fecha=$r[2].'-'.$r[1].'-'.$r[0];
 //nombre de la obra
+$idobra=0;
 $obra=$_POST["obras"];
 //objeto obra para obtener el id de la obra
 if($obra=="ninguna"){
 $idobra=0;
 }
 else{
-$idobra=$obra;
+	$idobra=$obra;
 }
 //$obra1=new obra();
 //$rowobra=$obra1->Select($obra);
@@ -118,29 +119,30 @@ $docs=$doc->Select($ndoc);
 	$con->DisConnect();
 	$rowcont=mysql_fetch_array($accion1);*/
 	$folio=$_SESSION["folio"];
+	$size=count($arr);
 for($i=0;$i<$size;$i++){
 	$n="cantidadr".$i;
 	$bod=($arr[$i][3])+($_POST["$n"]);
 	$numoc=$_SESSION['oc'];
-//	echo $folio;
 	//FOLIO MAYOR
 	if($idobra==0){
 		$rowstock=$stock->Select($arr[$i][0]);
-		if($rowstock==null){
-			//echo "insert";
+		if(mysql_fetch_array($rowstock)==null){
+			echo "insert";
 			$stock->Add($arr[$i][0],0,'0',$_POST["$n"],0);
 		}
 		else{
+			echo "update";
 			$stock->UpdateC($arr[$i][0],$_POST["$n"]);
 		}
 	}
-	$cont->Add($arr[$i][0],$_SESSION['oc'],$iddoc,$rut,1/*$idobra*/,$folio,$arr[$i][2],$arr[$i][3],$_POST["$n"],0);
+	$cont->Add($arr[$i][0],$_SESSION['oc'],$iddoc,$rut,$idobra,$folio,$arr[$i][2],$arr[$i][3],$_POST["$n"],0);
 	$sql="update CONTIENE set CANTIDADBODEGA_CONTIENE=".$bod." where ID_MATERIAL=".$arr[$i][0]. " and NUMERO_OC="."'$numoc'"." and ID_DOCUMENTO='0' AND RUT_PROVEEDOR="."'$rut'"." AND ID_OBRA=0"." AND FOLIO_CONTIENE=0";
 	//echo $sql;
 	$con->Connect();
 	$accion=mysql_query($sql); 
 	$con->DisConnect();
-}
+}}
 //}
 $au=$_SESSION["autentificado"];
 $name=$_SESSION["nombre_usuario"];
@@ -156,6 +158,6 @@ $_SESSION["size"]=count($arr);
 $_SESSION["lista1"]=$arr;
 $_SESSION["oc"]=$num;
 header ("Location: paso.php?c=2");
-}}
+}
 }
 ?>

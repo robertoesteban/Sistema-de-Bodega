@@ -15,7 +15,14 @@ $_SESSION["nbodega"]=$nombrebodega;
 $_SESSION["obs"]=$observacion;
 $_SESSION["tipo"]=$tipo;
 $arr=$_SESSION["custodia"];
-$arr[]=array($_POST["NInventario"],$_POST["NombreI"],$_POST["periodo"],$_POST["estado"]);
+$val=0;
+for($i=0;$i<count($arr);$i++){
+	if($arr[$i][0]==$_POST["NInventario"]){
+		$val=1;}
+}
+if($val==0){
+	$arr[]=array($_POST["NInventario"],$_POST["NombreI"],$_POST["periodo"],$_POST["estado"]);
+}
 $_SESSION["custodia"]=$arr;
 $_SESSION["listcust"]=$arr;
 
