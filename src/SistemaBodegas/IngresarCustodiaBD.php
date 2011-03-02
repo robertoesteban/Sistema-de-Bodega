@@ -14,11 +14,15 @@ $_SESSION["procedencia"]=$procedencia;
 $_SESSION["nbodega"]=$nombrebodega;
 $_SESSION["obs"]=$observacion;
 $_SESSION["tipo"]=$tipo;
-
+if($_POST["NImventario"]==""||$_POST["NombreI"]==""||$_POST["periodo"]==""){
+$_SESSION["MensajeIC"]="NO HA INGRESADO TODOS LOS DATOS DEL MATERIAL";
+}
+else{
 $arr=$_SESSION["custodia"];
 $arr[]=array($_POST["NInventario"],$_POST["NombreI"],$_POST["periodo"],$_POST["estado"]);
 $_SESSION["custodia"]=$arr;
 $_SESSION["listcust"]=$arr;
+}
 header ("Location: paso.php?c=3");
 }
 else{
@@ -28,6 +32,10 @@ include ("../ReglasNegocio/asociado.php");
 include ("../ReglasNegocio/unidad.php");
 include ("../ReglasNegocio/material.php");
 $ingresado_por=$_POST['NombreF'];
+if($ingresado_por==""){
+$_SESSION["MensajeIC"]="NO HA INGRESADO NOMBRE DE FUNCIONARIO";
+}
+else{
 $procedencia=$_POST['unidadp'];
 $id_bodega=$_POST['Bodegas'];
 $observacion=$_POST['ObservacionC'];
@@ -42,6 +50,10 @@ $reservado=1;
 }
 //arreglo lista de materiales en custodia
 $arr=$_SESSION["custodia"];
+if(count($arr)==0){
+$_SESSION["MensajeIC"]="NO HAY MATERIAL PARA INGRESAR A CUSTODIA";
+}
+else{
 //insertar en custodia
 $custodia->Add($ingresado_por,$fechaactual,$tipo,$observacion,$reservado);
 //obtener id custodia
@@ -67,6 +79,7 @@ for ($i=0;$i<count($arr);$i++){
 //agregar a asociado
 	$asociado->Add($id_custodia,$arr[$i][0],$id_area,$id_bodega,$procedencia,$_SESSION["folio_custodia"],$arr[$i][2],$arr[$i][3],0);
 }
+}}
 header ("Location: paso.php?c=3");
 
 //ciclo insetar en material si se debe y obtener el id para insertar en asociado

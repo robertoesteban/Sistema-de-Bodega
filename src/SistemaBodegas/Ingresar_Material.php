@@ -1,12 +1,15 @@
 <?php session_start(); 
 include ("../AccesoDatos/Controller.php");
 include ("../ReglasNegocio/contiene.php");
+include ("../ReglasNegocio/obra.php");
 $contiene = new contiene();
+$obra=new obra();
 $folio=(($contiene->GetMayor())+1);
 ?>
 <body>
 <form action="BuscarOCBD.php" method="post">
 <p class="tituloHead">Ingresar Material Bodega</p>
+<p align="center" class="tituloError"><?php echo $_SESSION["mensajeIM"];?></p>
 <table width="700" align="center" class="filaPar">
 <tr>
     <td height="31" colspan="6" align="left">
@@ -99,7 +102,25 @@ $folio=(($contiene->GetMayor())+1);
 	<td>Obra</td>
 	<td><select name="obras">
       <option>Ninguna</option>
-      <option>Obra 1</option>
+      <?php
+		$Allobra = $obra->GetAll();
+		$claves= array_keys($Allobra);
+		$cant = count($Allobra);
+		if($cant > 0)
+		{
+			for ($i=0;$i<$cant;$i++)
+			{
+							
+				echo "<option value=$claves[$i]";
+				if($claves[$i]==$id_obra) echo " selected ";
+				echo ">";
+				foreach ($Allobra["$claves[$i]"] as $valor)
+				{
+					echo "$valor</option>";     
+				}
+			}
+		}			
+		?>
     </select></td>
 	<td>Observacion</td>
 	<td colspan="3" rowspan="2">
@@ -134,7 +155,7 @@ $folio=(($contiene->GetMayor())+1);
     <td><?php echo $arr[$i][4];?></td>
     <td><?php echo $arr[$i][2];?></td>
     <td><?php echo $arr[$i][3];?></td>
-    <td align="center"><input name="<?php echo "cantidadr".$i;?>" type="text" size="3" /></td>
+    <td align="center"><input name="<?php echo "cantidadr".$i;?>" type="text" size="3" onkeypress="if ((event.keyCode!=8 && event.keyCode < 45) || event.keyCode > 57) event.returnValue = false;"/></td>
   </tr>
   <?php }?>
   </table>

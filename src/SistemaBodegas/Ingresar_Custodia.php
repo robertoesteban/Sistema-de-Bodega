@@ -11,6 +11,7 @@ $folio=(($asociado->GetMayor())+1);
 <body>
 <form action="IngresarCustodiaBD.php" method="post">
 <p class="tituloHead">Ingresar Material Custodia</p>
+<p align="center" class="tituloError"><?php echo $_SESSION["MensajeIC"];?></p>
 <table width="700" align="center" class="filaPar">
 <tr>
     <td height="31" colspan="6" align="left">
