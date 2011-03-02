@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     01-03-2011 17:32:46                          */
+/* Created on:     02-03-2011 16:05:29                          */
 /*==============================================================*/
 
 
@@ -32,6 +32,8 @@ drop table if exists LOGS;
 
 drop table if exists MATERIALES;
 
+drop table if exists MERMAS;
+
 drop table if exists OBRAS;
 
 drop table if exists ORDENCOMPRA;
@@ -49,6 +51,8 @@ drop table if exists SE_GUARDAN;
 drop table if exists STOCK;
 
 drop table if exists TIPOS_OBRAS;
+
+drop table if exists TRASPASOS;
 
 drop table if exists UNIDADES;
 
@@ -201,6 +205,8 @@ create table ES_RETIRADO
 (
    ID_MATERIAL          int not null,
    ID_RETIRO_CUSTODIA   int not null,
+   FOLIO_ES_RETIRADO    int,
+   FECHA_ES_RETIRADO    datetime,
    primary key (ID_MATERIAL, ID_RETIRO_CUSTODIA)
 );
 
@@ -226,6 +232,22 @@ create table MATERIALES
    ESTADO_MATERIAL      int,
    UNIDADMEDIDA_MATERIAL varchar(100),
    primary key (ID_MATERIAL)
+);
+
+/*==============================================================*/
+/* Table: MERMAS                                                */
+/*==============================================================*/
+create table MERMAS
+(
+   ID_MERMA             int not null auto_increment,
+   ID_AREA              int not null,
+   ID_BODEGA            int,
+   ID_MATERIAL          int not null,
+   ID_OBRA              int not null,
+   OBERVACION_MERMA     text,
+   CANTIDAD_MERMA       int,
+   FECHA_MERMA          datetime,
+   primary key (ID_MERMA)
 );
 
 /*==============================================================*/
@@ -297,7 +319,6 @@ create table RETIROS_CUSTODIA
    ID_RETIRO_CUSTODIA   int not null auto_increment,
    NOMBRE_RETIRO_CUSTODIA varchar(100),
    OBSERVACION_RETIRO_CUSTODIA text,
-   FECHA_RETIRO_CUSTODIA datetime,
    primary key (ID_RETIRO_CUSTODIA)
 );
 
@@ -347,6 +368,23 @@ create table TIPOS_OBRAS
    CODIGO_TIPO_OBRA     varchar(100),
    NOMBRE_TIPO_OBRA     varchar(100),
    primary key (ID_TIPO_OBRA)
+);
+
+/*==============================================================*/
+/* Table: TRASPASOS                                             */
+/*==============================================================*/
+create table TRASPASOS
+(
+   ID_TRASPASO          int not null auto_increment,
+   ID_OBRA              int not null,
+   ID_MATERIAL          int not null,
+   ID_AREA              int,
+   ID_BODEGA            int,
+   TIPO_TRASPASO        int,
+   FECHA_TRASPASO       datetime,
+   OBSERVACION_TRASPASO text,
+   CANTIDAD_TRASPASO    datetime,
+   primary key (ID_TRASPASO)
 );
 
 /*==============================================================*/
@@ -431,6 +469,15 @@ alter table ES_RETIRADO add constraint FK_ES_RETIRADO2 foreign key (ID_RETIRO_CU
 alter table LOGS add constraint FK_SE_REGISTRAN foreign key (ID_USUARIO)
       references USUARIOS (ID_USUARIO) on delete restrict on update restrict;
 
+alter table MERMAS add constraint FK_MERMAS_01 foreign key (ID_AREA, ID_BODEGA)
+      references AREAS (ID_AREA, ID_BODEGA) on delete restrict on update restrict;
+
+alter table MERMAS add constraint FK_MERMAS_02 foreign key (ID_OBRA)
+      references OBRAS (ID_OBRA) on delete restrict on update restrict;
+
+alter table MERMAS add constraint FK_MERMAS_03 foreign key (ID_MATERIAL)
+      references MATERIALES (ID_MATERIAL) on delete restrict on update restrict;
+
 alter table OBRAS add constraint FK_ES_DEL foreign key (ID_TIPO_OBRA)
       references TIPOS_OBRAS (ID_TIPO_OBRA) on delete restrict on update restrict;
 
@@ -450,6 +497,15 @@ alter table SE_GUARDAN add constraint FK_SE_GUARDAN2 foreign key (ID_SALDO)
       references SALDOS (ID_SALDO) on delete restrict on update restrict;
 
 alter table SE_GUARDAN add constraint FK_SE_GUARDAN3 foreign key (ID_MATERIAL)
+      references MATERIALES (ID_MATERIAL) on delete restrict on update restrict;
+
+alter table TRASPASOS add constraint FK_TRASPASO_01 foreign key (ID_AREA, ID_BODEGA)
+      references AREAS (ID_AREA, ID_BODEGA) on delete restrict on update restrict;
+
+alter table TRASPASOS add constraint FK_TRASPASO_02 foreign key (ID_OBRA)
+      references OBRAS (ID_OBRA) on delete restrict on update restrict;
+
+alter table TRASPASOS add constraint FK_TRASPASO_03 foreign key (ID_MATERIAL)
       references MATERIALES (ID_MATERIAL) on delete restrict on update restrict;
 
 alter table UNIDADES add constraint FK_SE_COMPONE foreign key (ID_DEPARTAMENTO)
