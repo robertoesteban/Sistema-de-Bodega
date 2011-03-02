@@ -1,7 +1,5 @@
 <?php
 
-include("../AccesoDatos/Controller.php");
-
 class proveedor{
 	private $_rut_proveedor;
 	private $_id_cuidad;
@@ -49,7 +47,7 @@ class proveedor{
 	{
 		if(isset($rut_proveedor) && $rut_proveedor != "")
 		{
-			$sql=" $rut_proveedor , $id_cuidad , '$nombre_proveedor' , '$direccion_proveedor' , '$contacto_proveedor' , '$fono_proveedor' ";
+			$sql=" '$rut_proveedor' , $id_cuidad , '$nombre_proveedor' , '$direccion_proveedor' , '$contacto_proveedor' , '$fono_proveedor' ";
 			$this->Controller->Add($this->_tabla, $sql);
 			
 		}
