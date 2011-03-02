@@ -7,6 +7,11 @@ include ("../ReglasNegocio/contiene.php");
 include ("../ReglasNegocio/material.php");
 
 $numero=$_POST['NumOC'];
+if($numero==""){
+		$_SESSION["mensajeIM"]="NO HA INGRESADO NUMERO DE ORDEN DE COMPRA PARA BUSCAR";
+		header ("Location: paso.php?c=2");
+}
+else{
 $_SESSION["numoc"]=$numero;
 $cont = new contiene();
 $ciu=new ciudad();
@@ -46,17 +51,29 @@ if($row!=null){
 	
 }
 header ("Location: paso.php?c=2");
-}
+}}
 else{
 include("../ReglasNegocio/documento.php");
 include("../ReglasNegocio/contiene.php");
 include("../ReglasNegocio/obra.php");
+include("../ReglasNegocio/stock.php");
+//cantidad de materiales
+if($_SESSION["size"]==0){
+		$_SESSION["mensajeIM"]="NO HAY MATERIAL PARA INGRESAR";
+		header ("Location: paso.php?c=2");
+	}
+else{
 //rut proveedor
 $rutp1=$_POST["rutp1"];
 $rutp2=$_POST["rutp2"];
 $rut=$rutp1.'-'.$rutp2;
 //numero de la factura o guia
 $ndoc=$_POST["NDocumento"];
+if($ndoc==""){
+		$_SESSION["mensajeIM"]="NO HA INGRESADO LOS DATOS DE FACTURA O GUIA";
+		header ("Location: paso.php?c=2");
+}
+else{
 //que tipo de documento es
 $tipod=$_POST["tipod"];
 //fecha del documento
@@ -66,17 +83,23 @@ $fecha=$r[2].'-'.$r[1].'-'.$r[0];
 //nombre de la obra
 $obra=$_POST["obras"];
 //objeto obra para obtener el id de la obra
-$obra1=new obra();
-$rowobra=$obra1->Select($obra);
-$idobra=mysql_fetch_array($rowobra);
+if($obra=="ninguna"){
+$idobra=0;
+}
+else{
+$idobra=$obra;
+}
+//$obra1=new obra();
+//$rowobra=$obra1->Select($obra);
+//$idobra=mysql_fetch_array($rowobra);
 //observacion
 $observ=$_POST["ObservacionDoc"];
-//cantidad de materiales
-$size=$_SESSION["size"];
 //objeto clase contiene
 $cont=new contiene();
 //objeto clase documento
 $doc=new documento();
+//objeto clase stock
+$stock=new stock();
 //lista de materiales
 $arr=$_SESSION["lista1"];
 //buscar documento
@@ -99,9 +122,19 @@ for($i=0;$i<$size;$i++){
 	$n="cantidadr".$i;
 	$bod=($arr[$i][3])+($_POST["$n"]);
 	$numoc=$_SESSION['oc'];
-	echo $folio;
+//	echo $folio;
 	//FOLIO MAYOR
-	$cont->Add($arr[$i][0],$_SESSION['oc'],$iddoc,$rut,1,$folio,$arr[$i][2],$arr[$i][3],$_POST["$n"],0);
+	if($idobra==0){
+		$rowstock=$stock->Select($arr[$i][0]);
+		if($rowstock==null){
+			//echo "insert";
+			$stock->Add($arr[$i][0],0,'0',$_POST["$n"],0);
+		}
+		else{
+			$stock->UpdateC($arr[$i][0],$_POST["$n"]);
+		}
+	}
+	$cont->Add($arr[$i][0],$_SESSION['oc'],$iddoc,$rut,1/*$idobra*/,$folio,$arr[$i][2],$arr[$i][3],$_POST["$n"],0);
 	$sql="update CONTIENE set CANTIDADBODEGA_CONTIENE=".$bod." where ID_MATERIAL=".$arr[$i][0]. " and NUMERO_OC="."'$numoc'"." and ID_DOCUMENTO='0' AND RUT_PROVEEDOR="."'$rut'"." AND ID_OBRA=0"." AND FOLIO_CONTIENE=0";
 	//echo $sql;
 	$con->Connect();
@@ -123,5 +156,6 @@ $_SESSION["size"]=count($arr);
 $_SESSION["lista1"]=$arr;
 $_SESSION["oc"]=$num;
 header ("Location: paso.php?c=2");
+}}
 }
 ?>
