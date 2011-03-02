@@ -14,15 +14,11 @@ $_SESSION["procedencia"]=$procedencia;
 $_SESSION["nbodega"]=$nombrebodega;
 $_SESSION["obs"]=$observacion;
 $_SESSION["tipo"]=$tipo;
-if($_POST["NImventario"]==""||$_POST["NombreI"]==""||$_POST["periodo"]==""){
-$_SESSION["MensajeIC"]="NO HA INGRESADO TODOS LOS DATOS DEL MATERIAL";
-}
-else{
 $arr=$_SESSION["custodia"];
 $arr[]=array($_POST["NInventario"],$_POST["NombreI"],$_POST["periodo"],$_POST["estado"]);
 $_SESSION["custodia"]=$arr;
 $_SESSION["listcust"]=$arr;
-}
+
 header ("Location: paso.php?c=3");
 }
 else{
