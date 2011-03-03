@@ -1,4 +1,5 @@
 <html>
+<?php session_start();?>
 <body>
 <form action="IngresarProveedorBD.php" method="post">
 <p class="tituloHead">Ingresar Orden de Compra</p>
@@ -106,7 +107,7 @@
   ?>
   <tr>
     <td><input name="<?php echo "c".$i;?>" type="text" id="cod1" size="15"/></td>
-    <td><?php echo $mat[$i][0];?></td>
+    <td><textarea name="<?php echo "n".$i;?> ?>"><?php echo $mat[$i][0];?></textarea></td>
     <td><input name="<?php echo "u".$i;?>" type="text" id="uni1" size="5"/></td>
     <td><?php echo $mat[$i][1];?></td>
     <td><?php echo $mat[$i][2]; ?></td>
@@ -135,9 +136,13 @@ $name=$_SESSION["nombre_usuario"];
 $ap=$_SESSION["apellidos_usuario"];
 $num=$_SESSION["numoc"];
 $tipo=$_SESSION["tipo"];
+$arr=$_SESSION["list"];
 session_unset();
 $_SESSION["autentificado"]=$au;
 $_SESSION["nombre_usuario"]=$name;
 $_SESSION["apellidos_usuario"]=$ap;
-$_SESSION["tipo"]=$tipo;?>
+$_SESSION["tipo"]=$tipo;
+$_SESSION["list"]=$arr;
+$_SESSION["size"]=count($arr);
+?>
 </html>

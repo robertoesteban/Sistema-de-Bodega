@@ -7,7 +7,7 @@ $folio=(($retirado->GetMayor())+1);
 <body>
 <form action="RetirarCustodiaBD.php" method="post">
 <p class="tituloHead">Retiro Material Custodia</p>
-<p align="center"><?php echo $_SESSION["mensaje"];?></p>
+<p align="center" class="tituloError"><?php echo $_SESSION["mensaje"];?></p>
 <table width="700" align="center" class="filaPar">
 <tr>
     <td height="31" colspan="6" align="left">
@@ -26,7 +26,7 @@ $folio=(($retirado->GetMayor())+1);
 	<td height="30">Observacion</td>
 	<td colspan="5">
 	  <label>
-	    <textarea name="obs" cols="83" value="<?php echo $_SESSION["obs"];?>"></textarea>
+	    <textarea name="obs" cols="83"><?php echo $_SESSION["obs"];?></textarea>
 	    </label>
 	</td>
 <tr>
