@@ -43,7 +43,9 @@ if($row!=null){
 	while($materiales!=null){
 		$name = $ma->Select($materiales["ID_MATERIAL"]);
 		$namem=mysql_fetch_array($name);
+		if($materiales["CANTIDADTOTAL_CONTIENE"]>$materiales["CANTIDADBODEGA_CONTIENE"]){
 		$list[$i]=array($materiales["ID_MATERIAL"],$namem["NOMBRE_MATERIAL"],$materiales["CANTIDADTOTAL_CONTIENE"],$materiales["CANTIDADBODEGA_CONTIENE"],$namem["UNIDADMEDIDA_MATERIAL"]);
+		}
 		$i++;
 		$materiales=mysql_fetch_array($arrmat);
 	}
@@ -84,7 +86,7 @@ $fecha=$r[2].'-'.$r[1].'-'.$r[0];
 $idobra=0;
 $obra=$_POST["obras"];
 //objeto obra para obtener el id de la obra
-if($obra=="ninguna"){
+if($obra=="Ninguna"){
 $idobra=0;
 }
 else{
@@ -106,6 +108,20 @@ $arr=$_SESSION["lista1"];
 //buscar documento
 $docs=$doc->Select($ndoc);
 //if($docs==null){
+
+//validar cantidades
+$a=0;
+for($i=0;$i<count($arr);$i++){
+$n="cantidadr".$i;
+if(($_POST["$n"])>($arr[$i][2]-$arr[$i][3])){
+		$a=$i+1;
+	}
+}
+if($a!=0){
+		$_SESSION["mensajeIM"]="CANTIDAD DEL MATERIAL ".$a." ERRONEA";
+		header ("Location: paso.php?c=2");
+}
+else{
 	//agregar documento a la bd y obtener el id de este
 	$doc->Add($ndoc,$tipod,$fecha,$observ);
 	$selctdoc=$doc->Select($ndoc);
@@ -128,11 +144,11 @@ for($i=0;$i<$size;$i++){
 	if($idobra==0){
 		$rowstock=$stock->Select($arr[$i][0]);
 		if(mysql_fetch_array($rowstock)==null){
-			echo "insert";
+		//	echo "insert";
 			$stock->Add($arr[$i][0],0,'0',$_POST["$n"],0);
 		}
 		else{
-			echo "update";
+		//	echo "update";
 			$stock->UpdateC($arr[$i][0],$_POST["$n"]);
 		}
 	}
@@ -142,7 +158,8 @@ for($i=0;$i<$size;$i++){
 	$con->Connect();
 	$accion=mysql_query($sql); 
 	$con->DisConnect();
-}}
+	}
+
 //}
 $au=$_SESSION["autentificado"];
 $name=$_SESSION["nombre_usuario"];
@@ -158,6 +175,6 @@ $_SESSION["size"]=count($arr);
 $_SESSION["lista1"]=$arr;
 $_SESSION["oc"]=$num;
 header ("Location: paso.php?c=2");
-}
+}}}
 }
 ?>
