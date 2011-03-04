@@ -70,7 +70,7 @@ $ git commit -m "first commit"
 $ git remote add origin git@github.com:Usuario/Sistema-de-Bodega.git
 $ git push origin master
 
-
+#
 
 
 

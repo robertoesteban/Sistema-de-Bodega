@@ -1,35 +1,40 @@
 <?php
+include("../ReglasNegocio/unidad.php");
 include("../ReglasNegocio/departamento.php");
 include("../ReglasNegocio/direccion.php");
 
 $departamento = new departamento();
+$unidad = new unidad();
 $direccion = new direccion();
 
 $editar = $_GET["editar"];
 $boton = "verifica()";
 if(!empty($editar))
 {
-	$id_departamento = $departamento->Select($editar);
-	$row = mysql_fetch_array($id_departamento);
-	$id_direccion=$row['ID_DIRECCION'];
-	$nombre_departamento = $row['NOMBRE_DEPARTAMENTO'];
+	$id_unidad = $unidad->Select($editar);
+	$row = mysql_fetch_array($id_unidad);
+	$id_departamento=$row['ID_DEPARTAMENTO'];
+	$nombre_unidad = $row['NOMBRE_UNIDAD'];
+	//echo $id_departamento;
 	$boton = "VerificaUpdate()";
 	
 }
 
-?>
+
+?>        
+        
 <script LANGUAGE="JavaScript">
 
 function verifica()
 {
-	if (document.form.departamento.value.length==0)
+	if (document.form.unidad.value.length==0)
    {
 		alert("Debe ingresar un Nombre");
       return 0;
 	}
-	else if (document.form.direccion.value==0)
+	else if (document.form.departamento.value==0)
    {
-		alert("Debe Seleccionar una Direccion");
+		alert("Debe Seleccionar una Departamento");
       return 0;
 	}
    document.form.hd_variable.value="ingresar";
@@ -38,20 +43,20 @@ function verifica()
 
 function verifica2()
 {
-   document.form.departamento.value = "";
+   document.form.unidad.value = "";
    document.form.submit();
 }
 
 function VerificaUpdate()
 {
-	if (document.form.departamento.value.length==0)
+	if (document.form.unidad.value.length==0)
    {
 		alert("Debe ingresar un Nombre");
       return 0;
 	}
-	else if (document.form.direccion.value==0)
+	else if (document.form.departamento.value==0)
    {
-		alert("Debe Seleccionar una Direccion");
+		alert("Debe Seleccionar una Departamento");
       return 0;
 	}
 	document.form.hd_variable.value="editar";
@@ -59,46 +64,51 @@ function VerificaUpdate()
 	
 }
 
-
 function pulsar(e) {
     tecla=(document.all) ? e.keyCode : e.which;
-    if (tecla==13) return false;
+    if (tecla==13) return document.form.departamento.focus();
 } 
+
+
+
 </script>
 
+<script type="text/javascript" src="ajaxcombobox/select_dependientes_3_niveles.js"></script>
 
-<body onload="document.form.departamento.focus();">
-<p class="tituloHead">Departamentos Municipales</p>
-<form method="post" action="AgregarDepartamentoBD.php" name="form">
+<body onload="document.form.unidad.focus();">
+<p class="tituloHead">Unidades Municipales</p>
+<form method="post" action="AgregarUnidadBD.php" name="form">
 <table width="400" align="center" class="filaPar">
 <tr>
     <td height="31" colspan="6" align="left" >
-        <p align="left" class="respDetalleAD"> Departamentos </p>
+        <p align="left" class="respDetalleAD"> Unidades </p>
         </td>
 </tr>
 
 <tr>
 <td>Nombre</td>
-<td colspan="5"><input name="departamento" type="text" size="50" value="<?php echo $nombre_departamento; ?>" onkeypress="return pulsar(event)" /></td>
+<td colspan="5"><input name="unidad" type="text" size="50" value="<?php echo $nombre_unidad; ?>"  onkeypress="return pulsar(event)" /></td>
 </tr>
+
+
 <tr>
-<td> Direccion</td>
+<td> Departamento</td>
 <td colspan="5">
-	<select name="direccion">
+	<select name="departamento">
 		<option value=0> Seleccionar </option>
 		<?php
-		$AllDireccion = $direccion->GetAll();
-		$claves= array_keys($AllDireccion);
-		$cant = count($AllDireccion);
+		$AllDepartamento = $departamento->GetAll();
+		$claves= array_keys($AllDepartamento);
+		$cant = count($AllDepartamento);
 		if($cant > 0)
 		{
 			for ($i=0;$i<$cant;$i++)
 			{
 							
 				echo "<option value=$claves[$i]";
-				if($claves[$i]==$id_direccion) echo " selected ";
+				if($claves[$i]==$id_departamento) echo " selected ";
 				echo ">";
-				foreach ($AllDireccion["$claves[$i]"] as $valor)
+				foreach ($AllDepartamento["$claves[$i]"] as $valor)
 				{
 					echo "$valor</option>";     
 				}
@@ -150,22 +160,22 @@ $AllDireccion = $direccion->GetAll();
 recorrer_array($AllDireccion);
 */
 
-$AllDepartamento = $departamento->GetAll();
+$AllUnidad = $unidad->GetAll();
 
-$claves= array_keys($AllDepartamento);
-$cant = count($AllDepartamento);
+$claves= array_keys($AllUnidad);
+$cant = count($AllUnidad);
 if($cant > 0)
 { 
 	echo "<table border=1  width='400' align='center' class='filaPar'>";
 	for ($i=0;$i<$cant;$i++)
 	{
 		echo "<tr align='center'>";
-		foreach ($AllDepartamento["$claves[$i]"] as $valor)
+		foreach ($AllUnidad["$claves[$i]"] as $valor)
 		{
 			echo ("<td>$valor </td>");     
 		}
-		echo "<td width='10%'><a href='paso.php?c=y&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
-		//echo "<td><a href='paso.php?c=y&eliminar=".$claves[$i]."'><img border=0 src='imagenes/delete.jpg' width='20' height='20'></a></td>";
+		echo "<td><a href='paso.php?c=w&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
+		//echo "<td><a href='paso.php?c=w&eliminar=".$claves[$i]."'><img border=0 src='imagenes/delete.jpg' width='20' height='20'></a></td>";
 		echo "</tr>";
 	}
 	echo "</table>";			

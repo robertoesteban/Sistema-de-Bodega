@@ -9,9 +9,8 @@ class documento{
 	public $_observacion_documento;
 	private $_tabla = "DOCUMENTOS";
 	private $registro="NUMERO_DOCUMENTO";
-	private $Controller;
 
-	function __construct(){ $Controller=new Controller(); }
+	function __construct(){  }
 
 	function usuario($numero_documento,$tipo_documento,$fecha_documento,$observacion_documento){
 		$this->_id_documento=0;
@@ -35,24 +34,26 @@ class documento{
 	
 	
 	public function Select($numero_documento){
+	$Controller=new Controller();
 	if(isset($numero_documento) && $numero_documento != "")
 		{
-			$sql="$numero_documento";
-			$arr=$this->Controller->Select($this->_tabla,$this->registro, $sql);
+			$sql="'$numero_documento'";
+			$arr=$Controller->Select($this->_tabla,$this->registro, $sql);
 			return $arr; 
 		}
 	}
 	
 	public function Add($numero_documento,$tipo_documento,$fecha_documento,$observacion_documento)
 	{
+		$Controller=new Controller();
 		if(isset($numero_documento) && $numero_documento != "")
 		{
-			$sql=" 0 ,$numero_documento, '$tipo_documento' , '$fecha_documento' , '$observacion_documento'";
-			$this->Controller->Add($this->_tabla, $sql);	
+			$sql=" 0 ,'$numero_documento', '$tipo_documento' , '$fecha_documento' , '$observacion_documento'";
+			$Controller->Add($this->_tabla, $sql);	
 		}
 	}
 	public function Del($numero_documento)
-	{
+	{	$Controller=new Controller();
 		if(isset($numero_documento) && $numero_documento != "")
 		{
 			$sql="$numero_documento";
@@ -63,8 +64,9 @@ class documento{
 	}
 	
 	public function Update($numero_documento,$tipo_documento,$fecha_documento,$observacion_documento){
+		$Controller=new Controller();
 		$sql=array("NUMERO_DOCUMENTO"=>"'$numero_documento'","TIPO_DOCUMENTO"=>"'$tipo_documento'","FECHA_DOCUMENTO"=>"'$fecha_documento'","OBSERVACION_DOCUMENTO"=>"'$observacion_documento'");
-		$this->Controller->Update($this->_tabla,$this->registro,$sql);	
+		$Controller->Update($this->_tabla,$this->registro,$sql);	
 	}
 }
 ?>

@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>.:: Puerto Montt - Bodega ::.</title>
-		<link rel="shortcut icon" href="SistemaBodegas/imagenes/favicon.ico" />
+		<link rel="shortcut icon" href="http://localhost/SistemaBodegas/SistemaBodegas/imagenes/favicon.ico" />
 	
 		<frameset>
 			<frame src="SistemaBodegas/index.php"> </frame>		

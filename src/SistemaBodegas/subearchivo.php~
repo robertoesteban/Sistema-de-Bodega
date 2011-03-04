@@ -1,4 +1,4 @@
-<?php
+<? 
 if($_POST["submit"]=="Enviar"){
 //datos del arhivo 
 $nombre_archivo = $_FILES['userfile']['name']; 

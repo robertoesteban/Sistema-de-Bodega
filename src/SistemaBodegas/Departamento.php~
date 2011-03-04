@@ -79,7 +79,7 @@ function pulsar(e) {
 
 <tr>
 <td>Nombre</td>
-<td colspan="5"><input name="departamento" type="text" size="50" value="<?php echo $nombre_departamento; ?>" onkeypress="return pulsar(event)" /></td>
+<td colspan="5"><input name="departamento" type="text" size="50" value="<?php echo $nombre_departamento; ?>" /></td>
 </tr>
 <tr>
 <td> Direccion</td>

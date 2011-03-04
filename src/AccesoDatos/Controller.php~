@@ -22,7 +22,6 @@ class Controller
 	public function Select($tabla,$registro,$parametro){
 		$this->_Connection->Connect();
 		$query = "Select * from ".$tabla." where ".$registro."=".$parametro;
-		//echo $query;
 		$accion = mysql_query($query);
 		$this->_Connection->DisConnect();
 		return $accion;
@@ -77,7 +76,7 @@ public function SelectPersonalizado($tabla,$registro,$parametro){
 		$arreglo;
 		$string;		
 		$this->_Connection->Connect();
-		$query = "SELECT OBRAS.ID_OBRA, OBRAS.NOMBRE_OBRA, OBRAS.ENCARGADO_OBRA, OBRAS.FECHA_INICIO_OBRA, DEPARTAMENTOS.NOMBRE_DEPARTAMENTO, TIPOS_OBRAS.CODIGO_TIPO_OBRA, TIPOS_OBRAS.NOMBRE_TIPO_OBRA FROM OBRAS INNER JOIN TIPOS_OBRAS ON OBRAS.ID_TIPO_OBRA = TIPOS_OBRAS.ID_TIPO_OBRA INNER JOIN DEPARTAMENTOS ON DEPARTAMENTOS.ID_DEPARTAMENTO = OBRAS.ID_DEPARTAMENTO";
+		$query = "SELECT OBRAS.ID_OBRA, OBRAS.NOMBRE_OBRA, OBRAS.ENCARGADO_OBRA, OBRAS.FECHA_INICIO_OBRA, DEPARTAMENTOS.NOMBRE_DEPARTAMENTO, TIPOS_OBRAS.CODIGO_TIPO_OBRA, TIPOS_OBRAS.NOMBRE_TIPO_OBRA FROM OBRAS INNER JOIN TIPOS_OBRAS ON OBRAS.ID_TIPO_OBRA = TIPOS_OBRAS.ID_TIPO_OBRA INNER JOIN DEPARTAMENTOS ON DEPARTAMENTOS.ID_DEPARTAMENTO = OBRAS.ID_DEPARTAMENTO WHERE OBRAS.ESTADO_OBRA =0";
 		$result = mysql_query($query);
 		$nfilas = mysql_num_rows($result);
 		if($nfilas > 0)
@@ -180,6 +179,7 @@ public function GetAllTO($tabla)
 				$query = $query . ", ";
 		}
 		$query = $query . " WHERE " . $registro."=". $parametro[$claves[0]];
+		echo $query;
 		$accion=mysql_query($query);
 		$this->_Connection->Disconnect();
 		return $accion;

@@ -4,6 +4,7 @@ if($_POST["submit"]=="Buscar"){
 include ("../ReglasNegocio/ciudad.php");
 include ("../ReglasNegocio/proveedor.php");
 include ("../ReglasNegocio/contiene.php");
+echo "asd";
 include ("../ReglasNegocio/material.php");
 
 $numero=$_POST['NumOC'];
@@ -106,9 +107,8 @@ $stock=new stock();
 //lista de materiales
 $arr=$_SESSION["lista1"];
 //buscar documento
-$docs=$doc->Select($ndoc);
+//$docs=$doc->Select($ndoc);
 //if($docs==null){
-
 //validar cantidades
 $a=0;
 for($i=0;$i<count($arr);$i++){
@@ -144,11 +144,11 @@ for($i=0;$i<$size;$i++){
 	if($idobra==0){
 		$rowstock=$stock->Select($arr[$i][0]);
 		if(mysql_fetch_array($rowstock)==null){
-		//	echo "insert";
+			//echo "insert";
 			$stock->Add($arr[$i][0],0,'0',$_POST["$n"],0);
 		}
 		else{
-		//	echo "update";
+			//echo "update";
 			$stock->UpdateC($arr[$i][0],$_POST["$n"]);
 		}
 	}

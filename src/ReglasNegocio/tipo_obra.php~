@@ -1,0 +1,78 @@
+<?php
+
+include("../AccesoDatos/Controller.php");
+
+class tipo_obra {
+	private $_id_tipo_obra;
+	private $_nombre_tipo_obra;
+	private $_codigo_tipo_obra;
+	private $_tabla = "TIPOS_OBRAS";
+	private $_registro="ID_TIPO_OBRA";
+	private $_registro2="NOMBRE_TIPO_OBRA";
+	private $_Controller;
+
+	function __construct()
+	{
+		$this->_Controller=new Controller();
+	}
+	
+	
+	function Getid_tipo_obra()	{return $this->_id_tipo_obra;}
+	function Getnombre_tipo_obra()	{return $this->_nombre_tipo_obra;}
+	function Gecodigo_tipo_obra()	{return $this->_codigo_tipo_obra;}
+	
+	function Setid_tipo_obra($id_tipo_obra) {$this->_id_tipo_obra= $id_tipo_obra;}
+	function Setnombre_tipo_obra($nombre_tipo_obra) {$this->_nombre_tipo_obra= $nombre_tipo_obra;}
+	function Setcodigo_tipo_obra($codigo_tipo_obra) {$this->_codigo_tipo_obra= $codigo_tipo_obra;}
+	
+	public function Select($id_tipo_obra)
+	{
+		
+		if(isset($id_tipo_obra) && $id_tipo_obra != "")
+		{
+			$sql="$id_tipo_obra";
+			$arr=$this->_Controller->Select($this->_tabla,$this->_registro, $sql);
+			return $arr; 
+		}
+	}
+	
+	public function Select2($nombre_tipo_obra)
+	{
+		if(isset($nombre_tipo_obra) && $nombre_tipo_obra != "")
+		{
+			$sql="'$nombre_tipo_obra'";
+			$arr=$this->_Controller->Select($this->_tabla,$this->_registro2, $sql);
+			$resultado = mysql_result($arr, 0);
+			return $resultado; 
+		}
+	}	
+	
+	
+	public function Add($codigo_tipo_obra,$nombre_tipo_obra)
+	{
+		$resultado;
+		if(isset($nombre_tipo_obra) && $nombre_tipo_obra != "" && isset($codigo_tipo_obra) && $codigo_tipo_obra != "")
+		{
+			$sql="0, '$codigo_tipo_obra' , '$nombre_tipo_obra' ";
+			$resultado =$this->_Controller->Add($this->_tabla, $sql);
+		}
+		return $resultado;
+	}
+	
+	
+	public function GetAll()
+	{
+		return $this->_Controller->GetAllTO();
+	}	
+	
+	public function Update($id_tipo_obra,$codigo_tipo_obra,$nombre_tipo_obra)
+	{
+		$sql=array("ID_TIPO_OBRA"=>"$id_tipo_obra","CODIGO_TIPO_OBRA" => "'$codigo_tipo_obra'","NOMBRE_TIPO_OBRA"=>"'$nombre_tipo_obra'");
+		return $this->_Controller->Update($this->_tabla,$this->_registro,$sql);
+		//return 0;
+	}
+	
+	
+}
+	
+?>

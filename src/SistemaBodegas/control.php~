@@ -6,7 +6,7 @@ ini_set("session.use_trans_sid","0");
 $_Controller=new Controller();
 $usuario=$_POST['usuario'];
 $contrasena=$_POST['contrasena'];
-$db="bdbase";
+$db="BodegaMunicipal";
 $dbuser="bduser";
 $dbhost="localhost";
 $dbpasswd="bdpasswd";
