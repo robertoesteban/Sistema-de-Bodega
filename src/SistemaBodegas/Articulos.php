@@ -4,13 +4,16 @@ $articulo = new articulo();
 
 $editar = $_GET["editar"];
 $boton = "verifica()";
+$visible=true;
 if(!empty($editar))
 {
 	$nombre_articulo = $articulo->Select($editar);
 	$row = mysql_fetch_array($nombre_articulo);
 	$id_articulo=$row['ID_MATERIAL'];	
 	$nombre_articulo=$row['NOMBRE_MATERIAL'];
+	$unidadmedida_articulo =$row['UNIDADMEDIDA_MATERIAL'];
 	$boton = "VerificaUpdate()";
+	$visible=false;
 	
 }
 //$nombre_direccion = "Hola";
@@ -31,6 +34,12 @@ function verifica()
 		document.form.nombre_articulo.focus();
       return 0;
 	}
+	if (document.form.unidadmedida_articulo.value==0)
+   {
+		alert("Debe seleccionar una Unidad de Medida");
+		document.form.unidadmedida_articulo.focus();
+      return 0;
+	}
    document.form.hd_variable.value="ingresar";
 	document.form.submit();
 }
@@ -39,6 +48,7 @@ function verifica2()
   {
    document.form.id_articulo.value="";
    document.form.nombre_articulo.value="";
+   document.form.unidadmedida_articulo.value=0;
    document.form.submit();
   }
   
@@ -54,6 +64,12 @@ function VerificaUpdate()
    {
 		alert("Debe ingresar un Nombre");
 		document.form.nombre_articulo.focus();
+      return 0;
+	}
+	if (document.form.unidadmedida_articulo.value==0)
+   {
+		alert("Debe seleccionar una Unidad de Medida");
+		document.form.unidadmedida_articulo.focus();
       return 0;
 	}
 	document.form.hd_variable.value="editar";
@@ -87,13 +103,34 @@ function pulsar(e) {
 
 <tr>
 <td>Codigo</td>
-<td colspan="5"><input name="id_articulo" type="text" size="20" value="<?php echo $id_articulo; ?>" onkeypress="return pulsartipo(event)"  /></td>
+<td colspan="5"><input name="id_articulo" type="text" size="20" <?php if (!$visible) echo DISABLED;?> value="<?php echo $id_articulo; ?>"    onkeypress="return pulsartipo(event)"  /></td>
 </tr>
 
 <tr>
 <td>Nombre</td>
 <td colspan="5"><input name="nombre_articulo" type="text" size="50" value="<?php echo $nombre_articulo; ?>" onkeypress="return pulsar(event)"/></td>
 </tr>
+
+<td>Unidad</td>
+<td colspan="5">
+	<select name="unidadmedida_articulo">
+		<option value=0 > Seleccionar </option>
+		<?php if ($unidadmedida_articulo=="UN" )
+					echo "<option value='UN' SELECTED>Unidad </option>";
+				else
+					echo "<option value='UN' >Unidad </option>";
+				if ($unidadmedida_articulo=="KG") 
+					echo "<option value='KG' SELECTED>Kilogramo </option>";
+				else
+					echo "<option value='KG' >Kilogramos</option>";
+		?>
+		
+		
+		
+	</select>
+</td>
+
+
 <tr>
 <td colspan="6" align="center"><input type="button" name="button1" value="<?php if(!empty($editar)) echo 'Actualizar'; else echo 'Ingresar'?>" onclick="<?php echo $boton; ?>"/>
 <?php if(!empty($editar)) echo "<input type='button' name='button2' value='Limpiar' onclick='verifica2();' />"; ?>

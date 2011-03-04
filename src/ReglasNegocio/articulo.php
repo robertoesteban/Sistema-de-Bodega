@@ -71,7 +71,7 @@ class articulo {
 	
 	public function Update($id_articulo,$nombre_articulo,$unidadmedida_articulo)
 	{
-		$sql=array("ID_MATERIAL"=>"$id_articulo","NOMBRE_MATERIAL" => "'$nombre_material'","UNIDAD_MATERIAL"=>"'$unidadmedida_articulo'");
+		$sql=array("ID_MATERIAL"=>"$id_articulo","NOMBRE_MATERIAL" => "'$nombre_articulo'","UNIDADMEDIDA_MATERIAL"=>"'$unidadmedida_articulo'");
 		return $this->_Controller->Update($this->_tabla,$this->_registro,$sql);
 		//return 0;
 	}
