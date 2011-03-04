@@ -34,7 +34,10 @@
 <li><a href="paso.php?c=y" title="Departamentos">Departamentos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 <li><a href="paso.php?c=w" title="Unidades">Unidades</a></li>
 <li><a href="paso.php?c=z" title="Ciudades">Ciudades</a></li>
-<li><a href="paso.php?c=x" title="Bodegas">Bodegas</a></li></ul></div></td>
+<li><a href="paso.php?c=x" title="Bodegas">Bodegas</a></li>
+<li><a href="paso.php?c=t" title="Articulos">Articulos</a></li>
+</ul></div></td>
+
 
 <td style="padding-right:0px" title ="USUARIOS">
 <a onmouseover='xpe("up36to");xpshow("up36t",0,this);xpsmover(this);' onmouseout='xpsmout(this);' onmousedown='xpe("up36tc");'><img id="xpi_up36t" src="menu-files/btup36t_0.png" name="vbup36t" width="121" height="37" border="0" alt="USUARIOS" /></a><div>
