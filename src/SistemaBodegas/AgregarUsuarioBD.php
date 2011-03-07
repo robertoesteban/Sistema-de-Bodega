@@ -1,23 +1,33 @@
 <?php
 include ("../ReglasNegocio/usuario.php");
 
-$rut1=$_POST['rutusuario1'];
-$rut2=$_POST['rutusuario2'];
-$rut=$rut1.'-'.$rut2;
-$departamento=$_POST['deptousuario'];
+$rut=$_POST['rut'];
+$departamento=$_POST['departamento'];
 $nombre=$_POST['nombreusuario'];
 $apellidos=$_POST['apellidosusuario'];
 $password1=$_POST['password1'];
 $password2=$_POST['password2'];
-
-if ($password1==$password2){
-	$user= new usuario();
-	$user->Add($rut,1,$nombre,$apellidos,$password1);
+$hd_variable=$_POST["hd_variable"];
+$id_variable=$_POST["id_variable"];
+//echo $id_variable;
+$user= new usuario();
+if ($hd_variable=="ingresar")
+{
+	$value =	$user->Select2($rut);
+	if (empty($value))
+	{
+		$result = $user->Add($rut,$departamento,$nombre,$apellidos,$password1);
+		header ("Location: paso.php?c=8");
+	}
+}
+elseif ($hd_variable=="actualizar")
+{
+	$value =  $user->Update($id_variable,$rut, $nombre, $apellidos, $password1);
 	header ("Location: paso.php?c=8");
 }
-else {
+else
+{
 	header ("Location: paso.php?c=8");
-}	
-	
+}
 
 ?>

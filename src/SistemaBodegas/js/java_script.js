@@ -130,3 +130,105 @@ function checkCDV( dvr )
         }
         return true;
 }
+
+function verifica2usuario()
+{
+   document.form.rut.value="";
+   document.form.nombreusuario.value="";
+   document.form.apellidosusuario.value="";  
+   document.form.departamento.value=0;
+   document.form.password1.value="";
+   document.form.password2.value="";
+   document.form.submit();
+}
+
+function verificaUsuario()
+{
+	if (document.form.rut.value.length==0)
+   {
+		alert("Debe ingresar un RUT");
+		document.form.rut.focus();
+      return 0;
+	}
+	if (document.form.nombreusuario.value.length==0)
+   {
+		alert("Debe ingresar un Nombre");
+		document.form.nombreusuario.focus();
+      return 0;
+	}
+	if (document.form.apellidosusuario.value.length==0)
+   {
+		alert("Debe ingresar Apellidos");
+		document.form.apellidosusuario.focus();
+      return 0;
+	}
+	if (document.form.password1.value.length==0)
+   {
+		alert("Debe ingresar una contraseña");
+		document.form.password1.focus();
+      return 0;
+	}
+	if (document.form.password2.value.length==0)
+   {
+		alert("Debe ingresar una contraseña igual a la anterior");
+		document.form.password2.focus();
+      return 0;
+	}
+	if (document.form.password1.value!=document.form.password2.value)
+   {
+		alert("Las contraseñas ingresadas no coinciden");
+		document.form.password1.value="";
+		document.form.password2.value="";
+		document.form.password1.focus();
+      return 0;
+	}
+   document.form.hd_variable.value="ingresar";
+	document.form.submit();
+}
+
+
+function VerificaUsuarioUpdate()
+{
+	if (document.form.rut.value.length==0)
+   {
+		alert("Debe ingresar un RUT");
+		document.form.rut.focus();
+      return 0;
+	}
+	if (document.form.nombreusuario.value.length==0)
+   {
+		alert("Debe ingresar un Nombre");
+		document.form.nombreusuario.focus();
+      return 0;
+	}
+	if (document.form.apellidosusuario.value.length==0)
+   {
+		alert("Debe ingresar Apellidos");
+		document.form.apellidosusuario.focus();
+      return 0;
+	}
+	if (document.form.password1.value!=document.form.password2.value)
+   {
+		alert("Las contraseñas ingresadas no coinciden");
+		document.form.password1.value="";
+		document.form.password2.value="";
+		document.form.password1.focus();
+      return 0;
+	}
+   document.form.hd_variable.value="actualizar";
+	document.form.submit();
+}
+
+
+function  display_alert(usuario)
+{
+	if(confirm("Esta seguro que desea eliminar el Usuario?"))
+	{
+   	document.form.hd_variable.value="bloquear";
+   	document.form.id_variable.value=usuario;
+      document.form.submit();
+   }
+   else
+   	return 0;
+
+}

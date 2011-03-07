@@ -269,7 +269,7 @@ $cant = count($AllObra);
 if($cant > 0)
 { 
 	echo "<table border=1   align='center' class='filaPar'>";
-	echo "<tr class='titulosTabla'><td>Nombre</td><td>Encargado</td><td>Fecha de Creacion</td><td>Departamento Ejecutor</td><td>Tipo de Obra</td><td>Cerrar</td></tr>";
+	echo "<tr class='titulosTabla'><td>Nombre</td><td>Encargado</td><td>Fecha de Creacion</td><td>Departamento Ejecutor</td><td>Tipo de Obra</td></tr>";
 	for ($i=0;$i<$cant;$i++)
 	{
 		echo "<tr align='center'>";
@@ -278,7 +278,7 @@ if($cant > 0)
 			echo ("<td>$valor </td>");     
 		}
 		//echo "<td width='10%' ><a href='paso.php?c=4&editar=".$claves[$i]."'><img border=0 src='imagenes/editar.jpg' width='20' height='20' ></a></td>";
-		echo "<td><a href='paso.php?c=4&cerrar=".$claves[$i]."'>Cerrar</a></td>";
+		//echo "<td><a href='paso.php?c=4&cerrar=".$claves[$i]."'>Cerrar</a></td>";
 		echo "</tr>";
 	}
 	echo "</table>";			
