@@ -84,7 +84,7 @@ function verifica2()
 <p> </p></td>
 </tr>
 <tr>
-<td colspan="6" align="center"><!--form action="RetirarCustodiaBD.php" method="post"><a href="RetirarCustodiaBD.php" class="ask"--><input type="button" name="submit1" value="Retirar" onclick="<?php echo $boton2;?>" /><!-- /a></form--></td>
+<td colspan="6" align="center"><!--form action="RetirarCustodiaBD.php" method="post"><a href="RetirarCustodiaBD.php" class="ask"--><input type="submit" name="submit" value="Retirar" /><!-- /a></form--></td>
 </tr>
 </table>
 <?php $au=$_SESSION["autentificado"];

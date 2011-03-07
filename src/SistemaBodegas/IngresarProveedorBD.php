@@ -4,7 +4,7 @@ include("../ReglasNegocio/ciudad.php");
 include("../ReglasNegocio/proveedor.php");
 include("../ReglasNegocio/contiene.php");
 include ("LeerXML.php");
-if($_POST["submit"]=="oc"){
+if($_POST["submitO"]=="oc"){
 	$leer=new LeerXML();
 	$leer->leer($_POST['NumOC']);
 	header ("Location: paso.php?c=1.1");
