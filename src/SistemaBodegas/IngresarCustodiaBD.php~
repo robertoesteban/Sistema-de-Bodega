@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if($_POST["submitC"]=="agregar"){
+if($_POST["submit"]=="agregar"){
 
 $ingresado_por=$_POST['NombreF'];
 $procedencia=$_POST['unidadp'];

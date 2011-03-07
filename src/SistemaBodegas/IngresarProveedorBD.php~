@@ -7,13 +7,13 @@ include ("LeerXML.php");
 if($_POST["submit"]=="oc"){
 	$leer=new LeerXML();
 	$leer->leer($_POST['NumOC']);
-	header ("Location: paso.php?c=1");
+	header ("Location: paso.php?c=1.1");
 }
 else{
 session_start();
 $_SESSION["numero"]=$_POST['NumOC'];
 $_SESSION["fechaoc"]=$_POST['FechaOC'];
-$_SESSION["fechatope"]=$_POST['fecha_reclamo'];
+$_SESSION["fechatope"]=$_POST['fecha_tope'];
 $_SESSION["codigoD"]=$_POST['CodigoD'];
 $_SESSION["nombreD"]=$_POST['NombreD'];
 $_SESSION["solicitante"]=$_POST['SolicitanteOC'];
