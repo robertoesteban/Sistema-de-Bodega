@@ -3,7 +3,7 @@ session_start();
 include("../AccesoDatos/Controller.php");
 include("../ReglasNegocio/material.php"); 
 include("../ReglasNegocio/asociado.php");
-if($_POST["submit"]=="agregar"){
+if($_POST["submitRC"]=="agregar"){
 	$nombre=$_POST['NombreRC'];
 	$obs=$_POST['obs'];
 	$_SESSION["nombre"]=$nombre;
