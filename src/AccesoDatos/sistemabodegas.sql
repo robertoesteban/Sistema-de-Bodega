@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     02-03-2011 16:05:29                          */
+/* Created on:     07-03-2011 17:21:03                          */
 /*==============================================================*/
 
 
@@ -39,6 +39,8 @@ drop table if exists OBRAS;
 drop table if exists ORDENCOMPRA;
 
 drop table if exists PROVEEDORES;
+
+drop table if exists REGIONES;
 
 drop table if exists RETIROS;
 
@@ -115,6 +117,7 @@ create table CIUDADES
 (
    ID_CIUDAD            int not null auto_increment,
    NOMBRE_CIUDAD        varchar(100),
+   ID_REGION            int not null,
    primary key (ID_CIUDAD)
 );
 
@@ -133,6 +136,7 @@ create table CONTIENE
    CANTIDADBODEGA_CONTIENE int,
    CANTIDADRECIBIDA_CONTIENE int,
    VALOR_CONTIENE       int,
+   FECHA_CONTIENE       datetime,
    primary key (ID_MATERIAL, NUMERO_OC, ID_DOCUMENTO, RUT_PROVEEDOR, ID_OBRA, FOLIO_CONTIENE)
 );
 
@@ -300,6 +304,16 @@ create table PROVEEDORES
 );
 
 /*==============================================================*/
+/* Table: REGIONES                                              */
+/*==============================================================*/
+create table REGIONES
+(
+   ID_REGION            int not null auto_increment,
+   NOMBRE_REGION        varchar(100),
+   primary key (ID_REGION)
+);
+
+/*==============================================================*/
 /* Table: RETIROS                                               */
 /*==============================================================*/
 create table RETIROS
@@ -403,12 +417,13 @@ create table UNIDADES
 /*==============================================================*/
 create table USUARIOS
 (
-   ID_USUARIO           int not null auto_increment,
+   ID_USUARIO           int not null,
    ID_DEPARTAMENTO      int not null,
    RUT_USUARIO          varchar(10),
-   NOMBRE_USUARIO       char(50),
-   APELLIDOS_USUARIO    varchar(50),
-   PASSWORD_USUARIO     char(10),
+   NOMBRE_USUARIO       varchar(100),
+   APELLIDOS_USUARIO    varchar(100),
+   PASSWORD_USUARIO     varchar(100),
+   ESTADO_USUARIO       int,
    primary key (ID_USUARIO)
 );
 
@@ -432,6 +447,9 @@ alter table ASOCIADO add constraint FK_ASOCIADO3 foreign key (ID_AREA, ID_BODEGA
 
 alter table ASOCIADO add constraint FK_ASOCIADO4 foreign key (ID_UNIDAD)
       references UNIDADES (ID_UNIDAD) on delete restrict on update restrict;
+
+alter table CIUDADES add constraint FK_SE_ENCUENTRAN foreign key (ID_REGION)
+      references REGIONES (ID_REGION) on delete restrict on update restrict;
 
 alter table CONTIENE add constraint FK_CONTIENE foreign key (ID_MATERIAL)
       references MATERIALES (ID_MATERIAL) on delete restrict on update restrict;
