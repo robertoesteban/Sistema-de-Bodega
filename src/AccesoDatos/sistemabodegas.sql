@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     07-03-2011 17:21:03                          */
+/* Created on:     08-03-2011 0:34:23                           */
 /*==============================================================*/
 
 
@@ -417,7 +417,7 @@ create table UNIDADES
 /*==============================================================*/
 create table USUARIOS
 (
-   ID_USUARIO           int not null,
+   ID_USUARIO           int not null auto_increment,
    ID_DEPARTAMENTO      int not null,
    RUT_USUARIO          varchar(10),
    NOMBRE_USUARIO       varchar(100),
