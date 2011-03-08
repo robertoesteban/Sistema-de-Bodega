@@ -66,7 +66,7 @@ public function Add($rut_usuario,$id_departamento,$nombre_usuario,$apellidos_usu
 {
 	if(isset($rut_usuario) && $rut_usuario != "")
 	{
-		$sql=" 0 ,$id_departamento, '$rut_usuario' , '$nombre_usuario' , '$apellidos_usuario' , '$password_usuario' 0";
+		$sql=" 0 ,$id_departamento, '$rut_usuario' , '$nombre_usuario' , '$apellidos_usuario' , '$password_usuario' , 0";
 		return $this->_Controller->Add($this->_tabla, $sql);
 	}
 }
@@ -103,7 +103,18 @@ public function Table()
 		for($i=0;$i<$nfilas;$i++)
 		{
 			$id_usuario= mysql_result($result,$i,0);
-			$departamento = mysql_result($result,$i,1);
+			$id_departamento = mysql_result($result,$i,1);
+			$sql2 = "SELECT NOMBRE_DEPARTAMENTO FROM DEPARTAMENTOS WHERE ID_DEPARTAMENTO = $id_departamento";
+			$result2 = $this->_Controller->ejecute($sql2);
+			$nfilas2 = mysql_num_rows($result2);
+			if ($nfilas2  > 0) 
+			{
+				$departamento = mysql_result($result2,0,0);
+			}
+			else 
+			{
+				$departamento="Administrador";
+			}
 			$nombre_usuario = mysql_result($result,$i,3);
 			$apellidos_usuario = mysql_result($result,$i,4);
 			$indice = $i+1;
