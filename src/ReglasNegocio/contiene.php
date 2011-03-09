@@ -10,6 +10,7 @@ class contiene {
 	private $_cantidadbodega_contiene;
 	private $_cantidadrecibida_contiene;
 	private $_valor_contiene;
+	private $_fecha_contiene;
 	private $_tabla="CONTIENE";
 	private $registro="NUMERO_OC";
 	private $Controller;
@@ -45,6 +46,12 @@ class contiene {
 		$result=$this->Controller->ejecute($sql);
 		$row=mysql_fetch_array($result);
 		return $row["mayor"];
+	}
+	
+	public function SelectR($idmaterial,$iddoc,$idobra,$folio){
+		$arr1=array("ID_MATERIAL","ID_DOCUMENTO","ID_OBRA","FOLIO_CONTIENE");
+		$arr2=array($idmaterial,$iddoc,$idobra,$folio);
+		return $this->Controller->Select2($this->_tabla,$arr1,$arr2);
 	}
 	
 	public function Select2($id_material){
@@ -89,10 +96,10 @@ class contiene {
 		}
 	}
 	
-	public function Add($id_material,$numero_oc,$id_documento,$rut_proveedor,$id_obra,$folio,$cantidad_total,$cantidad_bodega,$cantidad_recibida,$valor_contiene){
+	public function Add($id_material,$numero_oc,$id_documento,$rut_proveedor,$id_obra,$folio,$cantidad_total,$cantidad_bodega,$cantidad_recibida,$valor_contiene,$fecha_contiene){
 		if(isset($numero_oc) && $numero_oc != "")
 		{
-			$sql="$id_material ,'$numero_oc' ,$id_documento, '$rut_proveedor',$id_obra, $folio ,$cantidad_total , $cantidad_bodega , $cantidad_recibida, $valor_contiene";
+			$sql="$id_material ,'$numero_oc' ,$id_documento, '$rut_proveedor',$id_obra, $folio ,$cantidad_total , $cantidad_bodega , $cantidad_recibida, $valor_contiene,'$fecha_contiene'";
 			//echo $sql;
 			$this->Controller->Add($this->_tabla, $sql);	
 		}
@@ -103,6 +110,10 @@ class contiene {
 		$this->Controller->Update($this->_tabla,$this->registro,$sql);
 	}
 	
+	public function Update($cantidad,$material,$idobra){
+		$sql="update CONTIENE SET CANTIDADBODEGA_CONTIENE=CANTIDADBODEGA_CONTIENE-".$cantidad." where ID_MATERIAL=".$material." AND ID_DOCUMENTO=0 AND ID_OBRA=".$idobra." AND FOLIO_CONTIENE=0";
+		return $this->Controller->ejecute($sql);
+	}
 	/*public function Update($numero_oc,$id_unidad,$fecha_oc,$fechatope_oc,$fechaingreso_oc,$solicitante_oc,$observacion_oc,$estado_oc,$neto_oc,$total_oc){
 		$sql=array("NUMERO_OC"=>"'$numero_oc'","ID_UNIDAD"=>"$id_unidad","FECHA_OC"=>"'$fecha_oc'","FECHATOPE_OC"=>"'$fechatope_oc'","FECHAINGRESO_OC"=>"'$fechaingreso_oc'","SOLICITANTE_OC"=>"'$solicitante_oc'","OBSERVACION_OC"=>"'$observacion_oc'","ESTADO_OC"=>"'$estado_oc'","NETO_OC"=>"$neto_oc","TOTAL_OC"=>"$total_oc");
 		$this->Controller->Update($this->_tabla,$this->registro,$sql);

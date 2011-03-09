@@ -40,13 +40,15 @@ if($action==null){
 include 'IngresarOCBD.php';
 $arr =$_SESSION["list"];
 $size=$_SESSION["size"];
+$fecha= time();
+$fechaactual=date("Y-m-d h:m:s",$fecha);
 
 $cont=new contiene();
 for($i=0;$i<$size;$i++){
 	$n="c".$i;
-	$cont->Add($_POST["$n"],$_POST['NumOC'],"0",$rut,"0",0,$arr[$i][1],0,0,$arr[$i][2]);
+	$cont->Add($_POST["$n"],$_POST['NumOC'],"0",$rut,"0",0,$arr[$i][1],0,0,$arr[$i][2],$fechaactual);
 }
-header ("Location: paso.php?c=1");
+//header ("Location: paso.php?c=1");
 
 //header ("Location: IngresarOCBD.php");
 /*if($r==null){

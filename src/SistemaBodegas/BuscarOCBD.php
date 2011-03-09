@@ -1,18 +1,12 @@
 <?php 
 session_start();
-if($_POST["submit"]=="Buscar"){
+if($_POST["submitI"]=="Buscar"){
 include ("../ReglasNegocio/ciudad.php");
 include ("../ReglasNegocio/proveedor.php");
 include ("../ReglasNegocio/contiene.php");
-echo "asd";
 include ("../ReglasNegocio/material.php");
 
 $numero=$_POST['NumOC'];
-if($numero==""){
-		$_SESSION["mensajeIM"]="NO HA INGRESADO NUMERO DE ORDEN DE COMPRA PARA BUSCAR";
-		header ("Location: paso.php?c=2");
-}
-else{
 $_SESSION["numoc"]=$numero;
 $cont = new contiene();
 $ciu=new ciudad();
@@ -46,15 +40,15 @@ if($row!=null){
 		$namem=mysql_fetch_array($name);
 		if($materiales["CANTIDADTOTAL_CONTIENE"]>$materiales["CANTIDADBODEGA_CONTIENE"]){
 		$list[$i]=array($materiales["ID_MATERIAL"],$namem["NOMBRE_MATERIAL"],$materiales["CANTIDADTOTAL_CONTIENE"],$materiales["CANTIDADBODEGA_CONTIENE"],$namem["UNIDADMEDIDA_MATERIAL"]);
-		}
 		$i++;
+		}
 		$materiales=mysql_fetch_array($arrmat);
 	}
 	$_SESSION["lista"]=$list;
 	
 }
 header ("Location: paso.php?c=2");
-}}
+}
 else{
 include("../ReglasNegocio/documento.php");
 include("../ReglasNegocio/contiene.php");
@@ -107,8 +101,9 @@ $stock=new stock();
 //lista de materiales
 $arr=$_SESSION["lista1"];
 //buscar documento
-//$docs=$doc->Select($ndoc);
+$docs=$doc->Select($ndoc);
 //if($docs==null){
+
 //validar cantidades
 $a=0;
 for($i=0;$i<count($arr);$i++){
@@ -136,6 +131,8 @@ else{
 	$rowcont=mysql_fetch_array($accion1);*/
 	$folio=$_SESSION["folio"];
 	$size=count($arr);
+	$fecha= time();
+	$fechaactual=date("Y-m-d h:m:s",$fecha);
 for($i=0;$i<$size;$i++){
 	$n="cantidadr".$i;
 	$bod=($arr[$i][3])+($_POST["$n"]);
@@ -144,15 +141,15 @@ for($i=0;$i<$size;$i++){
 	if($idobra==0){
 		$rowstock=$stock->Select($arr[$i][0]);
 		if(mysql_fetch_array($rowstock)==null){
-			//echo "insert";
+		//	echo "insert";
 			$stock->Add($arr[$i][0],0,'0',$_POST["$n"],0);
 		}
 		else{
-			//echo "update";
+		//	echo "update";
 			$stock->UpdateC($arr[$i][0],$_POST["$n"]);
 		}
 	}
-	$cont->Add($arr[$i][0],$_SESSION['oc'],$iddoc,$rut,$idobra,$folio,$arr[$i][2],$arr[$i][3],$_POST["$n"],0);
+	$cont->Add($arr[$i][0],$_SESSION['oc'],$iddoc,$rut,$idobra,$folio,$arr[$i][2],$arr[$i][3],$_POST["$n"],0,$fechaactual);
 	$sql="update CONTIENE set CANTIDADBODEGA_CONTIENE=".$bod." where ID_MATERIAL=".$arr[$i][0]. " and NUMERO_OC="."'$numoc'"." and ID_DOCUMENTO='0' AND RUT_PROVEEDOR="."'$rut'"." AND ID_OBRA=0"." AND FOLIO_CONTIENE=0";
 	//echo $sql;
 	$con->Connect();

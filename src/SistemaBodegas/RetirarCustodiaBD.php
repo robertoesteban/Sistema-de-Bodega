@@ -54,8 +54,8 @@ else{
 $retiros= new retiros_custodia();
 $fecha= time();
 $fechaactual=date("Y-m-d h:m:s",$fecha);
-$retiros->Add($nombre,$obs,$fechaactual);
-$listaretiro=$retiros->Select($nombre,$obs,$fechaactual);
+$retiros->Add($nombre,$obs);
+$listaretiro=$retiros->Select($nombre,$obs);
 $rowretiros=mysql_fetch_array($listaretiro);
 $id_retiro=$rowretiros["ID_RETIRO_CUSTODIA"];
 $material=new material();
