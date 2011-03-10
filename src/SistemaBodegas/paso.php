@@ -1,16 +1,17 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 <?php
 session_start();
 $c = $_GET[c];
 $$errorusuario = $_GET[errorusuario];
 
-define("PATHDRASTICTOOLS", "");
-include (PATHDRASTICTOOLS . "DrasticTools/Examplemysqlconfig.php");
-include (PATHDRASTICTOOLS . "DrasticTools/drasticSrcMySQL.class.php");
-$src = new drasticSrcMySQL("localhost", "root", "galadriel", "BodegaMunicipal", "TIPOS_OBRAS");?>
+//define("PATHDRASTICTOOLS", "");
+//include (PATHDRASTICTOOLS . "DrasticTools/Examplemysqlconfig.php");
+//include (PATHDRASTICTOOLS . "DrasticTools/drasticSrcMySQL.class.php");
+//$src = new drasticSrcMySQL("localhost", "root", "galadriel", "BodegaMunicipal", "TIPOS_OBRAS");?>
 <html>
 <head>
 
-<meta name="Content-Script-Type" content="text/javascript">
+
 <title>Sistema bodega Municipal</title>
 <link href="css/estiloMozilla.css" rel="stylesheet" type="text/css">
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
@@ -43,14 +44,22 @@ $src = new drasticSrcMySQL("localhost", "root", "galadriel", "BodegaMunicipal", 
 				$('.ask').jConfirmAction();
 			});
 		</script>
+		<?php
+		$name=$_SESSION["nombre_usuario"];
+		$ap=$_SESSION["apellidos_usuario"];
+		?>
+		
 </head>
 <?php
 	if ($_SESSION["autentificado"] == "SI")
 	{?>
 	<p class="tituloHead">
 		<?php include("menu.php");?>
+	<p class="labelUser"> <?php echo "Nombre: $name $ap"; ?></p>
 	</p>
+
 	<?php 
+		
 		if($c=="0"){
 			include 'Bienvenido.php';
 		}
@@ -74,7 +83,7 @@ $src = new drasticSrcMySQL("localhost", "root", "galadriel", "BodegaMunicipal", 
 		if($c=="3"){
 			include 'Ingresar_Custodia.php';}
 		if($c=="4"){
-			include 'Ingresar_Obra.php';}
+			include 'Obra.php';}
 		if($c=="5"){
 			include 'Retirar_Material.php';}
 		if($c=="6"){
@@ -82,7 +91,7 @@ $src = new drasticSrcMySQL("localhost", "root", "galadriel", "BodegaMunicipal", 
 		if($c=="7"){
 			include 'Eliminar_Obra.php';}
 		if($c=="8"){
-			include 'Ingresar_Usuario.php';}
+			include 'Usuario.php';}
 		if($c=="9"){
 			include 'Buscar_Usuario.php';}
 		if($c=="a"){
@@ -108,7 +117,9 @@ $src = new drasticSrcMySQL("localhost", "root", "galadriel", "BodegaMunicipal", 
 		if($c=="w"){
 			include 'Unidad.php';}
 		if($c=="v"){
-			include 'Tipo_Obra.php';}?>
+			include 'Tipo_Obra.php';}
+		if($c=="t"){
+			include 'Articulos.php';}?>
 			
 			<?php include 'pie.php';
 

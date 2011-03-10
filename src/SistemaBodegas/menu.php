@@ -31,6 +31,12 @@
 <li><a href="paso.php?c=z" title="Ciudades">Ciudades</a></li>
 <li><a href="paso.php?c=x" title="Bodegas">Bodegas</a></li>
 <li><a href="paso.php?c=g" title="Obras">Reporte Custodia</a></li></ul></div></td>
+
+<td style="padding-right:0px" title ="REPORTES">
+<a onmouseover='xpe("wp41to");xpshow("wp41t",0,this);xpsmover(this);' onmouseout='xpsmout(this);' onmousedown='xpe("wp41tc");'><img id="xpi_wp41t" src="menu-files/btwp41t_0.png" name="vbwp41t" width="139" height="37" border="0" alt="MANTENCION" /></a><div>
+<ul id="vbUL_wp41t" class="vbULwp36t">
+<li><a href="paso.php?c=g" title="Obras">Reporte Custodia</a></li></ul></div></td>
+
 <td style="padding-right:0px" title ="USUARIOS">
 <a onmouseover='xpe("up36to");xpshow("up36t",0,this);xpsmover(this);' onmouseout='xpsmout(this);' onmousedown='xpe("up36tc");'><img id="xpi_up36t" src="menu-files/btup36t_0.png" name="vbup36t" width="121" height="37" border="0" alt="USUARIOS" /></a><div>
 <ul id="vbUL_up36t" class="vbULwp36t">

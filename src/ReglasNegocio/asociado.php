@@ -56,6 +56,31 @@ public function GetMayor(){
 			return $arr; 
 		}
 	}
+	public function getAll2(){
+	$Controller = new Controller();
+		return $Controller->ejecute("SELECT
+		CUSTODIAS.INGRESADOPOR_CUSTODIA,
+		CUSTODIAS.FECHAINGRESO_CUSTODIA,
+		ASOCIADO.ID_AREA,
+		ASOCIADO.FOLIO_ASOCIADO,
+		ASOCIADO.PERIODO_ASOCIADO,
+		MATERIALES.NOMBRE_MATERIAL,
+		BODEGAS.NOMBRE_BODEGA,
+		UNIDADES.NOMBRE_UNIDAD
+		FROM
+		ASOCIADO
+		INNER JOIN CUSTODIAS ON CUSTODIAS.ID_CUSTODIA = ASOCIADO.ID_CUSTODIA
+		INNER JOIN MATERIALES ON MATERIALES.ID_MATERIAL = ASOCIADO.ID_MATERIAL
+		INNER JOIN BODEGAS ON BODEGAS.ID_BODEGA = ASOCIADO.ID_BODEGA
+		INNER JOIN UNIDADES ON UNIDADES.ID_UNIDAD = ASOCIADO.ID_UNIDAD");
+	}
+	
+	public function getArea($idarea){
+		if(isset($idarea)&& $idarea !=""){
+			$Controller=new Controller();
+			return $Controller->ejecute("Select * from AREAS WHERE ID_AREA=".$idarea);
+		}
+	}
 	
 public function SelectM($id_material){
 	if(isset($id_material) && $id_material != "")

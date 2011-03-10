@@ -1,45 +1,13 @@
 <?php session_start(); 
 include ("../AccesoDatos/Controller.php");
 include ("../ReglasNegocio/contiene.php");
-include ("../ReglasNegocio/ejecuta.php");
 include ("../ReglasNegocio/obra.php");
 include '../ReglasNegocio/unidad.php';
 $contiene = new contiene();
-$ejecuta=new ejecuta();
 $unidad=new unidad();
 $obra=new obra();
-$folio=(($ejecuta->GetMayor())+1);
-$boton="verifica()";
-$boton2="verifica2()";
 ?>
-<script LANGUAGE="JavaScript">
-
-function verifica()
-{
-	if (document.miform.codigom.value.length==0)
-   {
-		alert("Debe ingresar un Codigo de Material");
-		document.miform.codigom.focus();
-      	return 0;
-	}
-	document.miform.submit();
-	
-}
-function verifica2()
-{
-	if(document.miform.nombreD.value.length==0){
-		alert("Debe seleccionar un Nombre del destinatario del material");
-      	return 0;
-	}
-	else{
-	document.miform.submitRM.value="Retirar";
-	document.miform.submit();
-	}
-}
-</script>
 <body>
-<form name="miform" action="RetirarMaterialBD.php" method="post">
-<input type="hidden" name="submitRM" value="Agregar" />
 <p class="tituloHead">Retiro Material Bodega</p>
 <p><?php echo $_SESSION["RTMensaje"];?></p>
 <table width="700" align="center" class="filaPar">
@@ -82,7 +50,7 @@ function verifica2()
 
 </tr>
 <tr>
-	<td>Destino</td>
+	<<td>Destino</td>
 	<td colspan="5"><select name="unidadp">
       <?php
 		$Allunidad = $unidad->GetAll();
@@ -107,8 +75,11 @@ function verifica2()
 </tr>
 <tr>
 	<td>Motivo</td>
-	<td colspan="5">
-	    <textarea name="motivo" cols="79"></textarea>
+	<td colspan="5"><form name="form1" method="post" action="">
+	  <label>
+	    <textarea name="textarea" cols="79"></textarea>
+	    </label>
+	  </form>
 	</td>
 </tr>
 <tr>
@@ -119,7 +90,7 @@ function verifica2()
 <tr>
 		<td>Codigo</td>
 		<td><input name="codigom" type="text""/></td>
-		<td><input type="button" value="Agregar" name="submit1" onclick="<?php echo $boton;?>"/></td>
+		<td><input type="submit" value="Agregar" name="submit"/></td>
 		<td colspan="3"> </td>
   </tr>
 
@@ -128,23 +99,27 @@ function verifica2()
   <tr>
     <td width="57" height="22" class="titulosTabla">Codigo</td>
     <td width="314" class="titulosTabla">Nombre</td>
+    <td width="35" class="titulosTabla">Unidad</td>
+    <td width="47" class="titulosTabla">Cantidad total </td>
 	 <td width="53" class="titulosTabla">Cantidad en Bodega </td>
-    <td width="59" class="titulosTabla">Cantidad </td>
+    <td width="59" class="titulosTabla">Cantidad recibida </td>
   </tr>
   <?php $arr=$_SESSION["lista"];
   for($i=0;$i<count($arr);$i++){ ?>
   <tr>
     <td><?php echo $arr[$i][0];?></td>
     <td><?php echo $arr[$i][1];?></td>
+    <td><?php echo $arr[$i][4];?></td>
     <td><?php echo $arr[$i][2];?></td>
-    <td align="center"><input name="<?php echo "cantidad".$i;?>" type="text" size="3" onkeypress="if ((event.keyCode!=8 && event.keyCode < 45) || event.keyCode > 57) event.returnValue = false;"/></td>
+    <td><?php echo $arr[$i][3];?></td>
+    <td align="center"><input name="<?php echo "cantidadr".$i;?>" type="text" size="3" onkeypress="if ((event.keyCode!=8 && event.keyCode < 45) || event.keyCode > 57) event.returnValue = false;"/></td>
   </tr>
   <?php }?>
   </table>
   </td>
 </tr>
 <tr>
-<td colspan="6" align="center"><input type="button" name="input1" value="Retirar" onclick="<?php echo $boton2;?>" /></td>
+<td colspan="6" align="center"><input type="submit" name="input" value="Retirar" /></td>
 </tr>
 </table>
 <?php 
@@ -162,5 +137,4 @@ $_SESSION["size"]=count($arr);
 $_SESSION["lista1"]=$arr;
 $_SESSION["oc"]=$num;
 $_SESSION["folio"]=$folio;?>
-</form>
 </body>
