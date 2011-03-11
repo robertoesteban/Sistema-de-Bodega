@@ -99,6 +99,54 @@ class obra{
 		return $Controller->Update($this->_tabla,$this->_registro,$sql);
 		//return 0;
 	}
+	
+	public function TablePersonalizada($sql)
+{
+	$Controller=new Controller();
+	//$sql= "SELECT * FROM USUARIOS";
+	$result = $Controller->ejecute($sql);
+	$nfilas = mysql_num_rows($result);
+	$tabla="";
+	if($nfilas > 0)
+	{
+		
+		$tabla = "<table class='filapar' align='center' border=1>"; 
+		$tabla = $tabla. "<tr class='titulosTabla'><td>N°</td><td>Nombre</td><td>Departamento</td><td>Fecha de Creacion</td></tr>";
+		
+		for($i=0;$i<$nfilas;$i++)
+		{
+			$id_obra= mysql_result($result,$i,0);
+			$nombre_obra= mysql_result($result,$i,3);
+			$id_departamento = mysql_result($result,$i,2);
+			$sql2 = "SELECT NOMBRE_DEPARTAMENTO FROM DEPARTAMENTOS WHERE ID_DEPARTAMENTO = $id_departamento";
+			$result2 = $Controller->ejecute($sql2);
+			$nfilas2 = mysql_num_rows($result2);
+			if ($nfilas2  > 0) 
+			{
+				$departamento = mysql_result($result2,0,0);
+			}
+			else 
+			{
+				$departamento="Administrador";
+			}
+			$fecha_inicio_obra = mysql_result($result,$i,6);
+			$indice = $i+1;
+			$tabla = "$tabla <tr>";
+			$tabla = "$tabla <td> $indice </td>";
+			$tabla = "$tabla <td> $nombre_obra </td>";
+			$tabla = "$tabla <td>$departamento</td>";
+			$tabla = "$tabla <td>$fecha_inicio_obra</td>";
+			//$tabla = "$tabla <td align='center' ><a href='paso.php?c=8&editar=".$id_usuario."'><img border=0 src='imagenes/editar.jpg' width='15' height='15' ></a></td>";
+			//$tabla = "$tabla <td align='center' ><a href='javascript: display_alert($id_usuario)' ><img border=0 src='imagenes/delete.jpg' width='15' height='15'></a></td>";
+			$tabla = "$tabla </tr>";
+		}
+		
+		$tabla = $tabla . "</table>";
+	}
+	
+	//$tabla = "hola!!! $sql";
+	return $tabla;
+}
 
 }
 ?>
