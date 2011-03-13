@@ -17,9 +17,9 @@ class es_retirado{
 		return $row["mayor"];
 	}
 	
-	public function Add($material,$id_retiro,$folio,$fecha){
+	public function Add($material,$id_retiro,$folio){
 		$Controller=new Controller();
-		$sql="$material, $id_retiro ,$folio,'$fecha'";
+		$sql="$material, $id_retiro ,$folio";
 		$Controller->Add($this->_tabla, $sql);
 	}
 }

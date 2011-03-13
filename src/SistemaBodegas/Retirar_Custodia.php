@@ -48,7 +48,7 @@ function verifica2()
 <td>RTC-<?php echo $folio;?></td>
 </tr>
 <tr>
-<td width="130" >Nombre Funcionario</td>
+<td width="130" >Nombre</td>
 <td colspan="3"><input name="NombreRC" type="text" id="NombreRC" size="50" value="<?php echo $_SESSION["nombre"];?>"/></td>
 </tr>
 <tr>
@@ -71,11 +71,7 @@ function verifica2()
 <td colspan="6"><table width="685" height="104" border="1" align="center">
   <tr>
     <td width="90" height="22" class="titulosTabla">Numero Inventario </td>
-<<<<<<< HEAD
     <td width="202" class="titulosTabla">Detalle</td>
-=======
-    <td width="202" class="titulosTabla">Detalle Articulo</td>
->>>>>>> 296e776444bc4ff6a1f032d3a709d3a6c9b39743
 	<td width="50" class="tituloSTabla">Dias en Custodia</td> 
     </tr>
     <?php $arr=$_SESSION["listrcust"];

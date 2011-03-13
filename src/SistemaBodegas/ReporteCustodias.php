@@ -9,11 +9,7 @@ $sasocuado=$asociado->getAll2();
 $rowas=mysql_fetch_array($sasocuado);
 ?>
 
-<<<<<<< HEAD
 <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-=======
-<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
->>>>>>> 296e776444bc4ff6a1f032d3a709d3a6c9b39743
 <script language="javascript">
 $(document).ready(function() {
 	$(".botonExcel").click(function(event) {
@@ -56,11 +52,7 @@ $rowas=mysql_fetch_array($sasocuado);
 }
 ?>
 </table>
-<<<<<<< HEAD
 <p align="center">Exportar a Excel  <img src="imagenes/export_to_excel.gif" class="botonExcel" /></p>
-=======
-<p align="center">Exportar a Excel  <img src="export_to_excel.gif" class="botonExcel" /></p>
->>>>>>> 296e776444bc4ff6a1f032d3a709d3a6c9b39743
 <input type="hidden" id="datos_a_enviar" name="datos_a_enviar" />
 </form>
 </body>

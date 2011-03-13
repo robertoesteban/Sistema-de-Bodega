@@ -8,7 +8,7 @@ function __construct(){}
 function leer($oc){
 session_start();
 //$xml_file="./demo.xml";
-$xml_file="./OC/Orden_".strtoupper($oc).".xml";
+$xml_file="./OC/Orden_".$oc.".xml";
 #$xml_data=implode("",file($xml_file)); //get XML data for alternative direct parsing
 
 $xml=new XML();
