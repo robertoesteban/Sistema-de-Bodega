@@ -1,5 +1,5 @@
 <?php
-//include("../AccesoDatos/Controller.php") controllador;
+//include("../AccesoDatos/Controller.php");
 
 class stock{
 	public $id_stock;
@@ -53,12 +53,9 @@ class stock{
 		if(isset($id_stock) && $id_stock != "")
 		{
 			$sql="$id_stock";
-			$Controller->Del($this->_tabla,$this->registro, $sql);
-			
-		}
-		
-	}
-	
+			$Controller->Del($this->_tabla,$this->registro, $sql);	
+		}	
+	}	
 	public function Update($id_stock,$precio_stock,$fecha,$cantidad_stock,$minimo_stock){
 		$sql=array("ID_STOCK"=>"$id_stock","PRECIO_STOCK"=>"$precio_stock","FECHAPRECIO_STOCK"=>"'$fecha'","CANTIDAD_STOCK"=>"$cantidad_stock","MINIMO_STOCK"=>"$minimo_stock");
 		$Controller->Update($this->_tabla,$this->registro,$sql);
@@ -68,8 +65,12 @@ class stock{
 	public function UpdateC($id_stock,$cantidad_stock){
 		$sql="Update STOCK SET CANTIDAD_STOCK=CANTIDAD_STOCK+".$cantidad_stock." WHERE ID_STOCK_MATERIAL=".$id_stock;
 		//echo $sql;
-		$this->Controller->ejecute($sql);
-		
+		$this->Controller->ejecute($sql);	
+	}
+	public function UpdateRC($id_stock,$cantidad_stock){
+		$sql="Update STOCK SET CANTIDAD_STOCK=CANTIDAD_STOCK-".$cantidad_stock." WHERE ID_STOCK_MATERIAL=".$id_stock;
+		//echo $sql;
+		$this->Controller->ejecute($sql);	
 	}
 
 }

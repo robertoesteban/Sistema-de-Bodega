@@ -3,6 +3,7 @@ session_start();
 include("../AccesoDatos/Controller.php");
 include("../ReglasNegocio/material.php"); 
 include("../ReglasNegocio/asociado.php");
+include("../ReglasNegocio/custodia.php");
 if($_POST["submitRC"]=="agregar"){
 	$nombre=$_POST['NombreRC'];
 	$obs=$_POST['obs'];
@@ -22,15 +23,36 @@ if($_POST["submitRC"]=="agregar"){
 	else{
 	$asociado=new asociado();
 	$listaa=$asociado->SelectM($numeroi);
-	if($listaa==null){$_SESSION["mensaje"]="NO EXISTE EL MATERIAL EN CUSTODIA";}
-	else{
 	$arr2=mysql_fetch_array($listaa);
+	if($arr2==null){$_SESSION["mensaje"]="NO EXISTE EL MATERIAL EN CUSTODIA";}
+	else{
 	if($arr2["ESTADO_RETIRO_ASOCIADO"]==1){
 		$_SESSION["mensaje"]="EL MATERIAL YA FUE RETIRADO";
 	}
 	else{
+	//resto a una fecha la otra
+	$idcustodia=$arr2["ID_CUSTODIA"];
+	$custodia=new custodia();
+	$scustodia=$custodia->Select($idcustodia);
+	$rowcustodia=mysql_fetch_array($scustodia);
+	$timestamp2=$rowcustodia["FECHAINGRESO_CUSTODIA"];
+	$fecha= time();
+	$$timestamp1=date("Y-m-d",$fecha);
+	$segundos_diferencia = $timestamp1 - $timestamp2;
+	//echo $segundos_diferencia; 
+
+	//convierto segundos en días 
+	$dias_diferencia = $segundos_diferencia / (60 * 60 * 24); 
+
+	//obtengo el valor absoulto de los días (quito el posible signo negativo) 
+	$dias_diferencia = abs($dias_diferencia); 
+
+	//quito los decimales a los días de diferencia 
+	$dias_diferencia = floor($dias_diferencia); 
+	//echo $dias_diferencia;
+	
 	$rowmaterial=mysql_fetch_array($listmaterial);
-	$arr[]=array($numeroi,$rowmaterial["NOMBRE_MATERIAL"]);
+	$arr[]=array($numeroi,$rowmaterial["NOMBRE_MATERIAL"],$dias_diferencia);
 	}}}
 	$_SESSION["rcustodia"]=$arr;
 	$_SESSION["listrcust"]=$arr;

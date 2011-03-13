@@ -90,7 +90,7 @@ function verifica2()
     </select></td>
 <tr>
 <td colspan="6">
-<p class="respDetalleAD">Resepcion</p>
+<p class="respDetalleAD">Recepcion</p>
 	  <hr></td>
 </tr>
 <tr>
@@ -140,7 +140,7 @@ function verifica2()
 <tr>
 		<td>N&deg; Inventario</td>
 		<td><input name="NInventario" type="text" id="NInventario" size="15"/></td>
-		<td>Nombre</td>
+		<td>Detalle Articulos</td>
 	  <td width="430" colspan="3"><input name="NombreI" type="text" id="NombreI" size="54"/></td>
   </tr>
 	<tr>
@@ -160,7 +160,7 @@ function verifica2()
 <td colspan="6"><table width="685" height="104" border="1" align="center" class="filaPar">
   <tr>
     <td width="90" height="22" class="titulosTabla">Numero Inventario </td>
-    <td width="252" class="titulosTabla">Nombre</td>
+    <td width="252" class="titulosTabla">Detalle Articulo</td>
     <td width="90" class="titulosTabla">Periodo (dias) </td>
     <td width="225" class="titulosTabla">Estado </td>
     </tr>

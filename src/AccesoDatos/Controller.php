@@ -13,6 +13,7 @@ class Controller
 
 	//metodo que ejecuta una consulta sql enviada por parametro
 	public function ejecute($sql){
+		//echo $sql;
 		$this->_Connection->Connect();
 		$acction=mysql_query($sql);
 		$this->_Connection->DisConnect();

@@ -106,6 +106,8 @@ $$errorusuario = $_GET[errorusuario];
 			include 'Direccion.php';}
 		if($c=="f"){
 			include 'subir.php';}
+		if($c=="g"){
+			include 'ReporteCustodias.php';}
 		if($c=="y"){
 			include 'Departamento.php';}
 		if($c=="z"){
@@ -117,7 +119,9 @@ $$errorusuario = $_GET[errorusuario];
 		if($c=="v"){
 			include 'Tipo_Obra.php';}
 		if($c=="t"){
-			include 'Articulos.php';}?>
+			include 'Articulos.php';}
+		if($c=="s"){
+			include 'Reporte_Obra.php';}?>
 			
 			<?php include 'pie.php';
 

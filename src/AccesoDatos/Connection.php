@@ -11,9 +11,9 @@ class Connection
 	function __construct()
 	{
 		$this->_bdhost = "localhost";
-		$this->_bduser ="bduser";
-		$this->_bdpasswd = "bdpasswd";
-		$this->_bdbase = "bdbase";
+		$this->_bduser ="user";
+		$this->_bdpasswd = "1234";
+		$this->_bdbase = "bd";
 	}
 
 	//Conectarse con el Servidor

@@ -20,8 +20,8 @@ function checkRutField(rut)
         if ( largo < 2 )
         {
                 alert("Debe ingresar el rut completo.");
-                document.form1.Rut.focus();
-                document.form1.Rut.value = "";
+                document.form.rut.focus();
+                document.form.rut.value = "";
                 return false;
         }
         for (i=0; i < largo ; i++ )
@@ -29,8 +29,8 @@ function checkRutField(rut)
                 if ( rut.charAt(i) != "0" && rut.charAt(i) != "1" && rut.charAt(i) !="2" && rut.charAt(i) != "3" && rut.charAt(i) != "4" && rut.charAt(i) !="5" && rut.charAt(i) != "6" && rut.charAt(i) != "7" && rut.charAt(i) !="8" && rut.charAt(i) != "9" && rut.charAt(i) !="k" && rut.charAt(i) != "K" )
                 {
                         alert("El valor ingresado no corresponde a un R.U.T valido.");
-                        document.form1.Rut.focus();
-                        document.form1.Rut.value= "";
+                        document.form.rut.focus();
+                        document.form1.rut.value= "";
                         return false;
                 }
         }
@@ -59,7 +59,7 @@ function checkRutField(rut)
         invertido = "";
         for ( i=(drut.length-1),j=0; i>=0; i--,j++ )
                 invertido = invertido + drut.charAt(i);
-        document.form1.Rut.value = invertido;
+        document.form.rut.value = invertido;
         if ( checkDV(rut) )
         {
                 return true;
@@ -75,8 +75,8 @@ function checkDV( crut )
         if ( largo < 2 )
         {
                 alert("Debe ingresar el rut completo.");
-                document.form1.Rut.focus();
-                document.form1.Rut.value = "";
+                document.form.rut.focus();
+                document.form.rut.value = "";
                 return false;
         }
         if ( largo > 2 )
@@ -111,8 +111,8 @@ function checkDV( crut )
         if ( dvr != dv.toLowerCase() )
         {
                 alert("EL rut es incorrecto.");
-                document.form1.Rut.focus();
-                document.form1.Rut.value = "";
+                document.form.rut.focus();
+                document.form.ut.value = "";
                 return false;
         }
         return true;
@@ -124,9 +124,77 @@ function checkCDV( dvr )
         if ( dv != '0' && dv != '1' && dv != '2' && dv != '3' && dv != '4' && dv != '5' && dv != '6' && dv != '7' && dv != '8' && dv != '9' && dv != 'k'  && dv != 'K')
         {
                 alert("Debe ingresar un digito verificador valido.");
-                document.form1.Rut.focus();
-                document.form1.Rut.value= "";
+                document.form.rut.focus();
+                document.form.rut.value= "";
                 return false;
         }
         return true;
+}
+
+function verifica2usuario()
+{
+   document.form.rut.value="";
+   document.form.nombreusuario.value="";
+   document.form.apellidosusuario.value="";  
+   document.form.departamento.value=0;
+   document.form.password1.value="";
+   document.form.password2.value="";
+   document.form.submit();
+}
+
+function verificaUsuario()
+{
+	if (document.form.rut.value.length==0)
+   {
+		alert("Debe ingresar un RUT");
+		document.form.rut.focus();
+      return 0;
+	}
+	if (document.form.nombreusuario.value.length==0)
+   {
+		alert("Debe ingresar un Nombre");
+		document.form.nombreusuario.focus();
+      return 0;
+	}
+	if (document.form.apellidosusuario.value.length==0)
+   {
+		alert("Debe ingresar Apellidos");
+		document.form.apellidosusuario.focus();
+      return 0;
+	}
+	if (document.form.password1.value.length==0)
+   {
+		alert("Debe ingresar una contraseña");
+		document.form.password1.focus();
+      return 0;
+	}
+	if (document.form.password2.value.length==0)
+   {
+		alert("Debe ingresar una contraseña igual a la anterior");
+		document.form.password2.focus();
+      return 0;
+	}
+	if (document.form.password1.value!=document.form.password2.value)
+   {
+		alert("Las contraseñas ingresadas no coinciden");
+		document.form.password1.value="";
+		document.form.password2.value="";
+		document.form.password1.focus();
+      return 0;
+	}
+   document.form.hd_variable.value="ingresar";
+	document.form.submit();
+}
+
+function  display_alert(usuario)
+{
+	if(confirm("Esta seguro que desea eliminar el Usuario?"))
+	{
+   	document.form.hd_variable.value="bloquear";
+   	document.form.id_variable.value=usuario;
+      document.form.submit();
+   }
+   else
+   	return 0;
+
 }

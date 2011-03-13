@@ -508,6 +508,13 @@ div.tablaSubMenu{
 	
 }
 
+.labelUser{
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #0A0A2A;
+	text-align: right;;
+}
+
 .respDetalleAD{
 	background: #2a3742 url(images/header.jpg) no-repeat;
 	font-size:12px;

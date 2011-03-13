@@ -71,13 +71,15 @@ function verifica2()
 <td colspan="6"><table width="685" height="104" border="1" align="center">
   <tr>
     <td width="90" height="22" class="titulosTabla">Numero Inventario </td>
-    <td width="252" class="titulosTabla">Nombre</td>
+    <td width="202" class="titulosTabla">Detalle</td>
+	<td width="50" class="tituloSTabla">Dias en Custodia</td> 
     </tr>
     <?php $arr=$_SESSION["listrcust"];
      for($i=0;$i<sizeof($arr);$i++){?>
   	<tr>
     <td><?php echo $arr[$i][0];?></td>
     <td><?php echo $arr[$i][1];?></td>
+	<td><?php echo $arr[$i][2];?></td>
     </tr>
 	<?php }?>
 </table>

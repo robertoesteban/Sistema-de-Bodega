@@ -20,7 +20,8 @@ if(!empty($editar))
 	$id_departamento = $row['ID_DEPARTAMENTO'];
 	$nombre_obra=$row['NOMBRE_OBRA'];
 	$encargado_obra = $row['ENCARGADO_OBRA'];
-	$fecha_inicio_obra = $row['FECHA_INICIO_OBRA'];
+	$sFechaMySQL = $row['FECHA_INICIO_OBRA'];
+	$fecha_inicio_obra = implode( '/', array_reverse( explode( '-', $sFechaMySQL ) ) ) ;
 	$comentario_obra = $row['COMENTARIO_OBRA'];
 	
 	$boton = "VerificaUpdate()";

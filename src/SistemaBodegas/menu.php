@@ -12,11 +12,13 @@
 <li><a href="paso.php?c=2" title="Ingresar Material">Ingresar&nbsp;Material</a></li>
 <li><a href="paso.php?c=3" title="Ingresar Custodia">Ingresar&nbsp;Custodia</a></li>
 <!--<li><a href="paso.php?c=b" title="Ingresar Traspaso">Ingresar&nbsp;Traspaso</a></li>-->
-</ul></div></td><td style="padding-right:0px" title ="RETIRAR">
+</ul></div></td>
+
+
+<td style="padding-right:0px" title ="RETIRAR">
 <a onmouseover='xpe("zp36to");xpshow("zp36t",0,this);xpsmover(this);' onmouseout='xpsmout(this);' onmousedown='xpe("zp36tc");'><img id="xpi_zp36t" src="menu-files/btzp36t_0.png" name="vbzp36t" width="107" height="37" border="0" alt="RETIRAR" /></a><div>
 <ul id="vbUL_zp36t" class="vbULwp36t">
-<!--<li><img src="menu-files/smmo36t.png" alt="Retirar Material" />-->
-<!--<a href="paso.php?c=5" title="Retirar Material">Retirar&nbsp;Material</a></li>-->
+<li><a href="paso.php?c=5" title="Retirar Material">Retirar&nbsp;Material</a></li>
 <li><a href="paso.php?c=6" title="Retirar Custodia">Retirar&nbsp;Custodia</a></li>
 <!--<li><a href="paso.php?c=c" title="Traspaso">Salida&nbsp;Traspaso</a></li>-->
 <!--<li><a href="paso.php?c=d" title="Merma">Salida&nbsp;Merma</a></li>-->
@@ -34,6 +36,12 @@
 <li><a href="paso.php?c=x" title="Bodegas">Bodegas</a></li>
 <li><a href="paso.php?c=t" title="Articulos">Articulos</a></li>
 </ul></div></td>
+
+<td style="padding-right:0px" title ="REPORTES">
+<a onmouseover='xpe("wp41to");xpshow("wp41t",0,this);xpsmover(this);' onmouseout='xpsmout(this);' onmousedown='xpe("wp41tc");'><img id="xpi_wp41t" src="menu-files/btwp41t_0.png" name="vbwp41t" width="139" height="37" border="0" alt="REPORTES" /></a><div>
+<ul id="vbUL_wp41t" class="vbULwp36t">
+<li><a href="paso.php?c=g" title="Reporte Custodia">Reporte Custodia</a></li></ul></div></td>
+
 
 
 <td style="padding-right:0px" title ="USUARIOS">
