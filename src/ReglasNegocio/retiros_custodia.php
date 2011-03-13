@@ -10,16 +10,16 @@ class retiros_custodia{
 	
 	function __construct(){}
 	
-	public function Add($nombre,$observacion,$fecha){
+	public function Add($nombre,$observacion){
 		$Controller=new Controller();
-		$sql=" 0 ,'$nombre', '$observacion','$fecha'";
+		$sql=" 0 ,'$nombre', '$observacion'";
 		$Controller->Add($this->_tabla, $sql);
 	}
 	
-	public function Select($nombre,$obs,$fecha){
+	public function Select($nombre,$obs){
 		$Controller=new Controller();
-		$arr1=array("NOMBRE_RETIRO_CUSTODIA","OBSERVACION_RETIRO_CUSTODIA","FECHA_RETIRO_CUSTODIA");
-		$arr2=array("'$nombre'","'$obs'","'$fecha'");
+		$arr1=array("NOMBRE_RETIRO_CUSTODIA","OBSERVACION_RETIRO_CUSTODIA");
+		$arr2=array("'$nombre'","'$obs'");
 		return $Controller->Select2($this->_tabla,$arr1,$arr2);
 		
 	}

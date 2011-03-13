@@ -151,7 +151,7 @@ public function GetAllTO($tabla)
 	{
 			$this->_Connection->Connect();
 			$query = "INSERT INTO ". $tabla . " VALUES (". $parametro.")" ;
-			//echo $query;
+			echo $query;
 			$accion = mysql_query($query); 
 			$this->_Connection->DisConnect();
 			return $accion;
